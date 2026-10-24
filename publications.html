@@ -2,8 +2,9 @@
 <!-- ======================================================================
      publications.html  —  PUBLICATIONS PAGE
      Sections in order: Publications, Thesis.
-     To add a new publication: copy one whole <article class="card"> ...
-     </article> block inside "Publications" and change the text and links.
+     To add a new publication: copy one whole <article class="card" ...>
+     ... </article> block inside "Publications" and change the text, links
+     and its data-topics (used by the "Filter by Topic" menu).
      ====================================================================== -->
 <html lang="en">
 <head>
@@ -45,6 +46,22 @@
     </section>
 
     <!-- ================================================================
+         FILTER BY TOPIC
+         Each paper below has  data-topics="..."  listing its topics.
+         To add a topic: add an <option> here (value in small letters),
+         then add that same word to the data-topics of the papers.
+         ================================================================ -->
+    <div class="filter-bar">
+      <label for="topic-filter">Filter by Topic:</label>
+      <select id="topic-filter">
+        <option value="all" selected>All</option>
+        <option value="detection">Detection</option>
+        <option value="classification">Classification</option>
+        <option value="thesis">Thesis</option>
+      </select>
+    </div>
+
+    <!-- ================================================================
          PUBLICATIONS
          Tip: abstracts are in a click-to-open box. To show an abstract
          open by default, change  <details class="abstract">  to
@@ -55,7 +72,7 @@
 
       <!-- Publication 1 -->
       <!-- id="violence-detection" lets the Home page link straight to this Violence Detection paper -->
-      <article class="card" id="violence-detection">
+      <article class="card" data-topics="detection" id="violence-detection">
         <h3 class="item-title"><a href="https://ieeexplore.ieee.org/document/10561682" target="_blank" rel="noopener">Generalising Violence Detection with a New Near-Real-World Violence Dataset</a></h3>
         <div class="meta">
           <span><strong>Publisher:</strong> <a href="https://ieeexplore.ieee.org/document/10561682" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
@@ -70,7 +87,7 @@
 
       <!-- Publication 2 -->
       <!-- id="securegrid" lets the Home page link straight to this SecureGrid paper -->
-      <article class="card" id="securegrid">
+      <article class="card" data-topics="detection" id="securegrid">
         <h3 class="item-title"><a href="https://ieeexplore.ieee.org/abstract/document/11381615" target="_blank" rel="noopener">SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data</a></h3>
         <div class="meta">
           <span><strong>Publisher:</strong> <a href="https://ieeexplore.ieee.org/document/11381615" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
@@ -84,7 +101,7 @@
       </article>
 
       <!-- Publication 3 -->
-      <article class="card">
+      <article class="card" data-topics="detection classification">
         <h3 class="item-title"><a href="https://ieeexplore.ieee.org/abstract/document/11545639" target="_blank" rel="noopener">Machine Learning and Explainable AI for Robust Smart Grid Security: A New Dataset Study</a></h3>
         <div class="meta">
           <span><strong>Publisher:</strong> <a href="https://ieeexplore.ieee.org/abstract/document/11545639" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
@@ -98,7 +115,7 @@
       </article>
 
       <!-- Publication 4 -->
-      <article class="card">
+      <article class="card" data-topics="detection classification">
         <h3 class="item-title"><a href="https://ieeexplore.ieee.org/abstract/document/11546156" target="_blank" rel="noopener">An Explainable Machine Learning Framework for Dysarthria Detection Using Deep Acoustic Embeddings and Prosodic Cues</a></h3>
         <div class="meta">
           <span><strong>Publisher:</strong> <a href="https://ieeexplore.ieee.org/abstract/document/11546156" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
@@ -117,7 +134,7 @@
          ================================================================ -->
     <section class="section">
       <h2 class="section-title">Thesis</h2>
-      <article class="card">
+      <article class="card" data-topics="thesis">
         <h3 class="item-title"><a href="https://library.mist.ac.bd/vufind/Record/TP-2740/Versions" target="_blank" rel="noopener">Enhanced Detection of Electricity Theft in Smart Grids Using a Machine Learning Boosting Classifiers Based Voting Ensemble Model</a></h3>
         <div class="meta">
           <span><strong>Publisher:</strong> <a href="https://library.mist.ac.bd/vufind/Record/TP-2740/Versions" target="_blank" rel="noopener"><strong>MIST Central Library</strong></a></span>

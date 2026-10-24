@@ -10,6 +10,7 @@
    4. When a link jumps to an entry (e.g. /projects#securegrid), places
       that entry's title just below the menu bar, even after pictures
       and videos above it finish loading.
+   5. "Filter by Topic" menu on the Publications page.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -71,3 +72,25 @@ window.addEventListener("load", function () {
 });
 // Also when a jump link is clicked while already on the same page.
 window.addEventListener("hashchange", alignToHash);
+
+/* ---- 5. Publications page: "Filter by Topic" menu ---- */
+document.addEventListener("DOMContentLoaded", function () {
+  var filter = document.getElementById("topic-filter");
+  if (!filter) return;                       // only on the Publications page
+  function applyFilter() {
+    var topic = filter.value;                // "all", "detection", ...
+    document.querySelectorAll("[data-topics]").forEach(function (card) {
+      var topics = card.getAttribute("data-topics").split(" ");
+      card.hidden = !(topic === "all" || topics.indexOf(topic) !== -1);
+    });
+    // hide a whole section (e.g. "Thesis") when none of its papers match
+    document.querySelectorAll("main .section").forEach(function (section) {
+      var cards = section.querySelectorAll("[data-topics]");
+      if (!cards.length) return;
+      var anyShown = Array.prototype.some.call(cards, function (c) { return !c.hidden; });
+      section.hidden = !anyShown;
+    });
+  }
+  filter.addEventListener("change", applyFilter);
+  applyFilter();
+});

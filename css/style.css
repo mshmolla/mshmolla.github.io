@@ -474,3 +474,25 @@ details.abstract p { text-align: justify; hyphens: auto; }
 
 /* Less empty space between a page title (Projects, Experience, Education) and the first section */
 .page-header + .section { padding-top: 12px; }
+
+/* Page titles (Projects, Publications, Experience, Education) centred,
+   with a thin line underneath, like Mahmudul's site */
+.page-header { text-align: center; padding-bottom: 0; }
+.page-header h1 { padding-bottom: .45em; border-bottom: 1px solid var(--color-border); }
+
+/* "Filter by Topic" menu on the Publications page */
+.filter-bar { margin: 24px 0 8px; }
+.filter-bar label { display: block; margin-bottom: 8px; color: var(--color-text); }
+.filter-bar select {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.filter-bar select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+[hidden] { display: none !important; }
+
