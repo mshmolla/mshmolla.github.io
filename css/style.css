@@ -176,14 +176,15 @@ p  { margin: 0 0 1em; }
 .pill-links a {
   display: inline-block;
   padding: 5px 13px;
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-primary);
   border-radius: 999px;
-  background: var(--color-surface);
+  background: transparent;
   color: var(--color-primary);
   font-size: .88rem;
-  font-weight: 500;
+  font-weight: 600;
+  transition: background .15s, color .15s;
 }
-.pill-links a:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+.pill-links a:hover { background: var(--color-primary); color: #fff; text-decoration: none; }
 
 
 /* ==========================================================================
@@ -236,7 +237,27 @@ p  { margin: 0 0 1em; }
   margin-bottom: 1em;
 }
 .hero-interests { color: var(--color-muted); }
-.hero .pill-links { margin: 1.2em 0; }
+.hero .social-icons { margin: 1.2em 0 1.4em; }
+
+/* Profile icons at the top of the Home page: plain icons, no background square */
+.hero .hero-icons { gap: 18px; align-items: center; }
+.hero .hero-icons a {
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  color: var(--color-primary);  /* icon colour */
+  font-size: 2.4rem;            /* icon size */
+}
+.hero .hero-icons a:hover { background: none; color: var(--color-accent); }
+/* "RID" letters for ResearchID, in a small solid box like the other square icons */
+.text-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.1rem; height: 2.1rem; border-radius: 4px;
+  background: currentColor;
+  font-family: var(--font-body); font-size: .8rem; font-weight: 800; letter-spacing: .02em;
+}
+.text-icon span { color: var(--color-bg); }
 
 .cv-block h3 { font-size: 1.05rem; margin-bottom: .6em; }
 .cv-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -343,8 +364,25 @@ details.abstract p { margin-top: .6em; text-align: justify; }
 .site-footer h3 { color: #fff; font-size: 1.1rem; }
 .site-footer a { color: #fff; }
 .footer-grid { display: grid; gap: 32px; grid-template-columns: repeat(3, 1fr); }
-.site-footer .pill-links a { background: transparent; border-color: rgba(255, 255, 255, .35); color: #fff; }
-.site-footer .pill-links a:hover { border-color: #fff; }
+/* Square social media icon buttons in the footer */
+.social-icons { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;                  /* size of each square */
+  height: 56px;
+  border-radius: 6px;           /* corner roundness (0 = sharp square) */
+  background: #fff;             /* square colour */
+  color: var(--color-primary);  /* icon colour */
+  font-size: 2.3rem;            /* icon size (bigger = less white around it) */
+  line-height: 1;
+  transition: background .15s, color .15s, transform .15s;
+}
+/* ResearchGate "R G" letters (written as text, styled like the official mark) */
+.rg-icon { font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; letter-spacing: -1px; }
+.rg-icon sup { font-size: .5em; vertical-align: super; margin-left: 1px; }
+.social-icons a:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); text-decoration: none; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
 .contact-list li { margin-bottom: .35em; }
 .copyright {
@@ -379,7 +417,7 @@ details.abstract p { margin-top: .6em; text-align: justify; }
 
   .hero { grid-template-columns: 1fr; text-align: center; gap: 20px; padding-top: 36px; }
   .hero-photo { width: 190px; margin: 0 auto; }
-  .hero .pill-links, .cv-buttons { justify-content: center; }
+  .hero .social-icons, .cv-buttons { justify-content: center; }
 
   .card { padding: 20px; }
   .entry { grid-template-columns: 64px 1fr; gap: 16px; }

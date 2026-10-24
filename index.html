@@ -19,6 +19,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- The site's design (colours, layout) -->
+  <!-- Icon library (Font Awesome) for the social media icons in the footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Second icon library (Academicons) for the academic icons at the top of this page -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -57,16 +61,20 @@
         <span class="hero-status">Prospective MS/PhD Applicant</span>
         <p class="hero-interests">Research interests: Machine Learning, Digital Twin, Power Electronics, Smart Grid and Renewable Energy.</p>
 
-        <!-- Academic profile links (EDIT: add/remove a line to change them) -->
-        <ul class="pill-links">
-          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a></li>
-          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener">ORCID</a></li>
-          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener">Google Scholar</a></li>
-          <li><a href="https://researchid.co/rid113869" target="_blank" rel="noopener">ResearchID</a></li>
-          <li><a href="https://www.scopus.com/pages/authors/59208452500" target="_blank" rel="noopener">Scopus</a></li>
-          <li><a href="https://www.webofscience.com/wos/author/record/QWF-0712-2026" target="_blank" rel="noopener">Web of Science</a></li>
-          <li><a href="https://ieeexplore.ieee.org/author/532377141325454" target="_blank" rel="noopener">IEEE Xplore</a></li>
+        <!-- Academic profile icons (EDIT: add/remove a <li> line to change them).
+             Icons: Font Awesome (fa-...) and Academicons (ai-...), both linked in <head>.
+             Hover over an icon on the site to see its name. -->
+        <ul class="social-icons hero-icons">
+          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate"><i class="ai ai-researchgate-square"></i></a></li>
+          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li>
+          <!-- ResearchID has no standard icon, so a small box with its letters is used -->
+          <li><a href="https://researchid.co/rid113869" target="_blank" rel="noopener" aria-label="ResearchID" title="ResearchID"><span class="text-icon"><span>RID</span></span></a></li>
+          <li><a href="https://www.scopus.com/pages/authors/59208452500" target="_blank" rel="noopener" aria-label="Scopus" title="Scopus"><i class="ai ai-scopus"></i></a></li>
+          <!-- Web of Science is made by Clarivate, so the Clarivate icon is used -->
+          <li><a href="https://www.webofscience.com/wos/author/record/QWF-0712-2026" target="_blank" rel="noopener" aria-label="Web of Science" title="Web of Science"><i class="ai ai-clarivate"></i></a></li>
+          <li><a href="https://ieeexplore.ieee.org/author/532377141325454" target="_blank" rel="noopener" aria-label="IEEE Xplore" title="IEEE Xplore"><i class="ai ai-ieee"></i></a></li>
         </ul>
 
         <!-- Curriculum Vitae buttons -->
@@ -227,11 +235,14 @@
       </div>
       <div>
         <h3>Social Media</h3>
-        <ul class="pill-links">
-          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a></li>
-          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener">ORCID</a></li>
-          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener">Google Scholar</a></li>
+        <!-- Square icon buttons. Icons come from Font Awesome (linked in <head>).
+             To add one: copy a <li> line, change the link, the label and the
+             icon name (find icon names at fontawesome.com/icons). -->
+        <ul class="social-icons">
+          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate"><i class="ai ai-researchgate-square"></i></a></li>
+          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li>
         </ul>
       </div>
       <div>
