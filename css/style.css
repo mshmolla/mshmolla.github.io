@@ -446,3 +446,10 @@ details.abstract p { margin-top: .6em; text-align: justify; }
 /* Sizes for the "image missing" boxes (only used until you upload images) */
 .img-missing.banner-img { height: 220px; }
 .img-missing.entry-logo { font-size: .6rem; }
+
+/* About Me (and other text inside cards): straight edges on both sides, like the old site */
+.card > p { text-align: justify; }
+
+@media (max-width: 760px) {
+  .card > p { text-align: left; }   /* on phones: normal left-aligned text */
+}
