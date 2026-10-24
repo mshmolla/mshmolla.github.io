@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- ======================================================================
+     404.html  —  "PAGE NOT FOUND" PAGE
+     GitHub shows this page automatically when someone opens an address on
+     your site that does not exist (e.g. a typo like /publication).
+     All file paths here start with "/" so the page works at any address.
+     ====================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found | Md. Sabbir Hossain Molla</title>
+  <!-- Browser tab icon (favicon). "?v=2" makes browsers load the new icon
+       instead of an old saved one — change it to v=3 if you replace the icon. -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+  <link rel="shortcut icon" href="/favicon.ico?v=2">
+  <meta name="description" content="This page does not exist on Md. Sabbir Hossain Molla's website.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Icon library (Font Awesome) for the social media icons in the footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Second icon library (Academicons) for academic icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Styles used only on this page */
+    .notfound { text-align: center; padding: 90px 0 70px; }
+    .notfound-code { font-family: var(--font-heading); font-size: clamp(4.5rem, 14vw, 7.5rem); font-weight: 700; line-height: 1; color: var(--color-accent); margin: 0 0 .1em; }
+    .notfound h1 { margin-bottom: .4em; }
+    .notfound-text { color: var(--color-muted); max-width: 520px; margin: 0 auto 1.8em; }
+    .notfound-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER + MENU (same on all pages) ===================== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="/">Md. Sabbir Hossain Molla</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/publications">Publications</a></li>
+        <li><a href="/experience">Experience</a></li>
+        <li><a href="/education">Education</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="notfound">
+      <p class="notfound-code">404</p>
+      <h1>Page not found</h1>
+      <p class="notfound-text">Sorry, the page you are looking for doesn't exist or may have moved.
+        Please check the address, or use one of the links below.</p>
+      <div class="notfound-actions">
+        <a class="btn" href="/">Back to Home</a>
+        <a class="btn btn-outline" href="/publications">Publications</a>
+        <a class="btn btn-outline" href="/projects">Projects</a>
+        <a class="btn btn-outline" href="/contact">Contact</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER (same on all pages) ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- LEFT: Social Media, then Office Hours -->
+      <div>
+        <h3>Social Media</h3>
+        <!-- Square icon buttons. Icons come from Font Awesome (linked in <head>).
+             To add one: copy a <li> line, change the link, the label and the
+             icon name (find icon names at fontawesome.com/icons). -->
+        <ul class="social-icons">
+          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate"><i class="ai ai-researchgate-square"></i></a></li>
+          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li>
+        </ul>
+        <h3 class="footer-gap">Office Hours</h3>
+        <p>08:00 AM - 04:00 PM<br>(Sunday to Thursday)</p>
+      </div>
+      <!-- MIDDLE: Flag Counter (visitor map). Same counter as the old Google Site
+           (ID PoQE), so the numbers continue. Colours are set inside the image
+           link: bg_ = background, txt_ = text, border_ = border (hex colours). -->
+      <div class="footer-counter">
+        <a href="https://info.flagcounter.com/PoQE" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/PoQE/bg_1D3557/txt_FFFFFF/border_1D3557/columns_3/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter"></a>
+      </div>
+      <!-- RIGHT: Contact -->
+      <div>
+        <h3>Contact</h3>
+        <!-- Each line: an icon + the detail. Icons are from Font Awesome. -->
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+8801304844602">+880 1304844602</a></li>
+          <li><i class="fa-regular fa-envelope"></i><a href="mailto:sabbir.eece@gmail.com">sabbir.eece@gmail.com</a></li>
+          <li><i class="fa-regular fa-envelope"></i><a href="mailto:sabbir@eece.mist.ac.bd">sabbir@eece.mist.ac.bd</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>MIST, Dhaka-1216, Bangladesh</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
