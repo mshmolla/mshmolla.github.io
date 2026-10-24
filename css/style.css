@@ -370,19 +370,12 @@ details.abstract p { margin-top: .6em; text-align: justify; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;                  /* size of each square */
-  height: 56px;
-  border-radius: 6px;           /* corner roundness (0 = sharp square) */
-  background: #fff;             /* square colour */
-  color: var(--color-primary);  /* icon colour */
-  font-size: 2.3rem;            /* icon size (bigger = less white around it) */
+  color: #fff;                  /* icon colour (white on the dark footer) */
+  font-size: 2.6rem;            /* icon size */
   line-height: 1;
-  transition: background .15s, color .15s, transform .15s;
+  transition: color .15s, transform .15s;
 }
-/* ResearchGate "R G" letters (written as text, styled like the official mark) */
-.rg-icon { font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; letter-spacing: -1px; }
-.rg-icon sup { font-size: .5em; vertical-align: super; margin-left: 1px; }
-.social-icons a:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); text-decoration: none; }
+.social-icons a:hover { color: var(--color-accent); transform: translateY(-2px); text-decoration: none; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
 .contact-list li { margin-bottom: .35em; }
 .copyright {
