@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
-  <link rel="stylesheet" href="css/contact.css?v=5">
+  <link rel="stylesheet" href="css/contact.css?v=6">
 </head>
 <body class="contact-page">
 
@@ -44,11 +44,19 @@
     </div>
   </header>
 
-  <main class="container contact-layout">
-    <section class="contact-panel" aria-labelledby="contact-heading">
-      <h1 id="contact-heading" class="contact-title">Contact Me</h1>
-      <p class="contact-intro">For questions or potential collaborations, please use the form below or email me directly at <a href="mailto:sabbir.eece@gmail.com">sabbir.eece@gmail.com</a>.</p>
+  <main class="container">
 
+    <!-- Page title (same style as the other pages) -->
+    <section class="page-header">
+      <h1 id="contact-heading">Contact Me</h1>
+      <p class="contact-intro">For questions or potential collaborations, please use the form below or email me directly at <a href="mailto:sabbir.eece@gmail.com">sabbir.eece@gmail.com</a>.</p>
+    </section>
+
+    <!-- Two cards side by side: message form (left) and contact details (right).
+         Their tops line up; on phones they stack. -->
+    <div class="contact-layout">
+      <section class="card contact-panel" aria-labelledby="contact-form-heading">
+        <h2 id="contact-form-heading" class="section-title">Send a Message</h2>
       <!-- GitHub Pages serves static files. FormSubmit handles email delivery.
            After publishing, submit once and activate the form using the email
            sent to sabbir.eece@gmail.com. No password or API key is needed.
@@ -79,10 +87,10 @@
         </div>
         <button type="submit" class="contact-submit">Send Message</button>
       </form>
-    </section>
+      </section>
 
-    <aside class="contact-details" aria-labelledby="contact-details-heading">
-      <h2 id="contact-details-heading">Contact Details</h2>
+      <aside class="card contact-details" aria-labelledby="contact-details-heading">
+        <h2 id="contact-details-heading" class="section-title">Contact Details</h2>
       <p><strong>Address:</strong><br>MIST, Dhaka-1216, Bangladesh</p>
       <p><strong>Phone:</strong> <a href="tel:+8801304844602">+880 1304844602</a></p>
       <p><strong>Email:</strong> <a href="mailto:sabbir.eece@gmail.com">sabbir.eece@gmail.com</a></p>
@@ -96,7 +104,8 @@
         <li><a href="https://github.com/mshmolla" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github"></i></a></li>
         <li><a href="https://figshare.com/authors/Md_Sabbir_Hossain_Molla/24649686" target="_blank" rel="noopener" aria-label="figshare" title="figshare"><i class="ai ai-figshare"></i></a></li>
       </ul>
-    </aside>
+      </aside>
+    </div>
   </main>
 
   <footer class="site-footer">
