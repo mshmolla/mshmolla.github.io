@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | Md. Sabbir Hossain Molla</title>
+  <meta name="description" content="Search projects, publications, research abstracts, experience, education and contact details on Md. Sabbir Hossain Molla’s website.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://mshmolla.github.io/search.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link id="site-search-style" rel="stylesheet" href="css/search.css">
+</head>
+<body class="search-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="/">Md. Sabbir Hossain Molla</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/publications">Publications</a></li>
+        <li><a href="/experience">Experience</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container search-main">
+    <h1 class="search-heading">Search this website</h1>
+    <p class="search-intro">Find projects, papers, research topics, experience, education and contact details.</p>
+
+    <form id="site-search-form" class="search-form" role="search" action="/search.html" method="GET" aria-busy="true">
+      <label class="site-search-accessible" for="search-query">Search this website</label>
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
+        <input id="search-query" name="q" type="search" placeholder="Search this website…" autocomplete="off" maxlength="200" aria-describedby="search-help" aria-controls="search-results" autofocus>
+        <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" title="Clear search" hidden>×</button>
+        <button class="search-submit" type="submit">Search</button>
+      </div>
+      <p id="search-help" class="search-help">Searches only this website. Results update as you type. Use double quotes for an exact phrase.</p>
+    </form>
+
+    <div class="search-tools">
+      <label for="search-page-filter">Look in</label>
+      <select id="search-page-filter" aria-controls="search-results" disabled><option value="">All pages</option></select>
+    </div>
+    <div class="search-examples" aria-label="Example searches">
+      <span>Try:</span>
+      <button type="button" class="search-chip" data-search-example="SolarDT">SolarDT</button>
+      <button type="button" class="search-chip" data-search-example="smart grid">Smart grid</button>
+      <button type="button" class="search-chip" data-search-example="dysarthria">Dysarthria</button>
+      <button type="button" class="search-chip" data-search-example="office hours">Office hours</button>
+    </div>
+
+    <p id="search-warning" class="search-warning" role="status" hidden></p>
+    <p id="search-status" class="search-status" role="status" aria-live="polite" aria-atomic="true">Loading this website’s pages…</p>
+    <p id="search-note" class="search-note" hidden></p>
+    <ol id="search-results" class="search-results" aria-label="Search results"></ol>
+    <div id="search-empty" class="search-empty" hidden>
+      <h2 id="search-empty-title">What are you looking for?</h2>
+      <p id="search-empty-text"></p>
+      <div id="search-suggestions" class="search-suggestions"></div>
+      <button id="search-all-pages" class="search-all-pages" type="button" hidden>Search all pages instead</button>
+    </div>
+    <button id="search-more" class="search-more" type="button" hidden>Show more results</button>
+    <button id="search-retry" class="search-retry" type="button" hidden>Retry loading pages</button>
+    <noscript><p>Please enable JavaScript to search this website. You can also browse its pages using the navigation menu.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- LEFT: Social Media, then Office Hours -->
+      <div>
+        <h3>Social Media</h3>
+        <!-- Square icon buttons. Icons come from Font Awesome (linked in <head>).
+             To add one: copy a <li> line, change the link, the label and the
+             icon name (find icon names at fontawesome.com/icons). -->
+        <ul class="social-icons">
+          <li><a href="https://www.linkedin.com/in/hossainsabbir/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+          <li><a href="https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate"><i class="ai ai-researchgate-square"></i></a></li>
+          <li><a href="https://orcid.org/0009-0007-4586-7918" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en&amp;authuser=1" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li>
+        </ul>
+        <h3 class="footer-gap">Office Hours</h3>
+        <p>08:00 AM - 04:00 PM (Sunday to Thursday)</p>
+      </div>
+      <!-- MIDDLE: Flag Counter (visitor map). Same counter as the old Google Site
+           (ID PoQE), so the numbers continue. Colours are set inside the image
+           link: bg_ = background, txt_ = text, border_ = border (hex colours). -->
+      <div class="footer-counter">
+        <a href="https://info.flagcounter.com/PoQE" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/PoQE/bg_1D3557/txt_FFFFFF/border_1D3557/columns_3/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter"></a>
+      </div>
+      <!-- RIGHT: Contact -->
+      <div>
+        <h3>Contact</h3>
+        <!-- Each line: an icon + the detail. Icons are from Font Awesome. -->
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+8801304844602">+880 1304844602</a></li>
+          <li><i class="fa-regular fa-envelope"></i><a href="mailto:sabbir.eece@gmail.com">sabbir.eece@gmail.com</a></li>
+          <li><i class="fa-regular fa-envelope"></i><a href="mailto:sabbir@eece.mist.ac.bd">sabbir@eece.mist.ac.bd</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>MIST, Dhaka-1216, Bangladesh</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script id="site-search-core-script" src="js/search-core.js"></script>
+  <script src="js/search-ui.js"></script>
+</body>
+</html>

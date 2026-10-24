@@ -106,3 +106,76 @@ document.addEventListener("DOMContentLoaded", function () {
   filter.addEventListener("change", applyFilter);
   applyFilter();
 });
+
+/* ---- 6. Website search: header control and precise result destinations ---- */
+(function () {
+  var script = document.currentScript;
+  var siteBase = new URL("../", script && script.src ? script.src : new URL("js/main.js", window.location.href).href);
+  var searchUrl = new URL("search.html", siteBase);
+
+  function loadSearchCore(callback) {
+    if (window.SiteSearch) { callback(); return; }
+    var loader = document.getElementById("site-search-core-script");
+    if (!loader) {
+      loader = document.createElement("script");
+      loader.id = "site-search-core-script";
+      loader.src = new URL("js/search-core.js", siteBase).href;
+      loader.async = true;
+      loader.addEventListener("load", callback, { once: true });
+      document.head.appendChild(loader);
+    } else loader.addEventListener("load", callback, { once: true });
+  }
+  function revealSearchTarget() {
+    if (!window.location.hash) return;
+    var params = new URLSearchParams(window.location.search);
+    if (!params.has("search") && !window.location.hash.startsWith("#site-search-")) return;
+    loadSearchCore(function () {
+      if (!window.SiteSearch) return;
+      window.SiteSearch.assignAnchors(document);
+      var id;
+      try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (_) { return; }
+      var target = document.getElementById(id);
+      if (!target) return;
+      var filter = document.getElementById("topic-filter");
+      if (filter && filter.value !== "all") { filter.value = "all"; filter.dispatchEvent(new Event("change", { bubbles: true })); }
+      target.querySelectorAll("details").forEach(function (details) { details.open = true; });
+      target.classList.add("site-search-hit");
+      alignToHash();
+    });
+  }
+  function setupSearch() {
+    var header = document.querySelector(".site-header");
+    var container = header && header.querySelector(".container");
+    if (!container) return;
+    if (!document.getElementById("site-search-style")) {
+      var css = document.createElement("link");
+      css.id = "site-search-style"; css.rel = "stylesheet";
+      css.href = new URL("css/search.css", siteBase).href;
+      document.head.appendChild(css);
+    }
+    header.classList.add("has-site-search");
+    if (!document.getElementById("site-search-trigger")) {
+      var link = document.createElement("a");
+      link.id = "site-search-trigger"; link.className = "site-search-trigger";
+      link.href = searchUrl.href;
+      link.setAttribute("aria-label", "Search this website");
+      link.setAttribute("aria-keyshortcuts", "/");
+      link.title = "Search this website (press /)";
+      if (window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "") === searchUrl.pathname.replace(/\.html$/, "")) link.setAttribute("aria-current", "page");
+      // Fixed decorative SVG; no user-provided HTML is inserted.
+      link.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg><span class="site-search-accessible">Search</span>';
+      container.appendChild(link);
+    }
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey || event.defaultPrevented) return;
+      if (event.target.closest && event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      event.preventDefault();
+      var input = document.getElementById("search-query");
+      if (input) input.focus(); else window.location.assign(searchUrl.href);
+    });
+    revealSearchTarget();
+    window.addEventListener("hashchange", revealSearchTarget);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupSearch);
+  else setupSearch();
+})();
