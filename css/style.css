@@ -218,7 +218,7 @@ p  { margin: 0 0 1em; }
   width: 260px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 14px;          /* almost square (use 50% for a circle) */
   border: 6px solid var(--color-surface);
   box-shadow: var(--shadow);
   background: var(--color-border);
