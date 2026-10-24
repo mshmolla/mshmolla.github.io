@@ -128,15 +128,14 @@ p  { margin: 0 0 1em; }
   padding: 0;
 }
 .nav-links a {
-  display: block;
-  padding: 8px 14px;
-  border-radius: 8px;
-  color: rgba(255, 255, 255, .85);
-  font-weight: 500;
+   display: block;
+   padding: 8px 14px;
+   color: rgba(255, 255, 255, .55);   /* normal: dimmed white */
+   font-weight: 500;
+   transition: color .15s;
 }
-.nav-links a:hover { background: rgba(255, 255, 255, .12); color: #fff; text-decoration: none; }
-.nav-links a.active { background: rgba(255, 255, 255, .18); color: #fff; }   /* current page */
-
+.nav-links a:hover { color: rgba(255, 255, 255, .85); text-decoration: none; }   /* mouse over: a bit brighter */
+.nav-links a.active { color: #fff; }                                              /* current page: full white */
 /* The ☰ button — hidden on big screens, shown on phones (see section 10) */
 .menu-toggle {
   display: none;
