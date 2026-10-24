@@ -518,4 +518,8 @@ details.abstract p { text-align: justify; hyphens: auto; }
   .nav-links.open { display: flex; }
 }
 
+/* Publications: author list (your name in bold) and conference / supervisor line */
+.authors { margin: 0 0 .35em; color: var(--color-text); }
+.venue { margin: 0 0 .7em; color: var(--color-muted); }
+.venue strong { color: var(--color-text); }
 
