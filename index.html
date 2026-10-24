@@ -98,16 +98,15 @@
     <section class="section">
       <h2 class="section-title">Featured Projects</h2>
 
-      <!-- YouTube video (to change it, replace the part after /embed/) -->
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
-
+      <!-- Three project cards, like the old site: picture/video on top,
+           title and description centred below. -->
       <div class="grid-3">
-        <!-- Project 1: SolarDT -->
-        <article class="card project-card">
-          <!-- PLACEHOLDER: SolarDT project picture -->
-          <img class="project-img" src="images/projects/solardt.jpg" alt="SolarDT project">
+        <!-- Project 1: SolarDT (its picture is the YouTube video;
+             to change the video, replace the part after /embed/) -->
+        <article class="project-card">
+          <div class="project-media video-wrapper">
+            <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
           <div class="project-body">
             <h3><a href="/projects">SolarDT</a></h3>
             <p>Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</p>
@@ -115,17 +114,19 @@
         </article>
 
         <!-- Project 2: Violence Detection -->
-        <article class="card project-card">
-          <!-- PLACEHOLDER: Violence Detection project picture -->
-          <img class="project-img" src="images/projects/violence-detection.jpg" alt="Violence Detection project">
+        <article class="project-card">
+          <!-- PLACEHOLDER: Violence Detection picture (grid of video frames) -->
+          <img class="project-img project-media" src="images/projects/violence-detection.jpg" alt="Violence Detection project">
           <div class="project-body">
             <h3><a href="/projects">Violence Detection</a></h3>
-            <p><a href="https://ieeexplore.ieee.org/document/10561682" target="_blank" rel="noopener">Generalising Violence Detection with a New Near-Real-World Violence Dataset</a></p>
+            <p>Generalising Violence Detection with a New Near-Real-World Violence Dataset</p>
           </div>
         </article>
 
-        <!-- Project 3: SecureGrid (no picture on the original site) -->
-        <article class="card project-card">
+        <!-- Project 3: SecureGrid -->
+        <article class="project-card">
+          <!-- PLACEHOLDER: SecureGrid picture (the model flowchart) -->
+          <img class="project-img project-media" src="images/projects/securegrid.jpg" alt="SecureGrid project">
           <div class="project-body">
             <h3><a href="/projects">SecureGrid</a></h3>
             <p>SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data</p>

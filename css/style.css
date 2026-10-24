@@ -261,11 +261,22 @@ p  { margin: 0 0 1em; }
 .cv-block h3 { font-size: 1.05rem; margin-bottom: .6em; }
 .cv-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* Featured project cards */
-.project-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-.project-card .project-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--color-border); }
-.project-card .project-body { padding: 20px 22px 24px; }
+/* Featured project cards (like the old site: no box, picture on top,
+   centred title and text below) */
+.project-card { display: flex; flex-direction: column; text-align: center; }
+.project-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* same height for video and pictures */
+  border-radius: 10px;
+  margin-bottom: 0 !important;
+  box-shadow: var(--shadow);
+}
+.project-card .project-img { object-fit: contain; background: #fff; }   /* show the whole picture, no cropping */
+.project-card .project-body { padding: 18px 8px 0; }
+.project-card h3 { font-size: 1.7rem; margin-bottom: .5em; }
 .project-card h3 a { color: var(--color-primary); }
+.project-card p { text-align: center !important; color: var(--color-text); }
+.project-card p a { color: inherit; }   /* paper link looks like normal text; underline on hover */
 
 /* Responsive YouTube video (keeps a 16:9 shape on all screens) */
 .video-wrapper {
@@ -288,7 +299,7 @@ p  { margin: 0 0 1em; }
   overflow: hidden;
   text-align: center;
 }
-.award-card .award-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--color-border); transition: transform .2s; }
+.award-card .award-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; padding: 6px; background: #fff; transition: transform .2s; }
 .award-card a:hover .award-img { transform: scale(1.03); }
 .award-card .award-name { display: block; padding: 12px; font-weight: 600; font-size: .92rem; letter-spacing: .02em; }
 
