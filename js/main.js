@@ -11,6 +11,7 @@
       that entry's title just below the menu bar, even after pictures
       and videos above it finish loading.
    5. "Filter by Topic" menu on the Publications page.
+   7. News box on the Home page: shows 7½ items and scrolls for the rest.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -192,3 +193,41 @@ document.addEventListener("DOMContentLoaded", function () {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupSearch);
   else setupSearch();
 })();
+
+/* ---- 7. News box (Home page): show exactly 7½ items, scroll for the rest ---- */
+(function () {
+  // How many news items show at once (computers/tablets, and phones)
+  var VISIBLE_WIDE = 7.5, VISIBLE_PHONE = 4.5;
+  function setup() {
+    var box = document.querySelector(".news-scroll");
+    if (!box) return;                                  // only on the Home page
+    var items = box.querySelectorAll(".news-list li");
+    var hint = document.querySelector(".news-hint");
+    function size() {
+      var VISIBLE = window.innerWidth <= 760 ? VISIBLE_PHONE : VISIBLE_WIDE;
+      if (items.length <= VISIBLE) {                   // few items: no scrolling needed
+        box.style.maxHeight = "none";
+        box.classList.add("at-end");
+        if (hint) hint.classList.add("hidden");
+        return;
+      }
+      var whole = Math.floor(VISIBLE), h = 0;
+      for (var i = 0; i < whole; i++) h += items[i].offsetHeight;
+      h += items[whole].offsetHeight * (VISIBLE - whole);   // the half item
+      box.style.maxHeight = Math.round(h) + "px";
+      update();
+    }
+    function update() {
+      var end = box.scrollTop + box.clientHeight >= box.scrollHeight - 4;
+      box.classList.toggle("at-end", end);
+      if (hint) hint.classList.toggle("hidden", end);
+    }
+    box.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", size);
+    window.addEventListener("load", size);             // re-measure after fonts load
+    size();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setup);
+  else setup();
+})();
+
