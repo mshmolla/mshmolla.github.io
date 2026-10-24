@@ -20,6 +20,7 @@
   var allPages = document.getElementById("search-all-pages");
   var initial = new URLSearchParams(window.location.search);
   var index = null, busy = false, count = 12, timer = null, pages = [], requestedFilter = initial.get("page") || "";
+  if (requestedFilter) requestedFilter = core.cleanPath(requestedFilter);
   input.value = (initial.get("q") || "").slice(0, 200);
 
   function element(tag, className, text) {
@@ -36,6 +37,7 @@
   }
   function address() {
     var url = new URL(window.location.href), q = input.value.trim();
+    url.pathname = core.cleanPath(url.pathname);
     if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
     if (filter.value) url.searchParams.set("page", filter.value); else url.searchParams.delete("page");
     window.history.replaceState(null, "", url.pathname + url.search);
@@ -102,7 +104,7 @@
     render();
   }
   function pageKey(url) {
-    return url.pathname.replace(/index(?:\.html)?$/i, "").replace(/\.html$/i, "").replace(/\/+$/, "") || "/";
+    return core.cleanPath(url.pathname);
   }
   function pageLink(href, label, base) {
     try {
@@ -111,6 +113,7 @@
       if (/\.[a-z0-9]+$/i.test(url.pathname) && !/\.html$/i.test(url.pathname)) return null;
       if (/\/(?:search)(?:\.html)?\/?$/i.test(url.pathname)) return null;
       url.search = ""; url.hash = "";
+      url.pathname = core.cleanPath(url.pathname);
       return { url: url.href, key: pageKey(url), label: label.trim() || "Page" };
     } catch (_) { return null; }
   }
@@ -140,7 +143,7 @@
     }
     // Contact is injected by main.js on existing pages, so include it even
     // when a fetched page's unexecuted HTML still has the original menu.
-    [ ["/", "Home"], ["/projects.html", "Projects"], ["/publications.html", "Publications"], ["/experience.html", "Experience"], ["/education.html", "Education"], ["/contact.html", "Contact"] ].forEach(function (p) { add(p[0], p[1], window.location.href); });
+    [ ["/", "Home"], ["/projects", "Projects"], ["/publications", "Publications"], ["/experience", "Experience"], ["/education", "Education"], ["/contact", "Contact"] ].forEach(function (p) { add(p[0], p[1], window.location.href); });
     document.querySelectorAll(".nav-links a").forEach(function (a) { add(a.getAttribute("href"), a.textContent, window.location.href); });
     while (queue.length) {
       var batch = queue.splice(0, 8);
@@ -167,7 +170,9 @@
       warning.textContent = "Some pages could not be loaded: " + failed.join(", ") + ". Results cover the available pages.";
       retry.hidden = false;
     }
-    busy = false; form.setAttribute("aria-busy", "false"); render();
+    busy = false; form.setAttribute("aria-busy", "false");
+    if (index) address();
+    render();
   }
   form.addEventListener("submit", function (event) { event.preventDefault(); run(true, true); });
   input.addEventListener("input", function (event) {
@@ -190,7 +195,9 @@
   });
   window.addEventListener("popstate", function () {
     var params = new URLSearchParams(window.location.search);
-    input.value = (params.get("q") || "").slice(0, 200); filter.value = params.get("page") || ""; run(true, false);
+    input.value = (params.get("q") || "").slice(0, 200);
+    filter.value = params.get("page") ? core.cleanPath(params.get("page")) : "";
+    run(true, false);
   });
   load();
 })();

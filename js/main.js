@@ -13,6 +13,16 @@
    5. "Filter by Topic" menu on the Publications page.
    ========================================================================== */
 
+// Preserve existing bookmarks while displaying the same clean page addresses
+// used by the other menu items. Keep any search query and section anchor.
+(function () {
+  var url = new URL(window.location.href);
+  if (/\/(contact|search)\.html$/i.test(url.pathname)) {
+    url.pathname = url.pathname.replace(/\.html$/i, "");
+    window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ---- 1. Phone menu (☰ button) ---- */
@@ -24,10 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (links && !links.querySelector('a[href="/contact"], a[href="/contact.html"]')) {
     var contactItem = document.createElement("li");
     var contactLink = document.createElement("a");
-    contactLink.href = "/contact.html";
+    contactLink.href = "/contact";
     contactLink.textContent = "Contact";
     contactItem.appendChild(contactLink);
     links.appendChild(contactItem);
+  }
+  if (links) {
+    links.querySelectorAll('a[href="/contact.html"]').forEach(function (a) { a.setAttribute("href", "/contact"); });
   }
 
   if (toggle && links) {
@@ -111,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 (function () {
   var script = document.currentScript;
   var siteBase = new URL("../", script && script.src ? script.src : new URL("js/main.js", window.location.href).href);
-  var searchUrl = new URL("search.html", siteBase);
+  var searchUrl = new URL("search", siteBase);
 
   function loadSearchCore(callback) {
     if (window.SiteSearch) { callback(); return; }

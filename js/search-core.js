@@ -33,6 +33,9 @@
     return n + " " + additions.join(" ");
   }
   function slug(value) { return normalize(value).replace(/ /g, "-").slice(0, 90) || "entry"; }
+  function cleanPath(path) {
+    return path.replace(/\/index(?:\.html)?$/i, "/").replace(/\.html$/i, "").replace(/\/+$/, "") || "/";
+  }
   function textOf(node) {
     if (!node) return "";
     var clone = node.cloneNode(true);
@@ -71,6 +74,7 @@
     var url = new URL(pageUrl);
     if (!/^https?:$/.test(url.protocol)) return [];
     url.hash = ""; url.search = "";
+    url.pathname = cleanPath(url.pathname);
     var pageTitle = label || (doc.querySelector("title") ? doc.querySelector("title").textContent.split("|")[0].trim() : "Page");
     var main = doc.querySelector("main");
     if (!main) return [];
@@ -166,7 +170,7 @@
     var n = Math.max(1, index.entries.length), weights = [6, 2.5, .8, 1];
     var scored = [];
     index.entries.forEach(function (entry) {
-      if (page && new URL(entry.record.pageUrl).pathname !== page) return;
+      if (page && cleanPath(new URL(entry.record.pageUrl).pathname) !== cleanPath(page)) return;
       if (!parsed.phrases.every(function (phrase) { return containsPhrase(entry.normal, phrase); })) return;
       var score = 0, matched = 0, fuzzy = false, marked = new Set(terms);
       options.forEach(function (choices) {
@@ -265,5 +269,5 @@
     if (end < text.length && text[end] !== " ") { var space = text.lastIndexOf(" ", end); if (space > start) end = space; }
     return (start ? "… " : "") + text.slice(start, end) + (end < text.length ? " …" : "");
   }
-  return { normalize: normalize, slug: slug, assignAnchors: assignAnchors, extract: extract, build: build, find: find, highlight: highlight, snippet: snippet, distance: distance };
+  return { normalize: normalize, slug: slug, cleanPath: cleanPath, assignAnchors: assignAnchors, extract: extract, build: build, find: find, highlight: highlight, snippet: snippet, distance: distance };
 });
