@@ -496,3 +496,7 @@ details.abstract p { text-align: justify; hyphens: auto; }
 .filter-bar select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
 [hidden] { display: none !important; }
 
+/* Section headings (About Me, SolarDT, Thesis ...): no green line underneath */
+.section-title { padding-bottom: 0; }
+.section-title::after { display: none; }
+
