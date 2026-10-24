@@ -11,7 +11,7 @@
       that entry's title just below the menu bar, even after pictures
       and videos above it finish loading.
    5. "Filter by Topic" menu on the Publications page.
-   7. News box on the Home page: shows 7½ items and scrolls for the rest.
+   7. News box on the Home page: shows 5½ items and scrolls for the rest.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!loader) {
       loader = document.createElement("script");
       loader.id = "site-search-core-script";
-      loader.src = new URL("js/search-core.js?v=3", siteBase).href;
+      loader.src = new URL("js/search-core.js?v=4", siteBase).href;
       loader.async = true;
       loader.addEventListener("load", callback, { once: true });
       document.head.appendChild(loader);
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("site-search-style")) {
       var css = document.createElement("link");
       css.id = "site-search-style"; css.rel = "stylesheet";
-      css.href = new URL("css/search.css?v=3", siteBase).href;
+      css.href = new URL("css/search.css?v=4", siteBase).href;
       document.head.appendChild(css);
     }
     header.classList.add("has-site-search");
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ---- 7. News box (Home page): show exactly 7½ items, scroll for the rest ---- */
 (function () {
   // How many news items show at once (computers/tablets, and phones)
-  var VISIBLE_WIDE = 7.5, VISIBLE_PHONE = 4.5;
+  var VISIBLE_WIDE = 5.5, VISIBLE_PHONE = 4.5;
   function setup() {
     var box = document.querySelector(".news-scroll");
     if (!box) return;                                  // only on the Home page
