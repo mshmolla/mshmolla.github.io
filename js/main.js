@@ -18,6 +18,18 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ---- 1. Phone menu (☰ button) ---- */
   var toggle = document.querySelector(".menu-toggle");
   var links  = document.querySelector(".nav-links");
+
+  // Add Contact to every page without editing the existing HTML page files.
+  // The check also avoids a duplicate on contact.html, which already has it.
+  if (links && !links.querySelector('a[href="/contact"], a[href="/contact.html"]')) {
+    var contactItem = document.createElement("li");
+    var contactLink = document.createElement("a");
+    contactLink.href = "/contact.html";
+    contactLink.textContent = "Contact";
+    contactItem.appendChild(contactLink);
+    links.appendChild(contactItem);
+  }
+
   if (toggle && links) {
     toggle.addEventListener("click", function () {
       var isOpen = links.classList.toggle("open");

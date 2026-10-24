@@ -1,0 +1,138 @@
+/* Contact page only. The rest of the site uses css/style.css as before. */
+.contact-page .contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+  padding-top: 36px;
+}
+
+.contact-page .contact-panel,
+.contact-page .contact-details {
+  min-width: 0;
+}
+
+.contact-page .contact-title {
+  margin: 20px 0 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+}
+
+.contact-page .contact-intro {
+  margin-bottom: 26px;
+}
+
+.contact-page .contact-intro a,
+.contact-page .contact-details a,
+.contact-page .contact-list a,
+.contact-page .contact-list span {
+  overflow-wrap: anywhere;
+}
+
+.contact-page .contact-field {
+  margin-bottom: 16px;
+}
+
+.contact-page .contact-field label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-page .contact-field input,
+.contact-page .contact-field textarea {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #b8c0ca;
+  border-radius: 4px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.contact-page .contact-field textarea {
+  min-height: 138px;
+  resize: vertical;
+}
+
+.contact-page .contact-field input:focus,
+.contact-page .contact-field textarea:focus {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.contact-page .contact-submit {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 11px 22px;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.contact-page .contact-submit:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.contact-page .contact-submit:focus-visible,
+.contact-page a:focus-visible,
+.contact-page .menu-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.contact-page .contact-details h2 {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.contact-page .contact-details p {
+  margin-bottom: 22px;
+}
+
+.contact-page .contact-socials {
+  margin-top: 26px;
+}
+
+.contact-page .contact-socials a {
+  color: var(--color-primary);
+}
+
+.contact-page .contact-socials a:hover {
+  color: var(--color-accent);
+}
+
+.contact-page .contact-list li > i {
+  flex-shrink: 0;
+}
+
+@media (max-width: 760px) {
+  .contact-page .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+  }
+
+  .contact-page .contact-title {
+    margin-top: 10px;
+    padding-bottom: 18px;
+  }
+
+  .contact-page .contact-details {
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+  }
+}

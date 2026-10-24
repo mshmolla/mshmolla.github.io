@@ -500,3 +500,19 @@ details.abstract p { text-align: justify; hyphens: auto; }
 .section-title { padding-bottom: 0; }
 .section-title::after { display: none; }
 
+/* The extra Contact menu item needs room on tablets. Only the header is
+   affected; the existing page content and phone menu keep their own styles. */
+@media (min-width: 761px) and (max-width: 1020px) {
+  .site-header .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .site-header .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
