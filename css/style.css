@@ -471,3 +471,6 @@ details.abstract p { text-align: justify; hyphens: auto; }
   0%   { box-shadow: 0 0 0 4px var(--color-accent); }
   100% { box-shadow: var(--shadow); }
 }
+
+/* Less empty space between a page title (Projects, Experience, Education) and the first section */
+.page-header + .section { padding-top: 12px; }
