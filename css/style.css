@@ -552,3 +552,12 @@ details.abstract p { text-align: justify; hyphens: auto; }
   .news-date { flex-basis: auto; }
 }
 
+/* Featured Projects and Awards inside a white card (like About Me):
+   inner items get a lighter look so cards inside cards don't feel heavy */
+.card .grid-3 .project-media { box-shadow: none; border: 1px solid var(--color-border); }
+.card .award-card { box-shadow: none; }
+
+/* Browser-update note: pages load css/style.css?v=3 and js/main.js?v=3.
+   After a big change to these files, raise the number (v=4, v=5 ...) in
+   every page so visitors' browsers download the new version. */
+

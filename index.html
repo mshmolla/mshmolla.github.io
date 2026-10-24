@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Second icon library (Academicons) for the academic icons at the top of this page -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <!-- Information about you for Google (structured data). It tells search
        engines that this site belongs to the person "Md. Sabbir Hossain Molla",
        lists other ways people write your name, and links your official
@@ -203,43 +203,45 @@
          FEATURED PROJECTS
          ================================================================ -->
     <section class="section">
-      <h2 class="section-title">Featured Projects</h2>
+      <div class="card">
+        <h2 class="section-title">Featured Projects</h2>
 
-      <!-- Three project cards, like the old site: picture/video on top,
-           title and description centred below. Each title links to its own
-           entry (SolarDT on the Projects page, the two papers on the Publications page). -->
-      <div class="grid-3">
-        <!-- Project 1: SolarDT (its picture is the YouTube video;
-             to change the video, replace the part after /embed/) -->
-        <article class="project-card">
-          <div class="project-media video-wrapper">
-            <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div class="project-body">
-            <h3><a href="/projects#solardt">SolarDT</a></h3>
-            <p>Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</p>
-          </div>
-        </article>
+        <!-- Three project cards, like the old site: picture/video on top,
+             title and description centred below. Each title links to its own
+             entry (SolarDT on the Projects page, the two papers on the Publications page). -->
+        <div class="grid-3">
+          <!-- Project 1: SolarDT (its picture is the YouTube video;
+               to change the video, replace the part after /embed/) -->
+          <article class="project-card">
+            <div class="project-media video-wrapper">
+              <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="project-body">
+              <h3><a href="/projects#solardt">SolarDT</a></h3>
+              <p>Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</p>
+            </div>
+          </article>
 
-        <!-- Project 2: Violence Detection -->
-        <article class="project-card">
-          <!-- PLACEHOLDER: Violence Detection picture (grid of video frames) -->
-          <img class="project-img project-media" src="images/projects/violence-detection.jpg" alt="Violence Detection project">
-          <div class="project-body">
-            <h3><a href="/publications#violence-detection">Violence Detection</a></h3>
-            <p>Generalising Violence Detection with a New Near-Real-World Violence Dataset</p>
-          </div>
-        </article>
+          <!-- Project 2: Violence Detection -->
+          <article class="project-card">
+            <!-- PLACEHOLDER: Violence Detection picture (grid of video frames) -->
+            <img class="project-img project-media" src="images/projects/violence-detection.jpg" alt="Violence Detection project">
+            <div class="project-body">
+              <h3><a href="/publications#violence-detection">Violence Detection</a></h3>
+              <p>Generalising Violence Detection with a New Near-Real-World Violence Dataset</p>
+            </div>
+          </article>
 
-        <!-- Project 3: SecureGrid -->
-        <article class="project-card">
-          <!-- PLACEHOLDER: SecureGrid picture (the model flowchart) -->
-          <img class="project-img project-media" src="images/projects/securegrid.jpg" alt="SecureGrid project">
-          <div class="project-body">
-            <h3><a href="/publications#securegrid">SecureGrid</a></h3>
-            <p>SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data</p>
-          </div>
-        </article>
+          <!-- Project 3: SecureGrid -->
+          <article class="project-card">
+            <!-- PLACEHOLDER: SecureGrid picture (the model flowchart) -->
+            <img class="project-img project-media" src="images/projects/securegrid.jpg" alt="SecureGrid project">
+            <div class="project-body">
+              <h3><a href="/publications#securegrid">SecureGrid</a></h3>
+              <p>SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -250,73 +252,75 @@
          To add one: copy a whole <div class="award-card"> ... </div> block.
          ================================================================ -->
     <section class="section">
-      <h2 class="section-title">Awards and Honors</h2>
-      <div class="grid-4">
+      <div class="card">
+        <h2 class="section-title">Awards and Honors</h2>
+        <div class="grid-4">
 
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1yiHcjx6vy_tsexs-nFqucCBxFc3-Nmh9/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — MIST Robotics Club -->
-            <img class="award-img" src="images/awards/mist-robotics-club.jpg" alt="Certificate — MIST Robotics Club">
-          </a>
-          <a class="award-name" href="https://www.facebook.com/MistRoboticsClub" target="_blank" rel="noopener">MIST ROBOTICS CLUB</a>
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1yiHcjx6vy_tsexs-nFqucCBxFc3-Nmh9/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — MIST Robotics Club -->
+              <img class="award-img" src="images/awards/mist-robotics-club.jpg" alt="Certificate — MIST Robotics Club">
+            </a>
+            <a class="award-name" href="https://www.facebook.com/MistRoboticsClub" target="_blank" rel="noopener">MIST ROBOTICS CLUB</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1tCGQ3JHsNlVzHPwRTcM-kKn2LRdxZGLp/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — IEEE MIST SB -->
+              <img class="award-img" src="images/awards/ieee-mist-sb.jpg" alt="Certificate — IEEE MIST SB">
+            </a>
+            <a class="award-name" href="https://www.facebook.com/ieeemist" target="_blank" rel="noopener">IEEE MIST SB</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1Iu5xfwrOXYUkpIa8qGkfcwZ79Gx0FJGk/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — Face the Case 2.0 -->
+              <img class="award-img" src="images/awards/face-the-case-2.jpg" alt="Certificate — Face the Case 2.0">
+            </a>
+            <a class="award-name" href="https://www.facebook.com/FacetheCase/" target="_blank" rel="noopener">FACE THE CASE 2.0</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1gwJf_olMwhYbcbv7PPkLdopsOta7_PVZ/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — COMPAS 2025 -->
+              <img class="award-img" src="images/awards/compas-2025.jpg" alt="Certificate — COMPAS 2025">
+            </a>
+            <a class="award-name" href="https://www.compasconf.org/" target="_blank" rel="noopener">COMPAS 2025</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1zixQ3FVy9QHPGRhgohp1F0aozmwSQj9b/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — QPAIN 2026 -->
+              <img class="award-img" src="images/awards/qpain-2026.jpg" alt="Certificate — QPAIN 2026">
+            </a>
+            <a class="award-name" href="https://qpain.org/" target="_blank" rel="noopener">QPAIN 2026</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1oS_2BI2y2b9XWbyC6pk7CCOlGJO6sxPi/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — CareTutors -->
+              <img class="award-img" src="images/awards/caretutors.jpg" alt="Certificate — CareTutors">
+            </a>
+            <a class="award-name" href="https://caretutors.com/" target="_blank" rel="noopener">CARETUTORS</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1UllApo7OFH-AKBzfnE-zLASP0Josa2Ve/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — Bohubrihi -->
+              <img class="award-img" src="images/awards/bohubrihi.jpg" alt="Certificate — Bohubrihi">
+            </a>
+            <a class="award-name" href="https://bohubrihi.com/" target="_blank" rel="noopener">BOHUBRIHI</a>
+          </div>
+
+          <div class="award-card">
+            <a href="https://drive.google.com/file/d/1p5drZECBB_H2kDysuIsk493GbIz4j6aB/view?usp=sharing" target="_blank" rel="noopener">
+              <!-- PLACEHOLDER: certificate picture — VD Ultra 2026 -->
+              <img class="award-img" src="images/awards/vd-ultra-2026.jpg" alt="Certificate — VD Ultra 2026">
+            </a>
+            <a class="award-name" href="https://verticaldreamers.com/" target="_blank" rel="noopener">VD ULTRA 2026</a>
+          </div>
+
         </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1tCGQ3JHsNlVzHPwRTcM-kKn2LRdxZGLp/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — IEEE MIST SB -->
-            <img class="award-img" src="images/awards/ieee-mist-sb.jpg" alt="Certificate — IEEE MIST SB">
-          </a>
-          <a class="award-name" href="https://www.facebook.com/ieeemist" target="_blank" rel="noopener">IEEE MIST SB</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1Iu5xfwrOXYUkpIa8qGkfcwZ79Gx0FJGk/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — Face the Case 2.0 -->
-            <img class="award-img" src="images/awards/face-the-case-2.jpg" alt="Certificate — Face the Case 2.0">
-          </a>
-          <a class="award-name" href="https://www.facebook.com/FacetheCase/" target="_blank" rel="noopener">FACE THE CASE 2.0</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1gwJf_olMwhYbcbv7PPkLdopsOta7_PVZ/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — COMPAS 2025 -->
-            <img class="award-img" src="images/awards/compas-2025.jpg" alt="Certificate — COMPAS 2025">
-          </a>
-          <a class="award-name" href="https://www.compasconf.org/" target="_blank" rel="noopener">COMPAS 2025</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1zixQ3FVy9QHPGRhgohp1F0aozmwSQj9b/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — QPAIN 2026 -->
-            <img class="award-img" src="images/awards/qpain-2026.jpg" alt="Certificate — QPAIN 2026">
-          </a>
-          <a class="award-name" href="https://qpain.org/" target="_blank" rel="noopener">QPAIN 2026</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1oS_2BI2y2b9XWbyC6pk7CCOlGJO6sxPi/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — CareTutors -->
-            <img class="award-img" src="images/awards/caretutors.jpg" alt="Certificate — CareTutors">
-          </a>
-          <a class="award-name" href="https://caretutors.com/" target="_blank" rel="noopener">CARETUTORS</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1UllApo7OFH-AKBzfnE-zLASP0Josa2Ve/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — Bohubrihi -->
-            <img class="award-img" src="images/awards/bohubrihi.jpg" alt="Certificate — Bohubrihi">
-          </a>
-          <a class="award-name" href="https://bohubrihi.com/" target="_blank" rel="noopener">BOHUBRIHI</a>
-        </div>
-
-        <div class="award-card">
-          <a href="https://drive.google.com/file/d/1p5drZECBB_H2kDysuIsk493GbIz4j6aB/view?usp=sharing" target="_blank" rel="noopener">
-            <!-- PLACEHOLDER: certificate picture — VD Ultra 2026 -->
-            <img class="award-img" src="images/awards/vd-ultra-2026.jpg" alt="Certificate — VD Ultra 2026">
-          </a>
-          <a class="award-name" href="https://verticaldreamers.com/" target="_blank" rel="noopener">VD ULTRA 2026</a>
-        </div>
-
       </div>
     </section>
 
@@ -364,6 +368,6 @@
     <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>
