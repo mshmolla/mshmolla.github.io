@@ -561,3 +561,8 @@ details.abstract p { text-align: justify; hyphens: auto; }
    After a big change to these files, raise the number (v=4, v=5 ...) in
    every page so visitors' browsers download the new version. */
 
+
+/* Author lists and conference/supervisor lines: normal left alignment
+   (justifying these short lines left big gaps between words on phones) */
+.card > p.authors,
+.card > p.venue { text-align: left; hyphens: manual; }

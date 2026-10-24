@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!loader) {
       loader = document.createElement("script");
       loader.id = "site-search-core-script";
-      loader.src = new URL("js/search-core.js?v=4", siteBase).href;
+      loader.src = new URL("js/search-core.js?v=5", siteBase).href;
       loader.async = true;
       loader.addEventListener("load", callback, { once: true });
       document.head.appendChild(loader);
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("site-search-style")) {
       var css = document.createElement("link");
       css.id = "site-search-style"; css.rel = "stylesheet";
-      css.href = new URL("css/search.css?v=4", siteBase).href;
+      css.href = new URL("css/search.css?v=5", siteBase).href;
       document.head.appendChild(css);
     }
     header.classList.add("has-site-search");
