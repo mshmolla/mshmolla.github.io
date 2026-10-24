@@ -9,10 +9,12 @@
   width: 40px;
   height: 40px;
   border-radius: 6px;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.55);
+  background: transparent;
+  transition: color .15s;
 }
-.site-search-trigger:hover,
-.site-search-trigger[aria-current="page"] { color: #fff; background: rgba(255,255,255,.12); text-decoration: none; }
+.site-search-trigger:hover { color: rgba(255,255,255,.85); text-decoration: none; }
+.site-search-trigger[aria-current="page"] { color: #fff; }
 .site-search-trigger svg { display: block; width: 22px; height: 22px; }
 .site-search-trigger:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .site-search-accessible {
