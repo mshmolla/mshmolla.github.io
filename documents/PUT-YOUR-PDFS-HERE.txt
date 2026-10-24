@@ -1,4 +1,0 @@
-Put your CV PDFs in this folder with these exact names:
-  academic-cv.pdf
-  europass-cv.pdf
-You can delete this text file once your PDFs are uploaded.
