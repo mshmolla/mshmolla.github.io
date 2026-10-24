@@ -462,3 +462,12 @@ details.abstract p { margin-top: .6em; text-align: justify; }
    at line ends so phones don't get big gaps between words. */
 .card > p,
 details.abstract p { text-align: justify; hyphens: auto; }
+
+/* Jump links from the Home page (e.g. /projects#securegrid):
+   stop below the sticky menu bar, and briefly highlight the entry */
+.card[id] { scroll-margin-top: 90px; }
+.card:target { animation: target-flash 2s ease-out; }
+@keyframes target-flash {
+  0%   { box-shadow: 0 0 0 4px var(--color-accent); }
+  100% { box-shadow: var(--shadow); }
+}
