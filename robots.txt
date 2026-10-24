@@ -1,0 +1,4 @@
+# Tells search engines they may read the whole site, and where the page list is.
+User-agent: *
+Allow: /
+Sitemap: https://mshmolla.github.io/sitemap.xml
