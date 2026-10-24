@@ -23,9 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ---- 2. Highlight the current page in the menu ---- */
-  var page = window.location.pathname.split("/").pop() || "index.html";
+  //    Works with clean addresses like /projects as well as /projects.html
+  function pageName(path) {
+    var name = path.split("/").pop().replace(".html", "");
+    return name === "" ? "index" : name;
+  }
+  var current = pageName(window.location.pathname);
   document.querySelectorAll(".nav-links a").forEach(function (a) {
-    if (a.getAttribute("href") === page) a.classList.add("active");
+    if (pageName(a.getAttribute("href")) === current) a.classList.add("active");
   });
 
   /* ---- 3. Show a helpful box when an image has not been uploaded yet ---- */
