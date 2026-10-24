@@ -1,4 +1,0 @@
-Put your pictures in this folder (and its sub-folders) using EXACTLY the file
-names listed in README.md -> "Placeholder checklist".
-Example: your profile photo must be  images/profile.jpg
-You can delete this text file once your images are uploaded.
