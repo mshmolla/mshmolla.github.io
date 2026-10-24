@@ -380,7 +380,8 @@ details.abstract p { margin-top: .6em; text-align: justify; }
 .footer-counter { display: flex; justify-content: center; align-items: flex-start; }
 .footer-counter img { display: inline-block; max-width: 100%; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
-.contact-list li { margin-bottom: .35em; }
+.contact-list li { display: flex; align-items: center; gap: 12px; margin-bottom: .7em; }
+.contact-list li i { width: 1.2em; font-size: 1.15rem; text-align: center; color: #fff; }   /* contact icons */
 .copyright {
   margin-top: 36px;
   padding: 18px 0;
