@@ -376,6 +376,9 @@ details.abstract p { margin-top: .6em; text-align: justify; }
   transition: color .15s, transform .15s;
 }
 .social-icons a:hover { color: var(--color-accent); transform: translateY(-2px); text-decoration: none; }
+.footer-gap { margin-top: 1.6em; }          /* space above "Office Hours" */
+.footer-counter { display: flex; justify-content: center; align-items: flex-start; }
+.footer-counter img { display: inline-block; max-width: 100%; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
 .contact-list li { margin-bottom: .35em; }
 .copyright {

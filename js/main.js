@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
     box.textContent = "Add image: " + img.getAttribute("src");
     img.replaceWith(box);
   }
-  document.querySelectorAll("img").forEach(function (img) {
+  //    (only for your own files, not for outside images like the Flag Counter)
+  document.querySelectorAll("img:not([src^='http'])").forEach(function (img) {
     if (img.complete && img.naturalWidth === 0) {
       showMissing(img);               // already failed before this script ran
     } else {
