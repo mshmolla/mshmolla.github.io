@@ -2,11 +2,14 @@
    main.js  —  The small amount of JavaScript the site needs.
    You normally never need to edit this file.
 
-   It does 3 things:
+   It does 4 things:
    1. Opens/closes the menu on phones when you tap the ☰ button.
    2. Highlights the current page in the menu.
    3. If an image file is missing, shows a grey box with the expected
       file name (so you know what to upload).
+   4. When a link jumps to an entry (e.g. /projects#securegrid), places
+      that entry's title just below the menu bar, even after pictures
+      and videos above it finish loading.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -49,3 +52,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+/* ---- 4. Jump links: put the entry just below the menu bar ---- */
+function alignToHash() {
+  if (!window.location.hash) return;
+  var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+  if (!target) return;
+  var header = document.querySelector(".site-header");
+  var gap = (header ? header.offsetHeight : 0) + 16;   // menu bar height + small space
+  var top = target.getBoundingClientRect().top + window.pageYOffset - gap;
+  window.scrollTo({ top: top, behavior: "auto" });
+}
+// Run once everything (pictures, video, fonts) has loaded, and once more a
+// moment later in case something still changed size.
+window.addEventListener("load", function () {
+  alignToHash();
+  setTimeout(alignToHash, 600);
+});
+// Also when a jump link is clicked while already on the same page.
+window.addEventListener("hashchange", alignToHash);
