@@ -421,7 +421,6 @@ details.abstract p { margin-top: .6em; text-align: justify; }
   .footer-grid { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }   /* awards: 2 per row on phones */
   .award-card .award-name { font-size: .8rem; padding: 10px 6px; }
-  details.abstract p { text-align: left; }
 }
 
 
@@ -447,5 +446,8 @@ details.abstract p { margin-top: .6em; text-align: justify; }
 .img-missing.banner-img { height: 220px; }
 .img-missing.entry-logo { font-size: .6rem; }
 
-/* About Me (and other text inside cards): straight edges on both sides, like the old site */
-.card > p { text-align: justify; }
+/* About Me, abstracts and other card text: straight edges on both sides
+   (justified) on computers AND phones. hyphens: auto splits long words
+   at line ends so phones don't get big gaps between words. */
+.card > p,
+details.abstract p { text-align: justify; hyphens: auto; }
