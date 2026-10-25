@@ -12,6 +12,16 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
+    // Don't count the site owner's own visits: open any page once with ?notrack
+    // at the end of the address (e.g. mshmolla.github.io/?notrack) on each of your
+    // browsers/phones. To count that browser again, open a page with ?track.
+    try {
+      var gaParams = new URLSearchParams(window.location.search);
+      if (gaParams.has('notrack')) localStorage.setItem('ga-optout', '1');
+      if (gaParams.has('track')) localStorage.removeItem('ga-optout');
+      if (localStorage.getItem('ga-optout') === '1') window['ga-disable-G-E8W0ZV9MJ1'] = true;
+    } catch (e) {}
+
     gtag('config', 'G-E8W0ZV9MJ1');
   </script>
   <meta charset="UTF-8">
