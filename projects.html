@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="css/publications.css?v=2">
+  <link rel="stylesheet" href="css/projects.css?v=1">
 </head>
 <body>
 
@@ -81,35 +82,66 @@
          ================================================================ -->
     <section class="section">
       <h2 class="section-title">SolarDT</h2>
-      <!-- id="solardt" lets the Home page link straight to this SolarDT project -->
-      <article class="card" id="solardt">
-        <h3 class="item-title">Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</h3>
-        <div class="meta">
-          <span><strong><em>Funding Authority:</em></strong> <a href="https://eprc.gov.bd/" target="_blank" rel="noopener"><strong><em>Bangladesh Energy and Power Research Council (BEPRC)</em></strong></a></span>
-          <span><strong>Lab:</strong> <a href="https://solardt.github.io/web/" target="_blank" rel="noopener"><strong>Smart Grid &amp; Sustainable Energy Transition Lab (SET Lab)</strong></a></span>
-          <span><strong>Year: Nov 2025 - Present</strong></span>
-        </div>
+      <!-- id="solardt" lets the Home page link straight to this project.
+           Buttons (Research Objectives, Project Team) open boxes below them. -->
+      <article class="card project" id="solardt">
+          <div class="project-head">
+            <h3 class="item-title">Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</h3>
+            <span class="pub-badge status-ongoing"><i class="fa-solid fa-circle"></i> Ongoing</span>
+          </div>
+          <div class="project-meta">
+            <span><i class="fa-solid fa-landmark"></i><strong>Funded by:</strong> <a href="https://eprc.gov.bd/" target="_blank" rel="noopener">Bangladesh Energy and Power Research Council (BEPRC)</a></span>
+            <span><i class="fa-solid fa-flask"></i><strong>Lab:</strong> <a href="https://solardt.github.io/web/" target="_blank" rel="noopener">Smart Grid &amp; Sustainable Energy Transition Lab (SET Lab), MIST</a></span>
+            <span><i class="fa-solid fa-user"></i><strong>My role:</strong> Research Assistant</span>
+            <span><i class="fa-regular fa-calendar"></i><strong>Duration:</strong> Nov 2025 &ndash; Present</span>
+          </div>
 
-        <!-- PLACEHOLDER: wide banner picture of the SolarDT project -->
-        <img class="banner-img" src="images/projects/solardt-banner.jpg" alt="SolarDT project banner">
+          <img class="banner-img project-banner" src="images/projects/solardt-banner.jpg" alt="SolarDT project team at the solar plant">
 
-        <!-- YouTube video (same video as on the Home page) -->
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
+          <!-- Overview text + video side by side -->
+          <div class="project-split">
+            <div>
+              <h4 class="project-sub">Overview</h4>
+              <p>Large amounts of solar power make the grid harder to run, because output changes quickly with the weather. This project builds an AI-enabled digital twin of a grid-connected solar PV plant: a live virtual copy that monitors the plant in real time and forecasts its output.</p>
+              <p>A 100 kWac rooftop PV testbed with a weather station and high-resolution data acquisition is being set up at MIST. The model is then tested on smaller systems and validated on a 7.6 MWp utility-scale plant, to support reliable renewable integration in Bangladesh.</p>
+              <ul class="tag-list"><li>Digital Twin</li><li>Solar PV</li><li>PV Forecasting</li><li>Machine Learning</li><li>Grid Integration</li></ul>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
 
-        <h3>Research Objectives</h3>
-        <ul class="objectives">
-          <li>To develop a scalable digital twin (DT) model for a 100 kWac grid-connected rooftop PV system as a testbed, designed to replicate the behavior of a large-scale solar farm.</li>
-          <li>To integrate AI-based algorithms into the DT model for real-time monitoring and forecasting of PV output across various future time intervals.</li>
-          <li>To evaluate the accuracy of the developed DT by comparing its outputs with actual measurements from the pilot-scale 100 kWac testbed system.</li>
-          <li>To demonstrate and validate the scalability of the DT architecture by applying it to smaller PV systems, such as 20 kWp and 50 kWp installations.</li>
-          <li>To assess the scalability and accuracy of the AI-driven DT model by comparing its performance with real-world data from a large-scale 7.6 MWp solar farm in Sirajganj, Bangladesh.</li>
-          <li>To develop a comprehensive, multi-featured real-world solar PV dataset specific to Bangladesh for use in further research and applications.</li>
-        </ul>
+          <h4 class="project-sub">Publications from this project</h4>
+          <ul class="related-list">
+            <li><a href="/publications#bigru-pv-forecasting">A Target-Augmented Residual BiGRU Model for Ultra-Short-Term PV Output Power Forecasting</a> <span class="pub-badge">SUSTAIN 2026 &middot; Accepted</span></li>
+            <li><a href="/publications#gmm-pv-forecasting">Regime-Aware Soft-Probabilistic GMM Integrated Ensemble Learning Framework for Solar PV Power Forecasting</a> <span class="pub-badge">SUSTAIN 2026 &middot; Accepted</span></li>
+          </ul>
 
-        <a class="btn btn-outline" href="https://solardt.github.io/web/" target="_blank" rel="noopener">More Information</a>
-      </article>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="solardt-objectives"><i class="fa-solid fa-list-check"></i>Research Objectives</button>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="solardt-team"><i class="fa-solid fa-users"></i>Project Team</button>
+            <a class="pub-btn" href="https://solardt.github.io/web/pages/research/project_detail.html?id=digital-twin-pv" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>View Details</a>
+            <a class="pub-btn" href="https://solardt.github.io/web/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Lab Website</a>
+          </div>
+          <div class="pub-panel" id="solardt-objectives" hidden>
+            <ol class="objective-grid">
+            <li>Develop a scalable digital twin (DT) model for a 100 kWac grid-connected rooftop PV system as a testbed, designed to replicate the behavior of a large-scale solar farm.</li>
+            <li>Integrate AI-based algorithms into the DT model for real-time monitoring and forecasting of PV output across various future time intervals.</li>
+            <li>Evaluate the accuracy of the developed DT by comparing its outputs with actual measurements from the pilot-scale 100 kWac testbed system.</li>
+            <li>Demonstrate and validate the scalability of the DT architecture by applying it to smaller PV systems, such as 20 kWp and 50 kWp installations.</li>
+            <li>Assess the scalability and accuracy of the AI-driven DT model by comparing its performance with real-world data from a large-scale 7.6 MWp solar farm in Sirajganj, Bangladesh.</li>
+            <li>Develop a comprehensive, multi-featured real-world solar PV dataset specific to Bangladesh for use in further research and applications.</li>
+          </ol>
+          </div>
+          <div class="pub-panel" id="solardt-team" hidden>
+            <ul class="panel-list">
+              <li><strong>Principal Investigator:</strong> Major Shah Mohazzem Hossain, PhD</li>
+              <li><strong>Co-Principal Investigators:</strong> Major Mohammad Naim Uddin; Associate Professor Md. Ahsan Kabir</li>
+              <li><strong>Lead Research Engineer:</strong> Assistant Professor Hasan Monir</li>
+              <li><strong>Research Assistants:</strong> <span class="me">M. S. H. Molla</span>, M. T. R. Sahed, R. Tanzim</li>
+            </ul>
+          </div>
+        </article>
     </section>
 
     <!-- ================================================================

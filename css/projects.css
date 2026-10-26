@@ -1,0 +1,44 @@
+/* ==========================================================================
+   projects.css  —  Styles for the SolarDT project card on the Projects page
+   (info grid, banner, overview + video, related publications, buttons).
+   The buttons and drop-down boxes reuse css/publications.css.
+   Banner height: change "aspect-ratio" in .project-banner (bigger second
+   number = taller). "object-position: center 30%" picks which part of the
+   photo shows (0% = top of photo, 100% = bottom).
+   ========================================================================== */
+.project-head { display:flex; gap:14px; align-items:flex-start; justify-content:space-between; }
+.status-ongoing { white-space:nowrap; margin-top:4px; }
+.status-ongoing i { font-size:.55em; vertical-align:middle; margin-right:4px; }
+.project-meta { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:8px 24px; margin:6px 0 20px; color:var(--color-muted); }
+.project-meta span { display:flex; gap:8px; align-items:baseline; }
+.project-meta i { color:var(--color-accent); width:16px; text-align:center; }
+.project-meta strong { color:var(--color-text); white-space:nowrap; }
+.project-banner { margin:0 0 24px; }
+.stat-row { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:26px; }
+.stat { background:var(--color-bg); border-radius:10px; padding:14px 16px; border-top:3px solid var(--color-accent); }
+.stat-num { display:block; font: 700 1.35rem var(--font-heading); color:var(--color-primary); }
+.stat-label { display:block; font-size:.85rem; color:var(--color-muted); line-height:1.35; margin-top:2px; }
+.project-split { display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; margin-bottom:10px; }
+.project-split .video-wrapper { margin:6px 0 0; }
+.project-sub { font: 700 1.15rem var(--font-heading); color:var(--color-primary); margin:0 0 10px; }
+.card.project > .project-sub { margin-top:22px; }
+.tag-list { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:12px 0 0; }
+.tag-list li { background:#e6f4f4; color:var(--color-accent); font-size:.8rem; font-weight:600; padding:3px 10px; border-radius:999px; }
+.objective-grid { counter-reset:obj; list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; }
+.objective-grid li { counter-increment:obj; position:relative; padding-left:42px; line-height:1.55; }
+.objective-grid li::before { content:counter(obj); position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:50%;
+  background:var(--color-primary); color:#fff; font-weight:700; font-size:.85rem; display:grid; place-items:center; }
+.related-list { list-style:none; padding:0; margin:0 0 20px; display:grid; gap:8px; }
+.related-list li { padding:10px 14px; border:1px solid var(--color-border); border-radius:10px; }
+.related-list a { font-weight:600; color:var(--color-primary); margin-right:6px; }
+.panel-list { margin:0; padding-left:1.1em; } .panel-list li { margin-bottom:.35em; }
+.me { font-weight:700; color:var(--color-primary); background:#e6f4f4; padding:1px 8px; border-radius:6px; }
+.project-banner { aspect-ratio: 3.6 / 1; object-fit: cover; object-position: center 30%; }
+@media (max-width: 860px) { .project-banner { aspect-ratio: 3 / 1; } }
+.pub-panel .objective-grid { margin:4px 0; }
+@media (max-width: 860px) {
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .project-split, .objective-grid { grid-template-columns: 1fr; }
+  .project-head { flex-direction:column; gap:6px; }
+  .project-meta { grid-template-columns: 1fr; }
+}
