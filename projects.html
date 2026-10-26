@@ -50,6 +50,7 @@
   <!-- Second icon library (Academicons) for academic icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/publications.css?v=2">
 </head>
 <body>
 
@@ -116,15 +117,51 @@
          ================================================================ -->
     <section class="section">
       <h2 class="section-title">Dataset</h2>
-      <article class="card">
-        <h3 class="item-title"><a href="https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555" target="_blank" rel="noopener">Movie Clip Dataset: A New Dataset for Generalised Real-World Violence Detection</a></h3>
-        <div class="meta">
-          <span><strong>Publisher:</strong> <a href="https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555" target="_blank" rel="noopener"><strong>figshare</strong></a></span>
-          <span><strong>Year: 2023</strong></span>
-        </div>
-        <p><strong>Description:</strong><br>A dataset with violent and non-violent scenes was collected from movies.</p>
-        <a class="btn btn-outline" href="https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555" target="_blank" rel="noopener">More Information</a>
-      </article>
+      <!-- id="movie-clip-dataset" lets other pages link straight to this dataset.
+             Buttons work the same way as on the Publications page
+             (css/publications.css and js/publications.js). -->
+        <article class="card" id="movie-clip-dataset">
+          <h3 class="item-title">Movie Clip Dataset: A New Dataset for Generalised Real-World Violence Detection</h3>
+          <p class="authors">M. Haque, H. Nyeem, T. B. Ovi, A. Nahid, <strong>M. S. H. Molla</strong>, M. T. M. Tuhin, F. Shahab, A. S. Alam, and S. B. Alam</p>
+          <div class="meta">
+            <span><strong>Publisher: figshare</strong></span>
+            <span><strong>Year: 2023</strong></span>
+          </div>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="movie-clip-dataset-desc"><i class="fa-solid fa-align-left"></i>Description</button>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="movie-clip-dataset-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="movie-clip-dataset-doi"><i class="ai ai-doi"></i>DOI</button>
+            <a class="pub-btn" href="https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>figshare</a>
+          </div>
+          <div class="pub-panel" id="movie-clip-dataset-desc" hidden>
+            <p>A dataset with violent and non-violent scenes was collected from movies.</p>
+          </div>
+          <div class="pub-panel" id="movie-clip-dataset-cite" hidden>
+            <div class="cite-tabs">
+              <button type="button" class="cite-tab active" data-show="movie-clip-dataset-ieee">IEEE</button>
+              <button type="button" class="cite-tab" data-show="movie-clip-dataset-bib">BibTeX</button>
+              <button type="button" class="cite-tab" data-show="movie-clip-dataset-datacite">DataCite</button>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
+            <p class="cite-text" id="movie-clip-dataset-ieee">M. Haque, &ldquo;Movie Clip Dataset: A New Dataset for Generalised Real-World Violence Detection&rdquo;. figshare, 07-Jul-2023, doi: 10.6084/m9.figshare.23643555.v4.</p>
+<pre class="cite-text" id="movie-clip-dataset-bib" hidden>@misc{Haque2023,
+  author    = {Haque, Mahmudul and Nyeem, Hussain and Ovi, Tareque Bashar and Nahid, Al and Molla, Md. Sabbir Hossain and Tuhin, Md. Tanjim Mahmud and Shahab, Fardin and Alam, Ayat Subah and Alam, Saadia Binte},
+  title     = {{Movie Clip Dataset: A New Dataset for Generalised Real-World Violence Detection}},
+  publisher = {figshare},
+  year      = {2023},
+  month     = {7},
+  doi       = {10.6084/m9.figshare.23643555.v4},
+  url       = {https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555}
+}</pre>
+            <p class="cite-text" id="movie-clip-dataset-datacite" hidden>Haque, Mahmudul; Nyeem, Hussain; Ovi, Tareque Bashar; Nahid, Al; Molla, Md. Sabbir Hossain; Tuhin, Md. Tanjim Mahmud; et al. (2023). Movie Clip Dataset: A New Dataset for Generalised Real-World Violence Detection. figshare. Dataset. https://doi.org/10.6084/m9.figshare.23643555.v4</p>
+          </div>
+          <div class="pub-panel" id="movie-clip-dataset-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.6084/m9.figshare.23643555</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
+          </div>
+        </article>
     </section>
 
   </main>
@@ -169,5 +206,6 @@
   </footer>
 
   <script src="js/main.js?v=5"></script>
+  <script src="js/publications.js?v=1"></script>
 </body>
 </html>
