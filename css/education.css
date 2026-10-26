@@ -1,0 +1,22 @@
+/* ==========================================================================
+   education.css  —  "Details" box on the Education page.
+   The button and the box style come from css/publications.css.
+   ========================================================================== */
+
+/* Logo stays at the top when a Details box is open */
+.edu-entry { align-items: start; }
+.edu-entry .pub-actions { margin-top: 10px; }
+
+/* Heading + text pairs inside the box (Thesis, Supervisor, Grade ...) */
+.edu-details { margin: 0; display: grid; grid-template-columns: 190px 1fr; gap: 8px 18px; }
+.edu-details dt { font-weight: 700; color: var(--color-text); }
+.edu-details dd { margin: 0; color: var(--color-text); }
+.edu-details ul { margin: 0; padding-left: 1.1em; }
+.edu-details li { margin-bottom: .2em; }
+.edu-details a { color: var(--color-accent); }
+
+/* Phones: heading above its text */
+@media (max-width: 600px) {
+  .edu-details { grid-template-columns: 1fr; gap: 2px; }
+  .edu-details dd { margin-bottom: 10px; }
+}
