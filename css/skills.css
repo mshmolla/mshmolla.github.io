@@ -1,0 +1,18 @@
+/* ==========================================================================
+   skills.css  —  "Skills" box on the Home page (rounded tags, all one style).
+   ========================================================================== */
+.skill-cloud { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-cloud li {
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: .92rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+@media (max-width: 600px) {
+  .skill-cloud { gap: 7px; }
+  .skill-cloud li { font-size: .8rem; padding: 5px 11px; }
+}
