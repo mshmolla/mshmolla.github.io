@@ -19,7 +19,7 @@
 .stat-num { display:block; font: 700 1.35rem var(--font-heading); color:var(--color-primary); }
 .stat-label { display:block; font-size:.85rem; color:var(--color-muted); line-height:1.35; margin-top:2px; }
 .project-split { display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; margin-bottom:10px; }
-.project-split .video-wrapper { margin:6px 0 0; }
+.project-split .video-wrapper { margin:0; }
 .project-sub { font: 700 1.15rem var(--font-heading); color:var(--color-primary); margin:0 0 10px; }
 .card.project > .project-sub { margin-top:22px; }
 .tag-list { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:12px 0 0; }
