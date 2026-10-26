@@ -49,6 +49,8 @@
   <!-- Second icon library (Academicons) for academic icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/publications.css?v=3">
+  <link rel="stylesheet" href="css/education.css?v=1">
 </head>
 <body>
 
@@ -76,61 +78,119 @@
 
     <!-- ================================================================
          ENTRIES (newest first). To add one, copy a whole
-         <article class="card entry"> ... </article> block and edit it.
+         <article class="card entry edu-entry"> ... </article> block and edit it.
          ================================================================ -->
     <section class="section">
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — Military Institute of Science and Technology -->
         <img class="entry-logo" src="images/logos/mist.png" alt="Military Institute of Science and Technology logo">
         <div>
           <p class="entry-role">Research Assistant</p>
           <h3><a href="http://mist.ac.bd/" target="_blank" rel="noopener">Military Institute of Science and Technology</a></h3>
           <p class="entry-date">2025 - Present</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="ra-mist-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="ra-mist-details" hidden>
+            <dl class="edu-details">
+              <dt>Research project</dt>
+              <dd><a href="/projects#solardt">Development of an Artificial Intelligence Enabled Digital Twin of a Solar Photovoltaic Plant to Enhance Renewable Penetration in Power Grid of Bangladesh</a></dd>
+              <dt>Principal Investigator</dt>
+              <dd>Major Shah Mohazzem Hossain, PhD</dd>
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Developing AI models for PV power forecasting within the SolarDT digital twin (BEPRC-funded).</li><li>Mentoring three undergraduate research assistants and leading the project &ldquo;Adaptive Event-Driven Sampling for Low-Cost Smart Grid Monitoring Using ESP32&rdquo;.</li><li>Contributing to data acquisition, model training for the digital twin, and the 100 kWac testbed tender.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — Rural Power Company Limited -->
         <img class="entry-logo" src="images/logos/rpcl.png" alt="Rural Power Company Limited logo">
         <div>
           <p class="entry-role">Industrial Trainee</p>
           <h3><a href="https://rpcl.gov.bd/" target="_blank" rel="noopener">Rural Power Company Limited</a></h3>
           <p class="entry-date">2023</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="rpcl-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="rpcl-details" hidden>
+            <dl class="edu-details">
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Learned how a heavy fuel oil (HFO) based power plant is operated and maintained.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — MIST Robotics Club -->
         <img class="entry-logo" src="images/logos/mist-robotics-club.png" alt="MIST Robotics Club logo">
         <div>
           <p class="entry-role">Vice President</p>
           <h3><a href="https://www.facebook.com/MistRoboticsClub/" target="_blank" rel="noopener">MIST Robotics Club</a></h3>
           <p class="entry-date">2023 - 2024</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="robotics-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="robotics-details" hidden>
+            <dl class="edu-details">
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Organized robotics competitions, showcases and Arduino courses.</li><li>Managed event planning, team coordination and participant engagement to promote innovation and hands-on learning in robotics.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — IEEE MIST Student Branch -->
         <img class="entry-logo" src="images/logos/ieee-mist-sb.png" alt="IEEE MIST Student Branch logo">
         <div>
           <p class="entry-role">Director</p>
           <h3><a href="https://www.facebook.com/ieeemist/" target="_blank" rel="noopener">IEEE MIST Student Branch</a></h3>
           <p class="entry-date">2022 - 2023</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="ieee-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="ieee-details" hidden>
+            <dl class="edu-details">
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Organized and led machine learning events.</li><li>Planned curricula, coordinated speakers and facilitated hands-on workshops to build participants&rsquo; technical skills.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — CARETUTORS -->
         <img class="entry-logo" src="images/logos/caretutors.png" alt="CARETUTORS logo">
         <div>
           <p class="entry-role">Academic Tutor</p>
           <h3><a href="https://caretutors.com/" target="_blank" rel="noopener">CARETUTORS</a></h3>
           <p class="entry-date">2022 - 2024</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="caretutors-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="caretutors-details" hidden>
+            <dl class="edu-details">
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Taught Mathematics to O Level and A Level students under both Cambridge and Edexcel curricula.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
-      <article class="card entry">
+      <article class="card entry edu-entry">
         <!-- PLACEHOLDER: logo — ICEEICT conference -->
         <img class="entry-logo" src="images/logos/iceeict.png" alt="ICEEICT conference logo">
         <div>
           <p class="entry-role">Information Desk Volunteer</p>
           <h3><a href="https://iceeict.mist.ac.bd/" target="_blank" rel="noopener">International Conference on Electrical Engineering and Information &amp; Communication Technology</a></h3>
           <p class="entry-date">2021</p>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="iceeict-details"><i class="fa-solid fa-circle-info"></i>Details</button>
+          </div>
+          <div class="pub-panel" id="iceeict-details" hidden>
+            <dl class="edu-details">
+              <dt>Responsibilities</dt>
+              <dd><ul><li>Provided attendees with essential information, assisted with registration and answered inquiries to ensure a smooth experience for all participants.</li></ul></dd>
+            </dl>
+          </div>
         </div>
       </article>
     </section>
@@ -177,5 +237,6 @@
   </footer>
 
   <script src="js/main.js?v=5"></script>
+  <script src="js/publications.js?v=2"></script>
 </body>
 </html>
