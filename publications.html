@@ -540,9 +540,6 @@
 
     <!-- ================================================================
          PUBLICATIONS
-         Tip: abstracts are in a click-to-open box. To show an abstract
-         open by default, change  <details class="abstract">  to
-         <details class="abstract" open>
          ================================================================ -->
     <section class="section">
 
@@ -550,43 +547,48 @@
 
       <!-- ============================================================
            ACCEPTED PAPERS (SUSTAIN 2026)
-           When a paper is published, replace the three
-           https://sustainconf.com/en links with the IEEE Xplore link,
-           change "Year: 2026 (Accepted)" to "Year: 2026", and change the
-           button to "View Full Text" with the ResearchGate link.
-           ============================================================ -->
+             When a paper is published: remove the <span class="pub-badge">Accepted</span>
+             line, replace the Conference button with Cite, DOI, IEEE Xplore and
+             Full Text buttons (copy them from a published paper below).
+             ============================================================ -->
 
       <!-- Publication 5 -->
       <article class="card" data-topics="forecasting" id="bigru-pv-forecasting">
-        <h3 class="item-title"><a href="https://sustainconf.com/en" target="_blank" rel="noopener">A Target-Augmented Residual BiGRU Model for Ultra-Short-Term PV Output Power Forecasting</a></h3>
-        <p class="authors"><strong>M. S. H. Molla</strong>, M. T. R. Sahed, R. Tanzim, M. N. Uddin, H. Monir, M. A. Kabir, and S. M. Hossain</p>
-        <p class="venue"><strong>Conference:</strong> Sustainable Energy and Industry Conference (SUSTAIN 2026), Dhahran, Saudi Arabia, Nov 29 – Dec 2, 2026</p>
-        <div class="meta">
-          <span><strong>Publisher:</strong> <a href="https://sustainconf.com/en" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
-          <span><strong>Year: 2026 (Accepted)</strong></span>
-        </div>
-        <details class="abstract">
-          <summary>Abstract:</summary>
-          <p>Reliable operation of grid-connected photovoltaic (PV) plants requires short-horizon forecasts that can track rapid generation changes caused by irradiance variation and plant operating conditions. This paper presents a 15-minute ahead DC power forecasting framework using real SCADA data from a grid-connected PV plant in Bangladesh. Conventional machine learning (ML) and deep learning (DL) baselines are evaluated using the same chronological data split and 15-minute-ahead forecasting target. To improve ultra-short-term prediction, a target-augmented residual BiGRU model is proposed. The model uses recent DC power information, including lag, ramp, and rolling statistical features, and learns a residual correction with respect to the last-known DC power value instead of estimating the future output directly. The proposed model achieves the best performance with an MAE of 57.15, RMSE of 146.59, WAPE of 17.76%, and R<sup>2</sup> of 0.93. Compared with the strongest DL baseline, BiGRU, it reduces MAE from 71.06 to 57.15 and WAPE from 22.08% to 17.76%. The results indicate that incorporating target-centric temporal features with residual learning improves ultra-short-term PV DC power forecasting while keeping the model architecture less complex than multi-stage hybrid approaches.</p>
-        </details>
-        <a class="btn btn-outline" href="https://sustainconf.com/en" target="_blank" rel="noopener">Conference Website</a>
-      </article>
+          <h3 class="item-title">A Target-Augmented Residual BiGRU Model for Ultra-Short-Term PV Output Power Forecasting</h3>
+          <p class="authors"><strong>M. S. H. Molla</strong>, M. T. R. Sahed, R. Tanzim, M. N. Uddin, H. Monir, M. A. Kabir, and S. M. Hossain</p>
+          <p class="venue"><strong>Conference:</strong> Sustainable Energy and Industry Conference (SUSTAIN 2026), Dhahran, Saudi Arabia, Nov 29 – Dec 2, 2026</p>
+          <div class="meta">
+            <span><strong>Publisher: IEEE</strong></span>
+            <span><strong>Year: 2026</strong></span>
+            <span class="pub-badge">Accepted</span>
+          </div>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="bigru-pv-forecasting-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
+            <a class="pub-btn" href="https://sustainconf.com/en" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Conference</a>
+          </div>
+          <div class="pub-panel" id="bigru-pv-forecasting-abs" hidden>
+            <p>Reliable operation of grid-connected photovoltaic (PV) plants requires short-horizon forecasts that can track rapid generation changes caused by irradiance variation and plant operating conditions. This paper presents a 15-minute ahead DC power forecasting framework using real SCADA data from a grid-connected PV plant in Bangladesh. Conventional machine learning (ML) and deep learning (DL) baselines are evaluated using the same chronological data split and 15-minute-ahead forecasting target. To improve ultra-short-term prediction, a target-augmented residual BiGRU model is proposed. The model uses recent DC power information, including lag, ramp, and rolling statistical features, and learns a residual correction with respect to the last-known DC power value instead of estimating the future output directly. The proposed model achieves the best performance with an MAE of 57.15, RMSE of 146.59, WAPE of 17.76%, and R<sup>2</sup> of 0.93. Compared with the strongest DL baseline, BiGRU, it reduces MAE from 71.06 to 57.15 and WAPE from 22.08% to 17.76%. The results indicate that incorporating target-centric temporal features with residual learning improves ultra-short-term PV DC power forecasting while keeping the model architecture less complex than multi-stage hybrid approaches.</p>
+          </div>
+        </article>
 
       <!-- Publication 6 -->
       <article class="card" data-topics="forecasting" id="gmm-pv-forecasting">
-        <h3 class="item-title"><a href="https://sustainconf.com/en" target="_blank" rel="noopener">Regime-Aware Soft-Probabilistic GMM Integrated Ensemble Learning Framework for Solar PV Power Forecasting</a></h3>
-        <p class="authors">M. T. R. Sahed, R. Tanzim, <strong>M. S. H. Molla</strong>, M. A. Kabir, M. N. Uddin, S. M. Hossain, and M. Rokonuzzaman</p>
-        <p class="venue"><strong>Conference:</strong> Sustainable Energy and Industry Conference (SUSTAIN 2026), Dhahran, Saudi Arabia, Nov 29 – Dec 2, 2026</p>
-        <div class="meta">
-          <span><strong>Publisher:</strong> <a href="https://sustainconf.com/en" target="_blank" rel="noopener"><strong>IEEE</strong></a></span>
-          <span><strong>Year: 2026 (Accepted)</strong></span>
-        </div>
-        <details class="abstract">
-          <summary>Abstract:</summary>
-          <p>Precise photovoltaic (PV) output power forecasting is essential for ensuring the stability of renewable-rich grids. The inherent nonlinearity and weather-dependent variability of solar generation, compounded by distinct latent operating regimes, pose significant challenges to conventional models. This study introduces a novel regime-aware forecasting framework that leverages soft probabilistic memberships to capture transitional operating states using a Gaussian Mixture Model (GMM) to extract latent regimes. These probabilities are integrated as additional input features into a high-performance feature space, which also includes lag-window transformations and domain-specific feature engineering. The framework enhances four state-of-the-art baseline tree-based ensemble learners, Random Forest (RF), XGBoost, CatBoost, and LightGBM and validates using high-resolution real operational data from a 7.6 MWp PV real-world plant in Bangladesh. The results demonstrate that embedding soft regime probabilities consistently outperforms baseline models across the root mean square error (RMSE), Mean Absolute Error (MAE), and the Coefficient of Determination. By effectively decoding the complexities of transitional operating states, this regime-aware framework establishes a robust and scalable standard for short-term PV output power forecasting in modern energy management systems.</p>
-        </details>
-        <a class="btn btn-outline" href="https://sustainconf.com/en" target="_blank" rel="noopener">Conference Website</a>
-      </article>
+          <h3 class="item-title">Regime-Aware Soft-Probabilistic GMM Integrated Ensemble Learning Framework for Solar PV Power Forecasting</h3>
+          <p class="authors">M. T. R. Sahed, R. Tanzim, <strong>M. S. H. Molla</strong>, M. A. Kabir, M. N. Uddin, S. M. Hossain, and M. Rokonuzzaman</p>
+          <p class="venue"><strong>Conference:</strong> Sustainable Energy and Industry Conference (SUSTAIN 2026), Dhahran, Saudi Arabia, Nov 29 – Dec 2, 2026</p>
+          <div class="meta">
+            <span><strong>Publisher: IEEE</strong></span>
+            <span><strong>Year: 2026</strong></span>
+            <span class="pub-badge">Accepted</span>
+          </div>
+          <div class="pub-actions">
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="gmm-pv-forecasting-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
+            <a class="pub-btn" href="https://sustainconf.com/en" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Conference</a>
+          </div>
+          <div class="pub-panel" id="gmm-pv-forecasting-abs" hidden>
+            <p>Precise photovoltaic (PV) output power forecasting is essential for ensuring the stability of renewable-rich grids. The inherent nonlinearity and weather-dependent variability of solar generation, compounded by distinct latent operating regimes, pose significant challenges to conventional models. This study introduces a novel regime-aware forecasting framework that leverages soft probabilistic memberships to capture transitional operating states using a Gaussian Mixture Model (GMM) to extract latent regimes. These probabilities are integrated as additional input features into a high-performance feature space, which also includes lag-window transformations and domain-specific feature engineering. The framework enhances four state-of-the-art baseline tree-based ensemble learners, Random Forest (RF), XGBoost, CatBoost, and LightGBM and validates using high-resolution real operational data from a 7.6 MWp PV real-world plant in Bangladesh. The results demonstrate that embedding soft regime probabilities consistently outperforms baseline models across the root mean square error (RMSE), Mean Absolute Error (MAE), and the Coefficient of Determination. By effectively decoding the complexities of transitional operating states, this regime-aware framework establishes a robust and scalable standard for short-term PV output power forecasting in modern energy management systems.</p>
+          </div>
+        </article>
 
       <!-- Publication 4 -->
       <article class="card" data-topics="detection classification" id="dysarthria-detection">
