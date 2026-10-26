@@ -52,7 +52,7 @@
   <!-- Second icon library (Academicons) for academic icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
-  <link rel="stylesheet" href="css/publications.css?v=2">
+  <link rel="stylesheet" href="css/publications.css?v=3">
   <!-- Hidden paper list for search engines (not shown on the page).
        When you add a paper, copy one {...} entry in "hasPart" and edit it. -->
   <script type="application/ld+json">
@@ -520,6 +520,39 @@
     <section class="page-header">
       <h1>Publications</h1>
     </section>
+
+    <!-- ================================================================
+         RESEARCH METRICS (two small tables)
+         Update the numbers by hand from Google Scholar, and change
+         "Updated Oct 2026". Percentage = count / total x 100.
+         ================================================================ -->
+    <div class="metrics-grid">
+      <div class="card metrics-card">
+        <h2 class="metrics-title">Authorship Contribution</h2>
+        <table class="metrics-table">
+          <thead><tr><th>Role</th><th>Count</th><th>Percentage</th></tr></thead>
+          <tbody>
+            <tr><td>First author</td><td>3</td><td>42.9%</td></tr>
+            <tr><td>Middle author</td><td>4</td><td>57.1%</td></tr>
+            <tr><td>Senior (last) author</td><td>0</td><td>0%</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td>7</td><td>100%</td></tr></tfoot>
+        </table>
+        <p class="metrics-note">Includes 6 conference papers and the B.Sc. thesis.</p>
+      </div>
+      <div class="card metrics-card">
+        <h2 class="metrics-title">Citation Metrics</h2>
+        <table class="metrics-table">
+          <thead><tr><th>Metric</th><th>All</th><th>Since 2021</th></tr></thead>
+          <tbody>
+            <tr><td>Citations</td><td>6</td><td>6</td></tr>
+            <tr><td>h-index</td><td>1</td><td>1</td></tr>
+            <tr><td>i10-index</td><td>0</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <p class="metrics-note">Source: <a href="https://scholar.google.com/citations?user=NNXqVVYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> &middot; Updated Oct 2026</p>
+      </div>
+    </div>
 
     <!-- ================================================================
          FILTER BY TOPIC
