@@ -1,7 +1,8 @@
 /* ==========================================================================
    publications.js  —  Makes the paper buttons work (Publications page only).
    You normally never need to edit this file.
-   1. "Abstract" and "Cite" buttons open/close their box.
+   1. "Abstract", "Cite", "DOI" ... buttons open/close their box
+      (only one box open at a time in each entry).
    2. "IEEE" / "BibTeX" tabs switch the citation style.
    3. "Copy" copies the citation that is showing.
    ========================================================================== */
@@ -12,6 +13,16 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", function () {
       var box = document.getElementById(btn.getAttribute("aria-controls"));
       var isOpen = btn.getAttribute("aria-expanded") === "true";
+      // Only one box open per entry: close the others in the same card first
+      var card = btn.closest(".card");
+      if (card && !isOpen) {
+        card.querySelectorAll(".pub-btn[aria-controls]").forEach(function (other) {
+          if (other === btn) return;
+          other.setAttribute("aria-expanded", "false");
+          var otherBox = document.getElementById(other.getAttribute("aria-controls"));
+          if (otherBox) otherBox.hidden = true;
+        });
+      }
       btn.setAttribute("aria-expanded", !isOpen);
       box.hidden = isOpen;
     });
