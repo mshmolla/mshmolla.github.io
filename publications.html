@@ -52,7 +52,7 @@
   <!-- Second icon library (Academicons) for academic icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="css/style.css?v=5">
-  <link rel="stylesheet" href="css/publications.css?v=1">
+  <link rel="stylesheet" href="css/publications.css?v=2">
   <!-- Hidden paper list for search engines (not shown on the page).
        When you add a paper, copy one {...} entry in "hasPart" and edit it. -->
   <script type="application/ld+json">
@@ -602,13 +602,19 @@
           <div class="pub-actions">
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="dysarthria-detection-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="dysarthria-detection-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
-            <a class="pub-btn" href="https://doi.org/10.1109/QPAIN69676.2026.11546156" target="_blank" rel="noopener"><i class="ai ai-doi"></i>DOI</a>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="dysarthria-detection-doi"><i class="ai ai-doi"></i>DOI</button>
             <a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/11546156" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>IEEE Xplore</a>
             <a class="pub-btn" href="/documents/Aronno_2026_QPAIN_Dysarthria_Detection.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i>Full Text</a>
             <a class="pub-btn" href="https://speechtechnology.web.illinois.edu/uaspeech" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dataset</a>
           </div>
           <div class="pub-panel" id="dysarthria-detection-abs" hidden>
             <p>This paper introduces a machine learning framework for binary dysarthria classification using acoustic and prosodic cues collected from speech recordings of dysarthric and non-dysarthric patients. Deep CNN14 embeddings are used to learn the audio signals' spectral and temporal patterns and to improve the classification accuracy, other prosodic descriptors such as pitch variability, energy dynamics, and spectral flatness are added. We train and combine several machine learning classifiers, such as KNN, Random Forest, XGBoost and CatBoost, and a soft-voting ensemble model. Adding prosody to the experiment made the overall accuracy go up from 97% to 98.1%, with big drops in both false positives and false negatives. SHAP-based explainable AI analysis shows that pitch-related and energy based parameters are two of the most important factors in detecting dysarthria. The proposed method presents a balanced framework that integrates deep acoustic representations with comprehensible features to attain reliable and clear dysarthric speech assessment.</p>
+          </div>
+          <div class="pub-panel" id="dysarthria-detection-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.1109/QPAIN69676.2026.11546156</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
           </div>
           <div class="pub-panel" id="dysarthria-detection-cite" hidden>
             <div class="cite-tabs">
@@ -641,13 +647,19 @@
           <div class="pub-actions">
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="smart-grid-security-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="smart-grid-security-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
-            <a class="pub-btn" href="https://doi.org/10.1109/QPAIN69676.2026.11545639" target="_blank" rel="noopener"><i class="ai ai-doi"></i>DOI</a>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="smart-grid-security-doi"><i class="ai ai-doi"></i>DOI</button>
             <a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/11545639" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>IEEE Xplore</a>
             <a class="pub-btn" href="/documents/Aronno_2026_QPAIN_Smart_Grid_Security.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i>Full Text</a>
             <a class="pub-btn" href="https://ieee-dataport.org/documents/smartgrid-cyberphysical-attack-dataset" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dataset</a>
           </div>
           <div class="pub-panel" id="smart-grid-security-abs" hidden>
             <p>A smart grid is the combination of networking equipment to capture parameters related to the cyber domain, as well as Advanced Metering Infrastructure (AMI) to obtain necessary consumption data and physical domain parameters. However, today’s cyber-physical grid systems are exposed to numerous threats, which have increased in frequency due to the integration of low-cost networking equipment and Internet of Things (IoT) devices. If we know that any attack has occurred in the grid, the operators can disconnect the utilities directly, and knowing the type of cyberattack will help the operators investigate the reason and solve it immediately. In this paper, we have done an analysis of machine learning classifiers to detect an attack case in the smart grid, as well as identify the type of cyberattack using the Smart Grid Cyber-Physical Attack dataset to help the operators disconnect the utilities and to investigate. It has been found that Random Forest achieves the highest accuracy of 98% while detecting the attack scenario, whereas LightGBM achieves an accuracy of 99% while identifying the type of attack. This result has been validated using 5-fold cross-validation, which proves the robustness of Random Forest and LightGBM in performing the task.</p>
+          </div>
+          <div class="pub-panel" id="smart-grid-security-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.1109/QPAIN69676.2026.11545639</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
           </div>
           <div class="pub-panel" id="smart-grid-security-cite" hidden>
             <div class="cite-tabs">
@@ -681,13 +693,19 @@
           <div class="pub-actions">
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="securegrid-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="securegrid-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
-            <a class="pub-btn" href="https://doi.org/10.1109/COMPAS67506.2025.11381615" target="_blank" rel="noopener"><i class="ai ai-doi"></i>DOI</a>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="securegrid-doi"><i class="ai ai-doi"></i>DOI</button>
             <a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/11381615" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>IEEE Xplore</a>
             <a class="pub-btn" href="/documents/Molla_2025_COMPAS_SecureGrid.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i>Full Text</a>
             <a class="pub-btn" href="https://github.com/henryRDlab/ElectricityTheftDetection" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dataset</a>
           </div>
           <div class="pub-panel" id="securegrid-abs" hidden>
             <p>Power theft is a serious concern for electricity providers all over the world. It makes the power supply less reliable, raises the load consumption, and costs more money. As the global energy sector moves towards using smart grid (SG) technologies, the use of advanced data analysis tools has created new ways to deal with these problems, but electricity theft detection (ETD) is still a major issue. Traditional methods often do not work well because of issues like imbalanced data distributions, overfitting, high-dimensional data, and too much dependency on individual detection techniques. This study's goal is to address these problems by developing a more effective and robust ETD model using modern prediction algorithms. This study addresses one of the voting ensemble models that employs some of the best-known machine learning boosting classifiers, like extreme gradient boosting (XGBoost), light gradient boosting (LightGBM), and categorical boosting (CatBoost) to enhance the prediction accuracy. We use a gated recurrent unit (GRU) to extract features, which makes it easier to work with time series data resulting in the improvement of model performance. There are three major tasks performed: synthetic minority oversampling technique with tomek link (SMOTETomek) was used for data pre-processing, a recurrent neural network (RNN) was used for the temporal feature extraction, and SecureGrid was proposed as a new voting-based ensemble model. The proposed model shows that it can achieve a test accuracy of 93%, an F1 score of 78%, and 97% ROC-AUC in the data set of the State Grid Corporation of China (SGCC). The proposed model outperforms traditional boosting models that have been used on similar datasets. We found that our proposed SecureGrid model has the ability to significantly enhance ETD in SGs. It offers a robust and near to accurate solution which is much better than current approaches.</p>
+          </div>
+          <div class="pub-panel" id="securegrid-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.1109/COMPAS67506.2025.11381615</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
           </div>
           <div class="pub-panel" id="securegrid-cite" hidden>
             <div class="cite-tabs">
@@ -721,13 +739,19 @@
           <div class="pub-actions">
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="violence-detection-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="violence-detection-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
-            <a class="pub-btn" href="https://doi.org/10.1109/ICAEEE62219.2024.10561682" target="_blank" rel="noopener"><i class="ai ai-doi"></i>DOI</a>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="violence-detection-doi"><i class="ai ai-doi"></i>DOI</button>
             <a class="pub-btn" href="https://ieeexplore.ieee.org/document/10561682" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>IEEE Xplore</a>
             <a class="pub-btn" href="/documents/Haque_2024_ICAEEE_Violence_Detection.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i>Full Text</a>
             <a class="pub-btn" href="https://figshare.com/articles/dataset/Movie_Clip_Dataset_A_Novel_Dataset_for_Generalised_Real-World_Violence_Detection/23643555" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dataset</a>
           </div>
           <div class="pub-panel" id="violence-detection-abs" hidden>
             <p>Detecting and classifying violence is crucial for public safety and addressing societal violence. DL models have greatly improved the automation of violence detection systems by effectively capturing intricate visual patterns. However, the quality and diversity of the training data greatly impact the effectiveness of these models. Existing datasets may be biased towards specific situations, limiting their practical use. To address this limitation, we introduce the Movie Clip (MC) dataset to enhance the generalisability of Automated Violence Detection and Classification (AVDC) systems. The MC dataset encompasses a broad spectrum of near-real-world violent actions, incorporating diverse demographics, environmental circumstances, and cultural elements extracted from movies. Consequently, it accurately reflects the complexity and diversity of real-world violent scenarios. The potential of the new dataset is investigated against its existing counterparts, like Hockey Fight (HF) and AIRTLab datasets. These datasets are used to train the ConvLSTM models based on the VGG16 and VGG19 architectures. The proposed dataset significantly improves AVDC model generalisation, outperforming the generalisability of current datasets, thereby advancing violence detection and facilitating the development of more robust and efficient AVDC systems.</p>
+          </div>
+          <div class="pub-panel" id="violence-detection-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.1109/ICAEEE62219.2024.10561682</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
           </div>
           <div class="pub-panel" id="violence-detection-cite" hidden>
             <div class="cite-tabs">
@@ -768,7 +792,7 @@
           <div class="pub-actions">
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="bsc-thesis-abs"><i class="fa-solid fa-align-left"></i>Abstract</button>
             <button type="button" class="pub-btn" aria-expanded="false" aria-controls="bsc-thesis-cite"><i class="fa-solid fa-quote-right"></i>Cite</button>
-            <a class="pub-btn" href="https://doi.org/10.13140/RG.2.2.23095.89767" target="_blank" rel="noopener"><i class="ai ai-doi"></i>DOI</a>
+            <button type="button" class="pub-btn" aria-expanded="false" aria-controls="bsc-thesis-doi"><i class="ai ai-doi"></i>DOI</button>
             <a class="pub-btn" href="https://www.researchgate.net/publication/403758687_Enhanced_Detection_of_Electricity_Theft_in_Smart_Grids_Using_a_Machine_Learning_Boosting_Classifiers_Based_Voting_Ensemble_Model" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i>ResearchGate</a>
             <a class="pub-btn" href="/documents/BSc_Thesis_Molla_Zishan_2024.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i>Full Text</a>
             <a class="pub-btn" href="https://github.com/henryRDlab/ElectricityTheftDetection" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i>Dataset</a>
@@ -776,6 +800,12 @@
           <!-- Abstract box (opens with the Abstract button) -->
           <div class="pub-panel" id="bsc-thesis-abs" hidden>
             <p>Electricity theft poses a critical challenge among non-technical losses for electricity providers, resulting in severe consequences such as compromised supply quality, increased generation load, inflated bills for legitimate consumers, and broader economic repercussions. Smart grid technology offers a promising avenue to mitigate such losses through advanced data analytics. With the abundance of data generated by smart grid infrastructure, including individual power consumption patterns, machine learning and deep learning methodologies emerge as effective tools to accurately detect instances of electricity theft. However, existing schemes provide suboptimal performance in electricity theft detection (ETD) due to challenges such as imbalanced data distributions, overfitting issues, handling high-dimensional data, and reliance on individual schemes. In response to these limitations, this paper proposes a voting ensemble model based on machine learning boosting classifiers. In this model, we incorporate Convolutional Neural Networks (CNN), a widely recognized technique for feature extraction. The framework encompasses three key components, such as data preprocessing, data balancing, and classification, each addressing specific challenges in ETD. Notably, the proposed model leverages the strengths of extreme gradient boosting (XGBoost), categorical boosting (CatBoost), and light gradient boosting (LightGBM), enhancing its overall robustness and predictive accuracy. Rigorous validation using diverse metrics underscores the efficacy of the model, as evidenced by extensive simulations. Results indicate superior performance compared to individual models, with the proposed model achieving an impressive test accuracy of 99%.</p>
+          </div>
+          <div class="pub-panel" id="bsc-thesis-doi" hidden>
+            <div class="doi-row">
+              <span><strong>DOI:</strong> <span class="cite-text">10.13140/RG.2.2.23095.89767</span></span>
+              <button type="button" class="cite-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
           </div>
           <!-- Cite box (opens with the Cite button): IEEE and BibTeX tabs + Copy -->
           <div class="pub-panel" id="bsc-thesis-cite" hidden>

@@ -49,3 +49,8 @@ pre.cite-text {
   margin: 0; background: var(--color-bg); border-radius: 8px; padding: 12px 14px;
   overflow-x: auto; font-size: .8rem; line-height: 1.5; white-space: pre;
 }
+
+/* DOI box (opens with the DOI button): the DOI text + Copy */
+.doi-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.doi-row .cite-text { font-family: ui-monospace, Consolas, monospace; font-size: .9rem; word-break: break-all; }
+.doi-row .cite-copy { margin-left: auto; }
