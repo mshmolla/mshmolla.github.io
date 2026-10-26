@@ -1,0 +1,51 @@
+/* ==========================================================================
+   publications.css  —  Styles for the paper buttons on the Publications page
+   (Abstract, Cite, DOI, ResearchGate, Full Text, Dataset ...).
+   Colours come from the settings at the top of css/style.css.
+   ========================================================================== */
+
+/* Row of small rounded buttons under each paper */
+.pub-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.pub-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 13px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-primary);
+  font: 600 .86rem var(--font-body);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.pub-btn:hover,
+.pub-btn[aria-expanded="true"] { background: var(--color-primary); color: #fff; text-decoration: none; }
+
+/* Small green "Accepted" label (for accepted, not-yet-published papers) */
+.pub-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 999px;
+  background: #e6f4f4; color: var(--color-accent);
+  font-weight: 700; font-size: .8rem;
+}
+
+/* Box that opens below the buttons (abstract or citation) */
+.pub-panel { margin-top: 14px; border-left: 3px solid var(--color-accent); padding: 2px 0 2px 14px; }
+.pub-panel > p { margin: 0; text-align: justify; hyphens: auto; }
+
+/* Citation box: IEEE / BibTeX tabs and the Copy button */
+.cite-tabs { display: flex; gap: 6px; align-items: center; margin-bottom: 10px; }
+.cite-tab {
+  border: 0; background: none; padding: 4px 10px; border-radius: 6px;
+  font: 600 .85rem var(--font-body); color: var(--color-muted); cursor: pointer;
+}
+.cite-tab.active { background: var(--color-bg); color: var(--color-primary); }
+.cite-copy {
+  margin-left: auto; border: 1px solid var(--color-border); background: var(--color-surface);
+  border-radius: 6px; padding: 4px 10px; font: 600 .82rem var(--font-body);
+  color: var(--color-primary); cursor: pointer;
+}
+.cite-copy.done { color: var(--color-accent); border-color: var(--color-accent); }
+.pub-panel > p.cite-text { font-size: .92rem; line-height: 1.55; text-align: left; hyphens: none; }
+pre.cite-text {
+  margin: 0; background: var(--color-bg); border-radius: 8px; padding: 12px 14px;
+  overflow-x: auto; font-size: .8rem; line-height: 1.5; white-space: pre;
+}
