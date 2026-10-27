@@ -40,7 +40,7 @@
   align-items: center;
   gap: 12px;
   padding: 8px 10px 8px 18px;
-  border: 1px solid #b8c0ca;
+  border: 1px solid var(--color-input-border);
   border-radius: 9px;
   background: var(--color-surface);
   box-shadow: 0 2px 8px rgba(16,24,40,.05);
@@ -82,23 +82,23 @@
   border: 1px solid var(--color-primary);
   border-radius: 6px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 .search-page .search-submit:hover,
 .search-page .search-more:hover,
-.search-page .search-retry:hover { background: #29496f; }
+.search-page .search-retry:hover { background: var(--color-primary-hover, #29496f); }
 .search-page .search-help { margin-top: 12px; color: var(--color-muted); font-size: .86rem; }
 .search-page .search-tools { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .search-page .search-tools label { flex-shrink: 0; font-size: .9rem; color: var(--color-muted); }
 .search-page .search-tools select {
   max-width: 100%;
   padding: 8px 34px 8px 12px;
-  border: 1px solid #b8c0ca;
+  border: 1px solid var(--color-input-border);
   border-radius: 5px;
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-text);
   font: inherit;
   font-size: .9rem;
@@ -109,7 +109,7 @@
   padding: 5px 12px;
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-primary);
   font: inherit;
   font-size: .86rem;
@@ -118,9 +118,9 @@
 .search-page .search-chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
 .search-page .search-status { margin: 0 0 8px; color: var(--color-muted); font-size: .94rem; }
 .search-page .search-note { margin-bottom: 16px; color: var(--color-muted); font-size: .88rem; }
-.search-page .search-warning { padding: 12px 16px; border-left: 3px solid #b78126; background: #fff7e9; margin-bottom: 16px; font-size: .9rem; }
+.search-page .search-warning { padding: 12px 16px; border-left: 3px solid #b78126; background: var(--color-warn-bg, #fff7e9); margin-bottom: 16px; font-size: .9rem; }
 .search-page .search-results { list-style: none; margin: 20px 0 0; padding: 0; }
-.search-page .search-result { margin: 0; padding: 22px 24px; border: 1px solid var(--color-border); border-bottom: 0; background: #fff; }
+.search-page .search-result { margin: 0; padding: 22px 24px; border: 1px solid var(--color-border); border-bottom: 0; background: var(--color-surface); }
 .search-page .search-result:first-child { border-radius: 8px 8px 0 0; }
 .search-page .search-result:last-child { border-bottom: 1px solid var(--color-border); border-radius: 0 0 8px 8px; }
 .search-page .search-result:only-child { border-radius: 8px; }
@@ -129,8 +129,8 @@
 .search-page .search-result-title a { color: var(--color-primary); overflow-wrap: anywhere; }
 .search-page .search-result-title a:hover { color: var(--color-accent); }
 .search-page .search-result-excerpt { margin: 0; font-size: .94rem; line-height: 1.7; overflow-wrap: anywhere; }
-.search-page mark { padding: 0 1px; border-radius: 2px; background: #fff0ad; color: inherit; font-weight: 600; }
-.search-page .search-empty { margin-top: 20px; padding: 28px 24px; border: 1px solid var(--color-border); border-radius: 8px; background: #fff; }
+.search-page mark { padding: 0 1px; border-radius: 2px; background: var(--color-mark, #fff0ad); color: inherit; font-weight: 600; }
+.search-page .search-empty { margin-top: 20px; padding: 28px 24px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); }
 .search-page .search-empty h2 { font-family: var(--font-body); font-size: 1.15rem; margin-bottom: 10px; }
 .search-page .search-empty p { margin: 0; color: var(--color-muted); font-size: .95rem; }
 .search-page .search-suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }

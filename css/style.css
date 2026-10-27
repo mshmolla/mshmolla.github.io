@@ -21,6 +21,12 @@
   --color-text:     #1f2933;   /* normal text                                  */
   --color-muted:    #5b6573;   /* softer text: dates, captions                 */
   --color-border:   #e2e6ec;   /* thin lines around cards                      */
+  --color-brand:    #1d3557;   /* header and footer bars (same in dark mode)   */
+  --color-on-primary: #ffffff; /* text on filled buttons                       */
+  --color-tint:     #e6f4f4;   /* light teal labels ("Accepted", highlights)   */
+  --color-soft:     #f7f9fb;   /* very light grey (skill tags)                 */
+  --color-input-border: #b8c0ca; /* borders of form boxes                      */
+  color-scheme: light dark;    /* lets browsers style scrollbars/forms to match */
 
   /* --- Fonts (loaded from Google Fonts in the <head> of every page) --- */
   --font-heading: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -103,7 +109,7 @@ p  { margin: 0 0 1em; }
   position: sticky;            /* stays at the top when you scroll */
   top: 0;
   z-index: 100;
-  background: var(--color-primary);
+  background: var(--color-brand);
   box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
 }
 .site-header .container {
@@ -162,13 +168,13 @@ p  { margin: 0 0 1em; }
   font-size: .95rem;
   border: 2px solid var(--color-primary);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   transition: background .15s, color .15s;
 }
 .btn:hover { background: transparent; color: var(--color-primary); text-decoration: none; }
 
 .btn-outline { background: transparent; color: var(--color-primary); }
-.btn-outline:hover { background: var(--color-primary); color: #fff; }
+.btn-outline:hover { background: var(--color-primary); color: var(--color-on-primary); }
 
 /* Small rounded "pill" links: LinkedIn, ORCID, Google Scholar ... */
 .pill-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -183,7 +189,7 @@ p  { margin: 0 0 1em; }
   font-weight: 600;
   transition: background .15s, color .15s;
 }
-.pill-links a:hover { background: var(--color-primary); color: #fff; text-decoration: none; }
+.pill-links a:hover { background: var(--color-primary); color: var(--color-on-primary); text-decoration: none; }
 
 
 /* ==========================================================================
@@ -367,7 +373,7 @@ details.abstract p { margin-top: .6em; text-align: justify; }
    ========================================================================== */
 .site-footer {
   margin-top: 64px;
-  background: var(--color-primary);
+  background: var(--color-brand);
   color: rgba(255, 255, 255, .85);
   padding: 44px 0 0;
 }
@@ -416,7 +422,7 @@ details.abstract p { margin-top: .6em; text-align: justify; }
     left: 0;
     right: 0;
     flex-direction: column;
-    background: var(--color-primary);
+    background: var(--color-brand);
     padding: 8px 12px 14px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
   }
@@ -511,7 +517,7 @@ details.abstract p { text-align: justify; hyphens: auto; }
     left: 0;
     right: 0;
     flex-direction: column;
-    background: var(--color-primary);
+    background: var(--color-brand);
     padding: 8px 12px 14px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
   }
@@ -586,3 +592,76 @@ details.abstract p { text-align: justify; hyphens: auto; }
 .entry h2.entry-name { font-size: 1.25rem; margin-bottom: .2em; }
 .entry h2.entry-name a { color: var(--color-primary); }
 .entry h2.entry-name a:hover { color: var(--color-accent); }
+
+
+/* ==========================================================================
+   12. DARK MODE — used automatically when the visitor's phone or computer
+       is set to dark mode. Only the colours change; the layout is the same.
+       Header, footer and pictures keep their normal colours.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary:  #a9c7ee;   /* headings, links, buttons: soft light blue */
+    --color-accent:   #45c4c6;   /* brighter teal for dark backgrounds        */
+    --color-bg:       #0e1520;   /* page background                           */
+    --color-surface:  #162131;   /* cards                                     */
+    --color-text:     #dde3ea;   /* normal text                               */
+    --color-muted:    #9ba6b4;   /* dates, captions                           */
+    --color-border:   #283547;
+    --color-on-primary: #0e1520; /* dark text on the light-blue filled buttons */
+    --color-tint:     rgba(69, 196, 198, .16);
+    --color-soft:     #1c2939;
+    --color-input-border: #3b4a5c;
+    --color-primary-hover: #c4d9f4;
+    --color-warn-bg:  rgba(183, 129, 38, .18);
+    --color-mark:     rgba(255, 214, 10, .30);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .45), 0 4px 16px rgba(0, 0, 0, .35);
+  }
+  /* pictures on white (logos, certificates, diagrams) keep their white background;
+     a thin border separates them from the dark card */
+  .entry-logo, .award-card .award-img { border-color: var(--color-border); }
+}
+
+
+/* ==========================================================================
+   13. COMFORT — smooth scrolling, gentle picture fade-in, reduced motion
+   ========================================================================== */
+html { scroll-behavior: smooth; }
+
+/* Pictures fade in softly when they finish loading (js/main.js section 10
+   adds the "is-loading" class only to pictures that are not ready yet) */
+img.is-loading { opacity: 0; }
+img.fade-in { transition: opacity .45s ease; }
+
+/* Visitors who switched off animations in their device settings: no motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  img.is-loading { opacity: 1; }
+}
+
+
+/* ==========================================================================
+   14. PRINTING — clean pages on paper (menu, footer, buttons, video hidden)
+   ========================================================================== */
+@media print {
+  :root {
+    --color-primary: #1d3557; --color-accent: #0f8b8d; --color-bg: #fff; --color-surface: #fff;
+    --color-text: #000; --color-muted: #444; --color-border: #ccc;
+  }
+  body { background: #fff; font-size: 11pt; }
+  .site-header, .site-footer, .menu-toggle, .site-search-trigger, .filter-bar,
+  .pub-actions, .news-hint, .video-wrapper, .footer-counter, .btn, .cv-buttons,
+  .contact-form, .contact-map { display: none !important; }
+  .card { box-shadow: none !important; border: 1px solid #ccc; break-inside: avoid; padding: 14px 18px; margin-bottom: 12px; }
+  .news-scroll { max-height: none !important; overflow: visible !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .pub-panel[hidden] { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  img { break-inside: avoid; }
+  img.is-loading { opacity: 1 !important; }
+  .container { max-width: none; padding: 0; }
+}

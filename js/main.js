@@ -13,6 +13,7 @@
    5. "Filter by Topic" menu on the Publications page.
    7. News box on the Home page: shows 5½ items and scrolls for the rest.
    9. Loads the other pages in the background so clicks open instantly.
+  10. Pictures fade in softly.  11. Jump links glide to the entry.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -82,23 +83,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ---- 4. Jump links: put the entry just below the menu bar ---- */
-function alignToHash() {
+function alignToHash(smooth) {
   if (!window.location.hash) return;
   var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (!target) return;
   var header = document.querySelector(".site-header");
   var gap = (header ? header.offsetHeight : 0) + 16;   // menu bar height + small space
   var top = target.getBoundingClientRect().top + window.pageYOffset - gap;
-  window.scrollTo({ top: top, behavior: "auto" });
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: top, behavior: (smooth === true && !calm) ? "smooth" : "auto" });
 }
 // Run once everything (pictures, video, fonts) has loaded, and once more a
 // moment later in case something still changed size.
 window.addEventListener("load", function () {
+  if (alignToHash.glide) return;           // section 11 glides there instead
   alignToHash();
   setTimeout(alignToHash, 600);
 });
 // Also when a jump link is clicked while already on the same page.
-window.addEventListener("hashchange", alignToHash);
+window.addEventListener("hashchange", function () { alignToHash(true); });
 
 /* ---- 5. Publications page: "Filter by Topic" menu ---- */
 document.addEventListener("DOMContentLoaded", function () {
@@ -165,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("site-search-style")) {
       var css = document.createElement("link");
       css.id = "site-search-style"; css.rel = "stylesheet";
-      css.href = new URL("css/search.css?v=5", siteBase).href;
+      css.href = new URL("css/search.css?v=6", siteBase).href;
       document.head.appendChild(css);
     }
     header.classList.add("has-site-search");
@@ -308,4 +311,34 @@ document.addEventListener("click", function (event) {
     var a = e.target.closest && e.target.closest("a[href^='/']");
     if (a) prefetchPage(a.getAttribute("href"));
   }, { passive: true });
+})();
+
+
+/* ---- 10. Pictures fade in softly instead of popping in (only pictures
+         that are not loaded yet; the profile photo and logos already shown
+         are not touched). ---- */
+(function () {
+  function prepare(img) {
+    if (img.complete && img.naturalWidth) return;          // already visible
+    if (/^https?:/.test(img.getAttribute("src") || "")) return; // outside images (e.g. visitor map)
+    img.classList.add("is-loading", "fade-in");
+    function show() { img.classList.remove("is-loading"); }
+    img.addEventListener("load", show, { once: true });
+    img.addEventListener("error", show, { once: true });
+  }
+  function run() { document.querySelectorAll("main img").forEach(prepare); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+
+/* ---- 11. Arriving from a link such as Home -> SolarDT: glide down to the entry ---- */
+(function () {
+  if (!window.location.hash) return;
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (calm) return;
+  alignToHash.glide = true;
+  window.addEventListener("load", function () {
+    setTimeout(function () { alignToHash(true); }, 150);   // glide the entry just below the menu bar
+    setTimeout(function () { alignToHash(true); }, 1400);  // small correction if pictures moved things
+  });
 })();

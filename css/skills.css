@@ -5,7 +5,7 @@
 .skill-cloud { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-cloud li {
   padding: 7px 15px;
-  background: #f7f9fb;                          /* very light grey */
+  background: var(--color-soft);                         /* very light grey */
   border-left: 3px solid var(--color-accent);   /* teal stripe */
   border-radius: 6px;
   color: var(--color-text);
