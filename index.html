@@ -50,11 +50,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Icons (LinkedIn, ORCID, email ...): only the icons this site uses, stored locally -->
-  <link rel="stylesheet" href="css/icons.css?v=1">
+  <!-- Load the small icon fonts early so icons appear with the page -->
+  <link rel="preload" href="fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/academicons.woff2" as="font" type="font/woff2" crossorigin>
   <!-- The site's design (colours, layout) -->
-  <link rel="stylesheet" href="css/style.css?v=8">
-  <link rel="stylesheet" href="css/skills.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <!-- Information about you for Google (structured data). It tells search
        engines that this site belongs to the person "Md. Sabbir Hossain Molla",
        lists other ways people write your name, and links your official
@@ -263,7 +265,7 @@
                to change the video, replace the part after /embed/) -->
           <article class="project-card">
             <div class="project-media video-wrapper">
-              <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <iframe src="https://www.youtube-nocookie.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="project-body">
               <h3><a href="/projects#solardt">SolarDT</a></h3>
@@ -417,6 +419,6 @@
     <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
   </footer>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>

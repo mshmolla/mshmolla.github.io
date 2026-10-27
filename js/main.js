@@ -291,15 +291,23 @@ document.addEventListener("click", function (event) {
     whenIdle(function () {
       document.querySelectorAll("img[loading=lazy]").forEach(function (im) { im.loading = "eager"; });
     });
-    // 2. then the other pages, one after another
-    setTimeout(function () {
-      var i = 0;
-      (function next() {
-        if (i >= PAGES.length) return;
-        prefetchPage(PAGES[i++]);
-        whenIdle(next);
-      })();
-    }, 1500);
+  });
+
+  // 2. the other pages, one after another — started by the visitor's first
+  //    scroll, mouse move, touch or key press (so it never slows the first view)
+  var started = false;
+  function startPrefetch() {
+    if (started) return; started = true;
+    ["scroll", "mousemove", "touchstart", "keydown"].forEach(function (t) { window.removeEventListener(t, startPrefetch); });
+    var i = 0;
+    (function next() {
+      if (i >= PAGES.length) return;
+      prefetchPage(PAGES[i++]);
+      whenIdle(next);
+    })();
+  }
+  ["scroll", "mousemove", "touchstart", "keydown"].forEach(function (t) {
+    window.addEventListener(t, startPrefetch, { passive: true });
   });
 
   // 3. a page the visitor points at (or touches) is loaded straight away
