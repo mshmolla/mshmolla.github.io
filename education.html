@@ -6,8 +6,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google Analytics (visitor statistics). Measurement ID: G-E8W0ZV9MJ1 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E8W0ZV9MJ1"></script>
+  <!-- Google Analytics (visitor statistics). Measurement ID: G-E8W0ZV9MJ1
+       The Google script is fetched right after the page has finished loading,
+       so it never slows the page down; visits are still counted. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -24,6 +25,14 @@
     } catch (e) {}
 
     gtag('config', 'G-E8W0ZV9MJ1');
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-E8W0ZV9MJ1';
+        document.head.appendChild(ga);
+      }, 0);
+    });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Education | Md. Sabbir Hossain Molla</title>
@@ -191,7 +200,7 @@
     <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
   </footer>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
   <script src="js/publications.js?v=2"></script>
 </body>
 </html>

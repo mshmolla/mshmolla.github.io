@@ -346,3 +346,17 @@ document.addEventListener("click", function (event) {
     setTimeout(function () { alignToHash(true); }, 1400);  // small correction if pictures moved things
   });
 })();
+
+
+/* ---- 12. YouTube video: the normal YouTube player, loaded when the visitor
+         scrolls near it (keeps the first view of the page fast) ---- */
+(function () {
+  var frames = document.querySelectorAll("iframe[data-src]");
+  if (!frames.length) return;
+  function load(f) { if (!f.src) f.src = f.getAttribute("data-src"); }
+  if (!("IntersectionObserver" in window)) { frames.forEach(load); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: "600px 0px" });
+  frames.forEach(function (f) { io.observe(f); });
+})();
