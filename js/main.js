@@ -12,6 +12,7 @@
       and videos above it finish loading.
    5. "Filter by Topic" menu on the Publications page.
    7. News box on the Home page: shows 5½ items and scrolls for the rest.
+   9. Loads the other pages in the background so clicks open instantly.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -231,3 +232,80 @@ document.addEventListener("DOMContentLoaded", function () {
   else setup();
 })();
 
+
+/* ---- 8. Light YouTube player: load the real video only when clicked ---- */
+document.addEventListener("click", function (event) {
+  var btn = event.target.closest && event.target.closest(".yt-lite");
+  if (!btn) return;
+  var frame = document.createElement("iframe");
+  frame.src = "https://www.youtube-nocookie.com/embed/" + btn.dataset.id + "?autoplay=1&rel=0";
+  frame.title = btn.dataset.title || "YouTube video";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  frame.allowFullscreen = true;
+  btn.replaceWith(frame);
+});
+
+/* ---- 9. Faster browsing: while a visitor reads this page, quietly load
+         the other pages and their pictures in the background, so the next
+         click opens instantly. Also loads any not-yet-shown pictures on this
+         page, so nothing "pops in" while scrolling. Skipped on data-saver /
+         very slow connections. ---- */
+(function () {
+  var conn = navigator.connection || {};
+  if (conn.saveData || /2g/.test(conn.effectiveType || "")) return;
+
+  var PAGES = ["/", "/projects", "/publications", "/experience", "/education", "/contact"];
+  var done = {};
+
+  function warmImage(src) {
+    if (!src || done[src] || /^data:/.test(src)) return;
+    done[src] = true;
+    var img = new Image();
+    img.decoding = "async";
+    img.src = src;
+  }
+  function prefetchPage(path) {
+    var url = new URL(path, location.href).href;
+    if (done[url] || url.split("#")[0] === location.href.split("#")[0]) return;
+    done[url] = true;
+    fetch(url, { credentials: "same-origin" }).then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (html) {
+        if (!html) return;
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        doc.querySelectorAll("link[rel=stylesheet][href^='css/']").forEach(function (l) {
+          fetch(new URL(l.getAttribute("href"), url).href).catch(function () {});
+        });
+        doc.querySelectorAll("img[src]").forEach(function (im) {
+          var s = im.getAttribute("src");
+          if (!/^https?:/.test(s)) warmImage(new URL(s, url).href);   // own pictures only
+        });
+      }).catch(function () {});
+  }
+  function whenIdle(fn) { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(fn); }
+
+  window.addEventListener("load", function () {
+    // 1. finish loading this page's remaining pictures
+    whenIdle(function () {
+      document.querySelectorAll("img[loading=lazy]").forEach(function (im) { im.loading = "eager"; });
+    });
+    // 2. then the other pages, one after another
+    setTimeout(function () {
+      var i = 0;
+      (function next() {
+        if (i >= PAGES.length) return;
+        prefetchPage(PAGES[i++]);
+        whenIdle(next);
+      })();
+    }, 1500);
+  });
+
+  // 3. a page the visitor points at (or touches) is loaded straight away
+  document.addEventListener("pointerover", function (e) {
+    var a = e.target.closest && e.target.closest("a[href^='/']");
+    if (a) prefetchPage(a.getAttribute("href"));
+  }, { passive: true });
+  document.addEventListener("touchstart", function (e) {
+    var a = e.target.closest && e.target.closest("a[href^='/']");
+    if (a) prefetchPage(a.getAttribute("href"));
+  }, { passive: true });
+})();
