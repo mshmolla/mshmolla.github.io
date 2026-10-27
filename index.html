@@ -52,10 +52,12 @@
 
   <!-- The site's design (colours, layout) -->
   <!-- Icon library (Font Awesome) for the social media icons in the footer -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <!-- Second icon library (Academicons) for the academic icons at the top of this page -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css"></noscript>
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="css/skills.css?v=3">
   <!-- Information about you for Google (structured data). It tells search
        engines that this site belongs to the person "Md. Sabbir Hossain Molla",
@@ -157,7 +159,7 @@
          ================================================================ -->
     <section class="hero">
       <!-- PLACEHOLDER: your profile photo (square works best) -->
-      <img class="hero-photo" src="images/profile.jpg" alt="Md. Sabbir Hossain Molla">
+      <img class="hero-photo" src="images/profile.jpg" alt="Md. Sabbir Hossain Molla" width="768" height="751" fetchpriority="high">
 
       <div>
         <h1>Md. Sabbir Hossain Molla</h1>
@@ -265,7 +267,7 @@
                to change the video, replace the part after /embed/) -->
           <article class="project-card">
             <div class="project-media video-wrapper">
-              <iframe src="https://www.youtube.com/embed/JWGVg1CxcUs" title="SolarDT video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <button type="button" class="yt-lite" data-id="JWGVg1CxcUs" data-title="SolarDT video" aria-label="Play video: SolarDT video"><img src="https://i.ytimg.com/vi/JWGVg1CxcUs/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button>
             </div>
             <div class="project-body">
               <h3><a href="/projects#solardt">SolarDT</a></h3>
@@ -276,7 +278,7 @@
           <!-- Project 2: Violence Detection -->
           <article class="project-card">
             <!-- PLACEHOLDER: Violence Detection picture (grid of video frames) -->
-            <img class="project-img project-media" src="images/projects/violence-detection.jpg" alt="Violence Detection project">
+            <img class="project-img project-media" src="images/projects/violence-detection.jpg" alt="Violence Detection project" width="720" height="378" loading="lazy" decoding="async">
             <div class="project-body">
               <h3><a href="/publications#violence-detection">Violence Detection</a></h3>
               <p>Generalising Violence Detection with a New Near-Real-World Violence Dataset</p>
@@ -286,7 +288,7 @@
           <!-- Project 3: SecureGrid -->
           <article class="project-card">
             <!-- PLACEHOLDER: SecureGrid picture (the model flowchart) -->
-            <img class="project-img project-media" src="images/projects/securegrid.jpg" alt="SecureGrid project">
+            <img class="project-img project-media" src="images/projects/securegrid.jpg" alt="SecureGrid project" width="720" height="385" loading="lazy" decoding="async">
             <div class="project-body">
               <h3><a href="/publications#securegrid">SecureGrid</a></h3>
               <p>SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data</p>
@@ -310,7 +312,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1yiHcjx6vy_tsexs-nFqucCBxFc3-Nmh9/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — MIST Robotics Club -->
-              <img class="award-img" src="images/awards/mist-robotics-club.jpg" alt="Certificate — MIST Robotics Club">
+              <img class="award-img" src="images/awards/mist-robotics-club.jpg" alt="Certificate — MIST Robotics Club" width="1122" height="791" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://www.facebook.com/MistRoboticsClub" target="_blank" rel="noopener">MIST ROBOTICS CLUB</a>
           </div>
@@ -318,7 +320,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1tCGQ3JHsNlVzHPwRTcM-kKn2LRdxZGLp/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — IEEE MIST SB -->
-              <img class="award-img" src="images/awards/ieee-mist-sb.jpg" alt="Certificate — IEEE MIST SB">
+              <img class="award-img" src="images/awards/ieee-mist-sb.jpg" alt="Certificate — IEEE MIST SB" width="1244" height="827" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://www.facebook.com/ieeemist" target="_blank" rel="noopener">IEEE MIST SB</a>
           </div>
@@ -326,7 +328,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1Iu5xfwrOXYUkpIa8qGkfcwZ79Gx0FJGk/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — Face the Case 2.0 -->
-              <img class="award-img" src="images/awards/face-the-case-2.jpg" alt="Certificate — Face the Case 2.0">
+              <img class="award-img" src="images/awards/face-the-case-2.jpg" alt="Certificate — Face the Case 2.0" width="1191" height="859" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://www.facebook.com/FacetheCase/" target="_blank" rel="noopener">FACE THE CASE 2.0</a>
           </div>
@@ -334,7 +336,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1gwJf_olMwhYbcbv7PPkLdopsOta7_PVZ/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — COMPAS 2025 -->
-              <img class="award-img" src="images/awards/compas-2025.jpg" alt="Certificate — COMPAS 2025">
+              <img class="award-img" src="images/awards/compas-2025.jpg" alt="Certificate — COMPAS 2025" width="1110" height="788" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://www.compasconf.org/" target="_blank" rel="noopener">COMPAS 2025</a>
           </div>
@@ -342,7 +344,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1zixQ3FVy9QHPGRhgohp1F0aozmwSQj9b/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — QPAIN 2026 -->
-              <img class="award-img" src="images/awards/qpain-2026.jpg" alt="Certificate — QPAIN 2026">
+              <img class="award-img" src="images/awards/qpain-2026.jpg" alt="Certificate — QPAIN 2026" width="1119" height="793" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://qpain.org/" target="_blank" rel="noopener">QPAIN 2026</a>
           </div>
@@ -350,7 +352,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1oS_2BI2y2b9XWbyC6pk7CCOlGJO6sxPi/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — CareTutors -->
-              <img class="award-img" src="images/awards/caretutors.jpg" alt="Certificate — CareTutors">
+              <img class="award-img" src="images/awards/caretutors.jpg" alt="Certificate — CareTutors" width="1120" height="791" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://caretutors.com/" target="_blank" rel="noopener">CARETUTORS</a>
           </div>
@@ -358,7 +360,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1UllApo7OFH-AKBzfnE-zLASP0Josa2Ve/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — Bohubrihi -->
-              <img class="award-img" src="images/awards/bohubrihi.jpg" alt="Certificate — Bohubrihi">
+              <img class="award-img" src="images/awards/bohubrihi.jpg" alt="Certificate — Bohubrihi" width="1002" height="714" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://bohubrihi.com/" target="_blank" rel="noopener">BOHUBRIHI</a>
           </div>
@@ -366,7 +368,7 @@
           <div class="award-card">
             <a href="https://drive.google.com/file/d/1p5drZECBB_H2kDysuIsk493GbIz4j6aB/view?usp=sharing" target="_blank" rel="noopener">
               <!-- PLACEHOLDER: certificate picture — VD Ultra 2026 -->
-              <img class="award-img" src="images/awards/vd-ultra-2026.jpg" alt="Certificate — VD Ultra 2026">
+              <img class="award-img" src="images/awards/vd-ultra-2026.jpg" alt="Certificate — VD Ultra 2026" width="1600" height="1132" loading="lazy" decoding="async">
             </a>
             <a class="award-name" href="https://verticaldreamers.com/" target="_blank" rel="noopener">VD ULTRA 2026</a>
           </div>
@@ -402,7 +404,7 @@
            (ID PoQE), so the numbers continue. Colours are set inside the image
            link: bg_ = background, txt_ = text, border_ = border (hex colours). -->
       <div class="footer-counter">
-        <a href="https://info.flagcounter.com/PoQE" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/PoQE/bg_1D3557/txt_FFFFFF/border_1D3557/columns_3/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter"></a>
+        <a href="https://info.flagcounter.com/PoQE" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/PoQE/bg_1D3557/txt_FFFFFF/border_1D3557/columns_3/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" loading="lazy" decoding="async"></a>
       </div>
       <!-- RIGHT: Contact -->
       <div>
@@ -419,6 +421,6 @@
     <div class="copyright">© 2026 Md. Sabbir Hossain Molla. All Rights Reserved.</div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>
