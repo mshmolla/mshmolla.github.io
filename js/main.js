@@ -221,10 +221,17 @@ document.addEventListener("DOMContentLoaded", function () {
       box.classList.toggle("at-end", end);
       if (hint) hint.classList.toggle("hidden", end);
     }
+    // Measure in the next animation frame, when the browser lays out the
+    // page anyway (avoids an extra "forced" layout that slows phones).
+    var queued = false;
+    function later() {
+      if (queued) return; queued = true;
+      requestAnimationFrame(function () { queued = false; size(); });
+    }
     box.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", size);
-    window.addEventListener("load", size);             // re-measure after fonts load
-    size();
+    window.addEventListener("resize", later);
+    window.addEventListener("load", later);            // re-measure after fonts load
+    later();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setup);
   else setup();
