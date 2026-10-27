@@ -566,3 +566,23 @@ details.abstract p { text-align: justify; hyphens: auto; }
    (justifying these short lines left big gaps between words on phones) */
 .card > p.authors,
 .card > p.venue { text-align: left; hyphens: manual; }
+
+/* Light YouTube player: shows the video picture with a play button and
+   loads YouTube only when clicked (makes pages much faster). See js/main.js section 8. */
+.yt-lite { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+.yt-lite img { width: 100%; height: 100%; object-fit: cover; }
+.yt-lite .yt-play {
+  position: absolute; left: 50%; top: 50%; width: 68px; height: 48px; transform: translate(-50%, -50%);
+  background: rgba(23, 23, 23, .8); border-radius: 12px; transition: background .15s;
+}
+.yt-lite .yt-play::after {
+  content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-35%, -50%);
+  border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff;
+}
+.yt-lite:hover .yt-play, .yt-lite:focus-visible .yt-play { background: #f00; }
+
+/* Experience/Education organisation names: an h2 (correct heading order)
+   that looks exactly like the earlier h3 */
+.entry h2.entry-name { font-size: 1.25rem; margin-bottom: .2em; }
+.entry h2.entry-name a { color: var(--color-primary); }
+.entry h2.entry-name a:hover { color: var(--color-accent); }
