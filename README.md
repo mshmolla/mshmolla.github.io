@@ -2,7 +2,8 @@
 
 Live site: **https://mshmolla.github.io**
 
-Electrical Engineering graduate and Research Assistant at the Smart Grid & Sustainable Energy Transition Lab (SET Lab), MIST, Bangladesh. Prospective MS/PhD applicant.
+Research Assistant at the Smart Grid & Sustainable Energy Transition Lab (SET Lab), MIST, Bangladesh.
+Built with plain HTML, CSS and JavaScript and hosted free on GitHub Pages.
 
 ## Pages
 
@@ -15,11 +16,20 @@ Electrical Engineering graduate and Research Assistant at the Smart Grid & Susta
 | Education | `education.html` |
 | Contact | `contact.html` |
 | Search | `search.html` |
+| Page not found | `404.html` |
 
 ## Folders
 
-- `css/` — design (colours, fonts, layout). Colours and fonts are set at the top of `css/style.css`.
-- `js/` — menu, publication filter, site search.
-- `images/` — profile photo, project pictures, award certificates, logos.
+- `css/` — the design. **Master copies only:** the styles are copied into each page
+  (inside `<style>`) so pages appear instantly. After editing a CSS file, the copies
+  in the pages must be refreshed too.
+- `js/` — menu, publication buttons, site search, small helpers.
+- `fonts/` — text fonts (Inter, Source Serif 4) and the icon fonts, stored locally.
+- `images/` — profile photo, project pictures, certificates, logos.
+- `documents/` — paper and thesis PDFs.
 
-Built with plain HTML, CSS and JavaScript and hosted free on GitHub Pages.
+## Files that must stay
+
+- `googlef1a75ba9a393cdd3.html` — Google Search Console verification.
+- `854277b2780b5db1a0d864f64f49179a.txt` — IndexNow key (Bing).
+- `robots.txt`, `sitemap.xml` — for search engines.

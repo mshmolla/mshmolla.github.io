@@ -14,16 +14,10 @@
 .project-meta i { color:var(--color-accent); width:16px; text-align:center; }
 .project-meta strong { color:var(--color-text); white-space:nowrap; }
 .project-banner { margin:0 0 24px; }
-.stat-row { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:26px; }
-.stat { background:var(--color-bg); border-radius:10px; padding:14px 16px; border-top:3px solid var(--color-accent); }
-.stat-num { display:block; font: 700 1.35rem var(--font-heading); color:var(--color-primary); }
-.stat-label { display:block; font-size:.85rem; color:var(--color-muted); line-height:1.35; margin-top:2px; }
 .project-split { display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; margin-bottom:10px; }
 .project-split .video-wrapper { margin:0; }
 .project-sub { font: 700 1.15rem var(--font-heading); color:var(--color-primary); margin:0 0 10px; }
 .card.project > .project-sub { margin-top:22px; }
-.tag-list { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:12px 0 0; }
-.tag-list li { background:var(--color-tint); color:var(--color-accent); font-size:.8rem; font-weight:600; padding:3px 10px; border-radius:999px; }
 .objective-grid { counter-reset:obj; list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; }
 .objective-grid li { counter-increment:obj; position:relative; padding-left:42px; line-height:1.55; }
 .objective-grid li::before { content:counter(obj); position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:50%;
@@ -37,7 +31,6 @@
 @media (max-width: 860px) { .project-banner { aspect-ratio: 3 / 1; } }
 .pub-panel .objective-grid { margin:4px 0; }
 @media (max-width: 860px) {
-  .stat-row { grid-template-columns: 1fr 1fr; }
   .project-split, .objective-grid { grid-template-columns: 1fr; }
   .project-head { flex-direction:column; gap:6px; }
   .project-meta { grid-template-columns: 1fr; }

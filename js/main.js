@@ -2,7 +2,7 @@
    main.js  —  The small amount of JavaScript the site needs.
    You normally never need to edit this file.
 
-   It does 4 things:
+   What it does:
    1. Opens/closes the menu on phones when you tap the ☰ button.
    2. Highlights the current page in the menu.
    3. If an image file is missing, shows a grey box with the expected
@@ -11,9 +11,11 @@
       that entry's title just below the menu bar, even after pictures
       and videos above it finish loading.
    5. "Filter by Topic" menu on the Publications page.
+   6. Website search (header icon).
    7. News box on the Home page: shows 5½ items and scrolls for the rest.
    9. Loads the other pages in the background so clicks open instantly.
   10. Pictures fade in softly.  11. Jump links glide to the entry.
+  12. The YouTube video loads when the visitor scrolls near it.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -31,20 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ---- 1. Phone menu (☰ button) ---- */
   var toggle = document.querySelector(".menu-toggle");
   var links  = document.querySelector(".nav-links");
-
-  // Add Contact to every page without editing the existing HTML page files.
-  // The check also avoids a duplicate on contact.html, which already has it.
-  if (links && !links.querySelector('a[href="/contact"], a[href="/contact.html"]')) {
-    var contactItem = document.createElement("li");
-    var contactLink = document.createElement("a");
-    contactLink.href = "/contact";
-    contactLink.textContent = "Contact";
-    contactItem.appendChild(contactLink);
-    links.appendChild(contactItem);
-  }
-  if (links) {
-    links.querySelectorAll('a[href="/contact.html"]').forEach(function (a) { a.setAttribute("href", "/contact"); });
-  }
 
   if (toggle && links) {
     toggle.addEventListener("click", function () {
@@ -193,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
   else setupSearch();
 })();
 
-/* ---- 7. News box (Home page): show exactly 7½ items, scroll for the rest ---- */
+/* ---- 7. News box (Home page): show 5½ items (4½ on phones), scroll for the rest ---- */
 (function () {
   // How many news items show at once (computers/tablets, and phones)
   var VISIBLE_WIDE = 5.5, VISIBLE_PHONE = 4.5;
@@ -237,18 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
   else setup();
 })();
 
-
-/* ---- 8. Light YouTube player: load the real video only when clicked ---- */
-document.addEventListener("click", function (event) {
-  var btn = event.target.closest && event.target.closest(".yt-lite");
-  if (!btn) return;
-  var frame = document.createElement("iframe");
-  frame.src = "https://www.youtube-nocookie.com/embed/" + btn.dataset.id + "?autoplay=1&rel=0";
-  frame.title = btn.dataset.title || "YouTube video";
-  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  frame.allowFullscreen = true;
-  btn.replaceWith(frame);
-});
 
 /* ---- 9. Faster browsing: while a visitor reads this page, quietly load
          the other pages and their pictures in the background, so the next
