@@ -165,12 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var header = document.querySelector(".site-header");
     var container = header && header.querySelector(".container");
     if (!container) return;
-    if (!document.getElementById("site-search-style")) {
-      var css = document.createElement("link");
-      css.id = "site-search-style"; css.rel = "stylesheet";
-      css.href = new URL("css/search.css?v=6", siteBase).href;
-      document.head.appendChild(css);
-    }
+    // (search styles are part of css/style.css)
     header.classList.add("has-site-search");
     if (!document.getElementById("site-search-trigger")) {
       var link = document.createElement("a");
@@ -287,17 +282,17 @@ document.addEventListener("click", function (event) {
   function whenIdle(fn) { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(fn); }
 
   window.addEventListener("load", function () {
-    // 1. finish loading this page's remaining pictures
-    whenIdle(function () {
-      document.querySelectorAll("img[loading=lazy]").forEach(function (im) { im.loading = "eager"; });
-    });
   });
 
   // 2. the other pages, one after another — started by the visitor's first
   //    scroll, mouse move, touch or key press (so it never slows the first view)
   var started = false;
-  function startPrefetch() {
+  function startPrefetch(e) {
+    // ignore the automatic "mouse move" some browsers/test tools send at page load
+    if (e && e.type === "mousemove" && !e.movementX && !e.movementY) return;
     if (started) return; started = true;
+    // 1. finish loading this page's remaining pictures
+    document.querySelectorAll("img[loading=lazy]").forEach(function (im) { im.loading = "eager"; });
     ["scroll", "mousemove", "touchstart", "keydown"].forEach(function (t) { window.removeEventListener(t, startPrefetch); });
     var i = 0;
     (function next() {
@@ -328,6 +323,7 @@ document.addEventListener("click", function (event) {
 (function () {
   function prepare(img) {
     if (img.complete && img.naturalWidth) return;          // already visible
+    if (img.classList.contains("hero-photo")) return;       // profile photo: show at once
     if (/^https?:/.test(img.getAttribute("src") || "")) return; // outside images (e.g. visitor map)
     img.classList.add("is-loading", "fade-in");
     function show() { img.classList.remove("is-loading"); }
