@@ -16,7 +16,7 @@
 .project-banner { margin:0 0 24px; }
 .project-split { display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; margin-bottom:10px; }
 .project-split .video-wrapper { margin:0; }
-.project-sub { font: 700 1.15rem var(--font-heading); color:var(--color-primary); margin:0 0 10px; }
+.project-sub { font-weight: 700; font-size: 1.15rem; line-height: normal; font-family: var(--font-heading); color:var(--color-primary); margin:0 0 10px; }
 .card.project > .project-sub { margin-top:22px; }
 .objective-grid { counter-reset:obj; list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; }
 .objective-grid li { counter-increment:obj; position:relative; padding-left:42px; line-height:1.55; }

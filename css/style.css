@@ -275,7 +275,7 @@ p  { margin: 0 0 1em; }
   background: currentColor; font-size: 1em;
 }
 .hero .hero-icons .rid-icon span {
-  color: var(--color-surface); font: 800 .36em/1 var(--font-body); letter-spacing: .01em; padding-bottom: .08em;
+  color: var(--color-surface); font-weight: 800; font-size: .36em; line-height: 1; font-family: var(--font-body); letter-spacing: .01em; padding-bottom: .08em;
 }
 
 /* Featured project cards (like the old site: no box, picture on top,
