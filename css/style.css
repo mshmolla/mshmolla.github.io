@@ -267,6 +267,16 @@ p  { margin: 0 0 1em; }
   font-size: 2.4rem;            /* icon size */
 }
 .hero .hero-icons a:hover { background: none; color: var(--color-accent); }
+/* "RID" badge for ResearchID (no ready-made icon exists): a small rounded
+   square in the icon colour, sized like the other square icons */
+.hero .hero-icons .rid-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: .86em; height: .86em; border-radius: .1em;
+  background: currentColor; font-size: 1em;
+}
+.hero .hero-icons .rid-icon span {
+  color: var(--color-surface); font: 800 .36em/1 var(--font-body); letter-spacing: .01em; padding-bottom: .08em;
+}
 
 /* Featured project cards (like the old site: no box, picture on top,
    centred title and text below) */
