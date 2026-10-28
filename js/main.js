@@ -15,7 +15,6 @@
    7. News box on the Home page: shows 5½ items and scrolls for the rest.
    9. Loads the other pages in the background so clicks open instantly.
   10. Pictures fade in softly.  11. Jump links glide to the entry.
-  12. The YouTube video loads when the visitor scrolls near it.
    ========================================================================== */
 
 // Preserve existing bookmarks while displaying the same clean page addresses
@@ -328,18 +327,4 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () { alignToHash(true); }, 150);   // glide the entry just below the menu bar
     setTimeout(function () { alignToHash(true); }, 1400);  // small correction if pictures moved things
   });
-})();
-
-
-/* ---- 12. YouTube video: the normal YouTube player, loaded when the visitor
-         scrolls near it (keeps the first view of the page fast) ---- */
-(function () {
-  var frames = document.querySelectorAll("iframe[data-src]");
-  if (!frames.length) return;
-  function load(f) { if (!f.src) f.src = f.getAttribute("data-src"); }
-  if (!("IntersectionObserver" in window)) { frames.forEach(load); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
-  }, { rootMargin: "600px 0px" });
-  frames.forEach(function (f) { io.observe(f); });
 })();
