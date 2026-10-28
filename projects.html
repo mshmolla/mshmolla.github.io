@@ -52,6 +52,9 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://mshmolla.github.io/projects">
   <!-- Text fonts and icon fonts are stored on this site; loading them early avoids text jumping -->
+  <!-- Start connecting to YouTube early so the video appears sooner -->
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Load the small icon fonts early so icons appear with the page -->
@@ -116,7 +119,7 @@
             </div>
             <div>
               <h4 class="project-sub">Virtual Tour</h4>
-              <div class="video-wrapper">
+              <div class="video-wrapper" style="background: #000 url(https://i.ytimg.com/vi/JWGVg1CxcUs/hqdefault.jpg) center / cover no-repeat;">
                 <iframe src="https://www.youtube-nocookie.com/embed/JWGVg1CxcUs" title="SolarDT project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
