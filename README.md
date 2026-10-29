@@ -26,6 +26,11 @@ Built with plain HTML, CSS and JavaScript and hosted free on GitHub Pages.
 - `js/` — menu, publication buttons, site search, small helpers.
 - `fonts/` — text fonts (Inter, Source Serif 4) and the icon fonts, stored locally.
 - `images/` — profile photo, project pictures, certificates, logos.
+  Many pictures exist twice: a small `.webp` (shown by modern browsers) and the
+  original `.jpg`/`.png` (backup for old devices and link previews). **Keep both.**
+  To replace such a picture, upload the new `.jpg`/`.png` **and** a new `.webp`
+  with the same name (or delete the old `.webp` and remove its `<source …>` line
+  in the page), otherwise the old picture keeps showing.
 - `documents/` — paper and thesis PDFs.
 
 ## Files that must stay
