@@ -1093,18 +1093,3 @@ html.ss-open { overflow: hidden; }
 }
 @media print { .to-top { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
-
-/* ==========================================================================
-   20. SMOOTH PAGE CHANGES
-   Moving between pages of this site cross-fades softly instead of flashing,
-   and the menu bar stays still (Chrome, Edge, Samsung Internet, Safari 18+;
-   other browsers simply open the page as before).
-   ========================================================================== */
-@view-transition { navigation: auto; }
-.site-header { view-transition-name: site-header; }
-::view-transition-old(root),
-::view-transition-new(root) { animation-duration: .22s; animation-timing-function: ease-out; }
-::view-transition-group(site-header) { animation-duration: .22s; }
-@media (prefers-reduced-motion: reduce) {
-  @view-transition { navigation: none; }
-}
