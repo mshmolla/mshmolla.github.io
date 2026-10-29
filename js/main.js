@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function showMissing(img) {
     var box = document.createElement("div");
     box.className = "img-missing " + img.className;
-    box.textContent = "Add image: " + img.getAttribute("src");
+    box.textContent = "Add image: " + ((img.currentSrc || "").replace(location.origin + "/", "") || img.getAttribute("src"));
     img.replaceWith(box);
   }
   //    (only for your own files, not for outside images like the Flag Counter)
@@ -354,10 +354,37 @@ document.addEventListener("DOMContentLoaded", function () {
     img.decoding = "async";
     img.src = src;
   }
-  function prefetchPage(path) {
+  // Which file this browser will really show: the WebP version inside a
+  // <picture> (the size that fits the screen), or the original JPG/PNG.
+  var webpOK = false;
+  (function () {
+    var t = new Image();
+    t.onload = function () { webpOK = t.width > 0; };
+    t.src = "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==";
+  })();
+  function pictureFile(im) {
+    var pic = im.parentNode;
+    var source = pic && pic.nodeName === "PICTURE" && pic.querySelector('source[type="image/webp"]');
+    if (!source || !webpOK) return im.getAttribute("src");
+    var list = source.getAttribute("srcset").split(",").map(function (c) {
+      var p = c.trim().split(/\s+/);
+      return { url: p[0], w: parseInt(p[1], 10) || 0 };
+    });
+    var need = window.innerWidth * (window.devicePixelRatio || 1);
+    for (var i = 0; i < list.length; i++) if (!list[i].w || list[i].w >= need) return list[i].url;
+    return list[list.length - 1].url;
+  }
+  // Phones on mobile data: load other pages' pictures only when the visitor
+  // points at / touches a link to that page (saves their data and keeps this
+  // page fast). On Wi-Fi / fast connections: load them all in the background.
+  var lightMode = conn.effectiveType && conn.effectiveType !== "4g" || (window.matchMedia && window.matchMedia("(max-width: 760px)").matches && conn.type === "cellular");
+  function prefetchPage(path, withPictures) {
     var url = new URL(path, location.href).href;
-    if (done[url] || url.split("#")[0] === location.href.split("#")[0]) return;
+    if (url.split("#")[0] === location.href.split("#")[0]) return;
+    if (done[url] && !(withPictures && !done[url + "#pics"])) return;
     done[url] = true;
+    var pics = withPictures || !lightMode;
+    if (pics) done[url + "#pics"] = true;
     fetch(url, { credentials: "same-origin" }).then(function (r) { return r.ok ? r.text() : ""; })
       .then(function (html) {
         if (!html) return;
@@ -365,9 +392,10 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.querySelectorAll("link[rel=stylesheet][href^='css/']").forEach(function (l) {
           fetch(new URL(l.getAttribute("href"), url).href).catch(function () {});
         });
+        if (!pics) return;
         doc.querySelectorAll("img[src]").forEach(function (im) {
-          var s = im.getAttribute("src");
-          if (!/^https?:/.test(s)) warmImage(new URL(s, url).href);   // own pictures only
+          var s = pictureFile(im);
+          if (s && !/^https?:/.test(s)) warmImage(new URL(s, url).href);   // own pictures only
         });
       }).catch(function () {});
   }
@@ -400,11 +428,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. a page the visitor points at (or touches) is loaded straight away
   document.addEventListener("pointerover", function (e) {
     var a = e.target.closest && e.target.closest("a[href^='/']");
-    if (a) prefetchPage(a.getAttribute("href"));
+    if (a) prefetchPage(a.getAttribute("href"), true);
   }, { passive: true });
   document.addEventListener("touchstart", function (e) {
     var a = e.target.closest && e.target.closest("a[href^='/']");
-    if (a) prefetchPage(a.getAttribute("href"));
+    if (a) prefetchPage(a.getAttribute("href"), true);
   }, { passive: true });
 })();
 
