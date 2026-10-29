@@ -148,14 +148,113 @@ document.addEventListener("DOMContentLoaded", function () {
       alignToHash();
     });
   }
+
+  /* Search box that opens over the page (no separate page needed) */
+  var box = null, index = null, loading = null, timer = null;
+  var PAGES = [["/", "Home"], ["/projects", "Projects"], ["/publications", "Publications"],
+               ["/experience", "Experience"], ["/education", "Education"], ["/contact", "Contact"]];
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
+  function marked(node, text, terms) {
+    window.SiteSearch.highlight(text, terms).forEach(function (p) {
+      node.appendChild(p.match ? el("mark", "", p.text) : document.createTextNode(p.text));
+    });
+  }
+  function buildIndex() {
+    if (loading) return loading;
+    loading = new Promise(function (resolve) { loadSearchCore(resolve); }).then(function () {
+      return Promise.all(PAGES.map(function (p) {
+        var url = new URL(p[0], siteBase).href;
+        return fetch(url, { credentials: "same-origin" }).then(function (r) { return r.ok ? r.text() : ""; })
+          .then(function (html) {
+            if (!html) return [];
+            var doc = new DOMParser().parseFromString(html, "text/html");
+            return window.SiteSearch.extract(doc, url, p[1]);
+          }).catch(function () { return []; });
+      }));
+    }).then(function (lists) {
+      var records = [].concat.apply([], lists);
+      index = records.length ? window.SiteSearch.build(records) : null;
+      return index;
+    });
+    return loading;
+  }
+  function render() {
+    var q = box.input.value.trim();
+    box.clear.hidden = !q;
+    box.list.replaceChildren();
+    if (!q || window.SiteSearch && window.SiteSearch.normalize(q).length < 2) { box.status.textContent = "Type to search projects, papers, experience and more."; return; }
+    if (!index) { box.status.textContent = "Loading…"; return; }
+    var found = window.SiteSearch.find(index, q, ""), total = found.results.length;
+    box.status.textContent = total ? total + (total === 1 ? " matching result" : " matching results") : "No results for \u201c" + q + "\u201d. Try another word.";
+    found.results.slice(0, 30).forEach(function (match) {
+      var r = match.record, target = new URL(r.url);
+      if (target.hash) target.searchParams.set("search", q);
+      var li = el("li", "ss-item"), a = el("a", "ss-link");
+      a.href = target.pathname + target.search + target.hash;
+      var page = el("span", "ss-page", r.page);
+      var title = el("span", "ss-title"); marked(title, r.title, match.terms);
+      var text = el("span", "ss-text"); marked(text, window.SiteSearch.snippet(r.text, match.terms, 170), match.terms);
+      a.append(page, title, text); li.appendChild(a); box.list.appendChild(li);
+    });
+  }
+  function closeSearch() {
+    if (!box || box.root.hidden) return;
+    box.root.hidden = true; document.documentElement.classList.remove("ss-open");
+    if (box.returnTo) box.returnTo.focus();
+  }
+  function openSearch() {
+    if (!box) {
+      var root = el("div", "ss-overlay"); root.hidden = true;
+      root.setAttribute("role", "dialog"); root.setAttribute("aria-modal", "true"); root.setAttribute("aria-label", "Search this website");
+      var panel = el("div", "ss-panel");
+      var bar = el("div", "ss-bar");
+      var field = el("label", "ss-field");
+      field.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>';
+      var input = el("input", "ss-input"); input.type = "search"; input.placeholder = "Search this website…";
+      input.setAttribute("aria-label", "Search this website"); input.autocomplete = "off";
+      var clear = el("button", "ss-clear", "\u00d7"); clear.type = "button"; clear.hidden = true; clear.setAttribute("aria-label", "Clear search");
+      field.append(input, clear);
+      var cancel = el("button", "ss-cancel", "Cancel"); cancel.type = "button";
+      bar.append(field, cancel);
+      var status = el("p", "ss-status"); status.setAttribute("aria-live", "polite");
+      var list = el("ul", "ss-results");
+      panel.append(bar, status, list); root.appendChild(panel); document.body.appendChild(root);
+      box = { root: root, input: input, clear: clear, status: status, list: list };
+      input.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(render, 120); });
+      clear.addEventListener("click", function () { input.value = ""; render(); input.focus(); });
+      cancel.addEventListener("click", closeSearch);
+      root.addEventListener("click", function (e) { if (e.target === root) closeSearch(); });
+      root.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { e.preventDefault(); closeSearch(); return; }
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          var links = Array.from(list.querySelectorAll("a")); if (!links.length) return;
+          var i = links.indexOf(document.activeElement);
+          i = e.key === "ArrowDown" ? (i + 1) % links.length : (i <= 0 ? links.length - 1 : i - 1);
+          e.preventDefault(); links[i].focus();
+        }
+        if (e.key === "Tab") {   // keep keyboard focus inside the search box
+          var f = [input, clear, cancel].concat(Array.from(list.querySelectorAll("a"))).filter(function (n) { return !n.hidden; });
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+    }
+    box.returnTo = document.activeElement;
+    box.root.hidden = false; document.documentElement.classList.add("ss-open");
+    box.input.focus(); box.input.select();
+    render();
+    buildIndex().then(render);
+  }
   function setupSearch() {
     var header = document.querySelector(".site-header");
     var container = header && header.querySelector(".container");
     if (!container) return;
     // (search styles are part of css/style.css)
     header.classList.add("has-site-search");
-    if (!document.getElementById("site-search-trigger")) {
-      var link = document.createElement("a");
+    var link = document.getElementById("site-search-trigger");
+    if (!link) {
+      link = document.createElement("a");
       link.id = "site-search-trigger"; link.className = "site-search-trigger";
       link.href = searchUrl.href;
       link.setAttribute("aria-label", "Search this website");
@@ -166,12 +265,15 @@ document.addEventListener("DOMContentLoaded", function () {
       link.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg><span class="site-search-accessible">Search</span>';
       container.appendChild(link);
     }
+    // Open the search box: click the magnifier, or press "/" anywhere
+    link.addEventListener("click", function (event) {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1) return;
+      event.preventDefault(); openSearch();
+    });
     document.addEventListener("keydown", function (event) {
       if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey || event.defaultPrevented) return;
       if (event.target.closest && event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
-      event.preventDefault();
-      var input = document.getElementById("search-query");
-      if (input) input.focus(); else window.location.assign(searchUrl.href);
+      event.preventDefault(); openSearch();
     });
     revealSearchTarget();
     window.addEventListener("hashchange", revealSearchTarget);
