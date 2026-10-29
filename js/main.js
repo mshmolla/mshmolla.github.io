@@ -473,3 +473,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { passive: true });
   header.addEventListener("focusin", function () { show(true); });
 })();
+
+/* 14. "Back to top" button (phones and tablets; its look is in style.css
+   section 19). It appears once you have scrolled down about one screen. */
+(function () {
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "to-top";
+  btn.setAttribute("aria-label", "Back to top");
+  btn.title = "Back to top";
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(btn);
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var shown = false, ticking = false;
+  function update() {
+    ticking = false;
+    var want = window.pageYOffset > window.innerHeight * 0.9;
+    if (want !== shown) { shown = want; btn.classList.toggle("show", want); }
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  btn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
+  });
+  update();
+})();
