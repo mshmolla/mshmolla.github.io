@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* ---- 4. Jump links: put the entry just below the menu bar ---- */
 function alignToHash(smooth) {
-  window.__navHoldUntil = Date.now() + 1800;   // keep the menu bar visible while jumping
   if (!window.location.hash) return;
   var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (!target) return;
+  window.__navHoldUntil = Date.now() + 1800;   // keep the menu bar visible while jumping
   var header = document.querySelector(".site-header");
   var gap = (header ? header.offsetHeight : 0) + 16;   // menu bar height + small space
   var top = target.getBoundingClientRect().top + window.pageYOffset - gap;
@@ -446,8 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!header) return;
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   header.style.transition = calm ? "none" : "transform .3s ease";
-  header.style.willChange = "transform";
-  var lastY = window.pageYOffset, hidden = false, ticking = false;
+  var lastY = window.pageYOffset, lastH = document.documentElement.scrollHeight;
+  var down = 0, up = 0, hidden = false, ticking = false;
   function show(yes) {
     if (yes === !hidden) return;
     hidden = !yes;
@@ -455,18 +455,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function update() {
     ticking = false;
-    var y = Math.max(0, window.pageYOffset), dy = y - lastY;
-    var menuOpen = document.querySelector(".nav-links.open");
-    var searchOpen = document.documentElement.classList.contains("ss-open");
-    var holding = Date.now() < (window.__navHoldUntil || 0);
-    if (y < header.offsetHeight + 10 || menuOpen || searchOpen || holding) show(true);
-    else if (dy > 6) show(false);        // scrolling down
-    else if (dy < -6) show(true);        // scrolling up
-    if (Math.abs(dy) > 6 || y < 10) lastY = y;
+    var y = Math.max(0, window.pageYOffset), h = document.documentElement.scrollHeight;
+    var dy = y - lastY;
+    var resized = h !== lastH;            // a picture finished loading and moved the page
+    lastY = y; lastH = h;
+    var keep = y < header.offsetHeight + 10
+      || document.querySelector(".nav-links.open")
+      || document.documentElement.classList.contains("ss-open")
+      || Date.now() < (window.__navHoldUntil || 0);
+    if (keep) { down = up = 0; show(true); return; }
+    if (resized && Math.abs(dy) < 80) return;   // ignore page jumps caused by loading, not by the visitor
+    if (dy > 0) { down += dy; up = 0; if (down > 12) show(false); }
+    else if (dy < 0) { up -= dy; down = 0; if (up > 30) show(true); }
   }
   window.addEventListener("scroll", function () {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
-  // Keyboard users: show the bar whenever something in it gets focus
   header.addEventListener("focusin", function () { show(true); });
 })();
