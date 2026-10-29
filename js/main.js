@@ -182,8 +182,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var q = box.input.value.trim();
     box.clear.hidden = !q;
     box.list.replaceChildren();
-    if (!q || window.SiteSearch && window.SiteSearch.normalize(q).length < 2) { box.status.textContent = "Type to search projects, papers, experience and more."; return; }
-    if (!index) { box.status.textContent = "Loading…"; return; }
+    if (!q || window.SiteSearch && window.SiteSearch.normalize(q).length < 2) { box.status.textContent = ""; return; }
+    if (!index) { box.status.textContent = "Searching…"; return; }
     var found = window.SiteSearch.find(index, q, ""), total = found.results.length;
     box.status.textContent = total ? total + (total === 1 ? " matching result" : " matching results") : "No results for \u201c" + q + "\u201d. Try another word.";
     found.results.slice(0, 30).forEach(function (match) {
@@ -202,7 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
     box.root.hidden = true; document.documentElement.classList.remove("ss-open");
     if (box.returnTo) box.returnTo.focus();
   }
+  // The search box brings its own styles, so it always looks right
+  // even if a page was saved with older styles.
+  var SS_CSS = 'html.ss-open { overflow: hidden; } .ss-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(14, 21, 32, .45); display: flex; justify-content: center; align-items: flex-start; padding: 72px 16px 16px; } .ss-overlay[hidden] { display: none; } .ss-panel { width: 100%; max-width: 760px; max-height: calc(100vh - 110px); display: flex; flex-direction: column; background: var(--color-surface); border-radius: var(--radius); box-shadow: 0 18px 50px rgba(0, 0, 0, .3); overflow: hidden; } .ss-bar { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 1px solid var(--color-border); } .ss-field { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding: 0 12px; border: 1.5px solid var(--color-accent); border-radius: 10px; background: var(--color-surface); color: var(--color-muted); } .ss-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 12px 0; font: inherit; font-size: 1.05rem; color: var(--color-text); } .ss-input::-webkit-search-cancel-button { display: none; } .ss-clear { border: 0; background: none; font-size: 1.5rem; line-height: 1; color: var(--color-muted); cursor: pointer; padding: 0 2px; } .ss-cancel { border: 0; background: none; font: inherit; font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 8px 4px; } .ss-status:empty { display: none; } .ss-status { margin: 0; padding: 10px 18px; font-size: .9rem; color: var(--color-muted); background: var(--color-bg); } .ss-results { list-style: none; margin: 0; padding: 0; overflow-y: auto; } .ss-item + .ss-item { border-top: 1px solid var(--color-border); } .ss-link { display: block; padding: 14px 18px; color: var(--color-text); text-decoration: none; } .ss-link:hover, .ss-link:focus-visible { background: var(--color-tint); text-decoration: none; outline: none; } .ss-page { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--color-accent); } .ss-title { display: block; margin: 2px 0 4px; font-weight: 700; color: var(--color-primary); } .ss-text { display: block; font-size: .9rem; line-height: 1.5; color: var(--color-muted); } .ss-results mark { background: rgba(255, 214, 10, .45); color: inherit; border-radius: 2px; padding: 0 1px; } @media (max-width: 600px) { .ss-overlay { padding: 12px 8px; } .ss-panel { max-height: calc(100vh - 24px); } }';
   function openSearch() {
+    if (!document.getElementById("ss-style")) {
+      var st = document.createElement("style"); st.id = "ss-style"; st.textContent = SS_CSS;
+      document.head.appendChild(st);
+    }
     if (!box) {
       var root = el("div", "ss-overlay"); root.hidden = true;
       root.setAttribute("role", "dialog"); root.setAttribute("aria-modal", "true"); root.setAttribute("aria-label", "Search this website");
