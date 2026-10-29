@@ -393,6 +393,10 @@ p  { margin: 0 0 1em; }
 .footer-gap { margin-top: 1.6em; }          /* space above "Office Hours" */
 .footer-counter { display: flex; justify-content: center; align-items: flex-start; }
 .footer-counter img { display: inline-block; max-width: 100%; }
+/* On wider screens, shift the visitor map a little left so it sits
+   evenly between Useful Links and Contact */
+@media (min-width: 761px) { .footer-counter { padding-right: 72px; } }
+@media (min-width: 1024px) { .footer-counter img { transform: translateX(-70px); } }
 /* "Useful Links" in the footer: page links with a small arrow, spaced like the Contact list */
 .footer-links { list-style: none; margin: 0; padding: 0; }
 .footer-links li { margin-bottom: .7em; }
