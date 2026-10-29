@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* ---- 4. Jump links: put the entry just below the menu bar ---- */
 function alignToHash(smooth) {
+  window.__navHoldUntil = Date.now() + 1800;   // keep the menu bar visible while jumping
   if (!window.location.hash) return;
   var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (!target) return;
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // The search box brings its own styles, so it always looks right
   // even if a page was saved with older styles.
-  var SS_CSS = 'html.ss-open { overflow: hidden; } .ss-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(14, 21, 32, .45); display: flex; justify-content: center; align-items: flex-start; padding: 72px 16px 16px; } .ss-overlay[hidden] { display: none; } .ss-panel { width: 100%; max-width: 760px; max-height: calc(100vh - 110px); display: flex; flex-direction: column; background: var(--color-surface); border-radius: var(--radius); box-shadow: 0 18px 50px rgba(0, 0, 0, .3); overflow: hidden; } .ss-bar { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-bottom: 1px solid var(--color-border); } .ss-field { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding: 0 10px; border: 1.5px solid var(--color-accent); border-radius: 8px; background: var(--color-surface); color: var(--color-muted); } .ss-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 7px 0; font: inherit; font-size: 1rem; color: var(--color-text); } .ss-input::-webkit-search-cancel-button { display: none; } .ss-clear { border: 0; background: none; font-size: 1.5rem; line-height: 1; color: var(--color-muted); cursor: pointer; padding: 0 2px; } .ss-cancel { border: 0; background: none; font: inherit; font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 6px 4px; } .ss-status:empty { display: none; } .ss-status { margin: 0; padding: 10px 18px; font-size: .9rem; color: var(--color-muted); background: var(--color-bg); } .ss-results { list-style: none; margin: 0; padding: 0; overflow-y: auto; } .ss-item + .ss-item { border-top: 1px solid var(--color-border); } .ss-link { display: block; padding: 14px 18px; color: var(--color-text); text-decoration: none; } .ss-link:hover, .ss-link:focus-visible { background: var(--color-tint); text-decoration: none; outline: none; } .ss-page { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--color-accent); } .ss-title { display: block; margin: 2px 0 4px; font-weight: 700; color: var(--color-primary); } .ss-text { display: block; font-size: .9rem; line-height: 1.5; color: var(--color-muted); } .ss-results mark { background: rgba(255, 214, 10, .45); color: inherit; border-radius: 2px; padding: 0 1px; } @media (max-width: 600px) { .ss-overlay { padding: 12px 8px; } .ss-panel { max-height: calc(100vh - 24px); } }';
+  var SS_CSS = 'html.ss-open { overflow: hidden; } .ss-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(14, 21, 32, .45); display: flex; justify-content: center; align-items: flex-start; padding: 72px 16px 16px; } .ss-overlay[hidden] { display: none; } .ss-panel { width: 100%; max-width: 760px; max-height: calc(100vh - 110px); display: flex; flex-direction: column; background: var(--color-surface); border-radius: var(--radius); box-shadow: 0 18px 50px rgba(0, 0, 0, .3); overflow: hidden; } .ss-bar { display: flex; align-items: center; gap: 12px; padding: 6px 10px; border-bottom: 1px solid var(--color-border); } .ss-field { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; padding: 0 10px; border: 1.5px solid var(--color-accent); border-radius: 8px; background: var(--color-surface); color: var(--color-muted); } .ss-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 4px 0; font: inherit; font-size: .95rem; line-height: 1.4; height: 32px; box-sizing: border-box; color: var(--color-text); } .ss-input::-webkit-search-cancel-button { display: none; } .ss-clear { border: 0; background: none; font-size: 1.5rem; line-height: 1; color: var(--color-muted); cursor: pointer; padding: 0 2px; } .ss-cancel { border: 0; background: none; font: inherit; font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 4px; } .ss-status:empty { display: none; } .ss-status { margin: 0; padding: 10px 18px; font-size: .9rem; color: var(--color-muted); background: var(--color-bg); } .ss-results { list-style: none; margin: 0; padding: 0; overflow-y: auto; } .ss-item + .ss-item { border-top: 1px solid var(--color-border); } .ss-link { display: block; padding: 14px 18px; color: var(--color-text); text-decoration: none; } .ss-link:hover, .ss-link:focus-visible { background: var(--color-tint); text-decoration: none; outline: none; } .ss-page { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--color-accent); } .ss-title { display: block; margin: 2px 0 4px; font-weight: 700; color: var(--color-primary); } .ss-text { display: block; font-size: .9rem; line-height: 1.5; color: var(--color-muted); } .ss-results mark { background: rgba(255, 214, 10, .45); color: inherit; border-radius: 2px; padding: 0 1px; } @media (max-width: 600px) { .ss-overlay { padding: 12px 8px; } .ss-panel { max-height: calc(100vh - 24px); } }';
   function openSearch() {
     if (!document.getElementById("ss-style")) {
       var st = document.createElement("style"); st.id = "ss-style"; st.textContent = SS_CSS;
@@ -436,4 +437,36 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () { alignToHash(true); }, 150);   // glide the entry just below the menu bar
     setTimeout(function () { alignToHash(true); }, 1400);  // small correction if pictures moved things
   });
+})();
+
+/* ---- 13. Menu bar hides while scrolling down and comes back when
+         scrolling up (always shown near the top of the page) ---- */
+(function () {
+  var header = document.querySelector(".site-header");
+  if (!header) return;
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  header.style.transition = calm ? "none" : "transform .3s ease";
+  header.style.willChange = "transform";
+  var lastY = window.pageYOffset, hidden = false, ticking = false;
+  function show(yes) {
+    if (yes === !hidden) return;
+    hidden = !yes;
+    header.style.transform = yes ? "" : "translateY(-100%)";
+  }
+  function update() {
+    ticking = false;
+    var y = Math.max(0, window.pageYOffset), dy = y - lastY;
+    var menuOpen = document.querySelector(".nav-links.open");
+    var searchOpen = document.documentElement.classList.contains("ss-open");
+    var holding = Date.now() < (window.__navHoldUntil || 0);
+    if (y < header.offsetHeight + 10 || menuOpen || searchOpen || holding) show(true);
+    else if (dy > 6) show(false);        // scrolling down
+    else if (dy < -6) show(true);        // scrolling up
+    if (Math.abs(dy) > 6 || y < 10) lastY = y;
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  // Keyboard users: show the bar whenever something in it gets focus
+  header.addEventListener("focusin", function () { show(true); });
 })();
