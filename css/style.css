@@ -396,6 +396,8 @@ p  { margin: 0 0 1em; }
 .footer-gap { margin-top: 1.6em; }          /* space above "Office Hours" */
 .footer-counter { display: flex; justify-content: center; align-items: flex-start; }
 .footer-counter img { display: inline-block; max-width: 100%; }
+/* keep room for the visitor map while it loads (it grows by itself if it gets taller) */
+.footer-counter img { min-height: 119px; }
 /* On wider screens: Useful Links on the left edge, Contact on the right
    edge, and the visitor map with equal space on both sides */
 @media (min-width: 761px) {
@@ -1093,3 +1095,17 @@ html.ss-open { overflow: hidden; }
 }
 @media print { .to-top { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+
+/* ==========================================================================
+   20. KEYBOARD AND SCREEN-READER HELPERS (no effect on the normal look)
+   ========================================================================== */
+/* The menu's <nav> wrapper adds no box of its own, so the menu bar layout is unchanged */
+.site-nav { display: contents; }
+/* "Skip to content" link: hidden off-screen, appears only when reached with the Tab key */
+.skip-link {
+  position: absolute; left: 8px; top: -60px; z-index: 2000;
+  padding: 8px 14px; border-radius: 8px;
+  background: var(--color-surface); color: var(--color-primary); font-weight: 600;
+  box-shadow: var(--shadow); text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
