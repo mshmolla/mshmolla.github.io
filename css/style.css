@@ -15,7 +15,7 @@
 :root {
   /* --- Colours (any CSS colour works, e.g. #1d3557 or rgb(29,53,87)) --- */
   --color-primary:  #1d3557;   /* main colour: header bar, headings, buttons  */
-  --color-accent:   #0f8b8d;   /* highlight colour: links, small details      */
+  --color-accent:   #0b7577;   /* highlight colour: links, small details      */
   --color-bg:       #f6f7f9;   /* page background (light grey)                */
   --color-surface:  #ffffff;   /* background of the white "cards"             */
   --color-text:     #1f2933;   /* normal text                                  */
@@ -653,7 +653,7 @@ img.fade-in { transition: opacity .45s ease; }
    ========================================================================== */
 @media print {
   :root {
-    --color-primary: #1d3557; --color-accent: #0f8b8d; --color-bg: #fff; --color-surface: #fff;
+    --color-primary: #1d3557; --color-accent: #0b7577; --color-bg: #fff; --color-surface: #fff;
     --color-text: #000; --color-muted: #444; --color-border: #ccc;
   }
   body { background: #fff; font-size: 11pt; }
