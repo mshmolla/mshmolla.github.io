@@ -32,9 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".cite-tab").forEach(function (tab) {
     tab.addEventListener("click", function () {
       var box = tab.closest(".pub-panel");
-      box.querySelectorAll(".cite-tab").forEach(function (t) { t.classList.toggle("active", t === tab); });
+      box.querySelectorAll(".cite-tab").forEach(function (t) {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-pressed", t === tab ? "true" : "false");   // tells screen readers which style is chosen
+      });
       box.querySelectorAll(".cite-text").forEach(function (c) { c.hidden = (c.id !== tab.dataset.show); });
     });
+  });
+
+  // Screen readers: say which citation style is currently chosen
+  document.querySelectorAll(".cite-tab").forEach(function (t) {
+    t.setAttribute("aria-pressed", t.classList.contains("active") ? "true" : "false");
   });
 
   /* 3. Copy button */
@@ -46,21 +54,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!shown) return;
       var text = shown.innerText.trim();
       function done() {
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+        btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied';
         btn.classList.add("done");
         setTimeout(function () {
-          btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+          btn.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i> Copy';
           btn.classList.remove("done");
         }, 1800);
       }
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(done);
-      } else {                                   // fallback for older browsers
+      function oldWay() {                        // older browsers, or clipboard permission refused
         var t = document.createElement("textarea");
-        t.value = text; document.body.appendChild(t); t.select();
-        try { document.execCommand("copy"); done(); } catch (e) {}
+        t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+        document.body.appendChild(t); t.select();
+        try { if (document.execCommand("copy")) done(); } catch (e) {}
         t.remove();
       }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, oldWay);
+      } else oldWay();
     });
   });
 });

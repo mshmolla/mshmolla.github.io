@@ -34,10 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var links  = document.querySelector(".nav-links");
 
   if (toggle && links) {
-    toggle.addEventListener("click", function () {
-      var isOpen = links.classList.toggle("open");
+    function setMenu(isOpen) {
+      links.classList.toggle("open", isOpen);
       toggle.setAttribute("aria-expanded", isOpen);
+      toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
       toggle.textContent = isOpen ? "✕" : "☰";
+    }
+    toggle.addEventListener("click", function () { setMenu(!links.classList.contains("open")); });
+    // Esc closes the open menu and puts the keyboard focus back on the ☰ button
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && links.classList.contains("open")) { setMenu(false); toggle.focus(); }
     });
   }
 
@@ -119,7 +125,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var siteBase = new URL("../", script && script.src ? script.src : new URL("js/main.js", window.location.href).href);
   var searchUrl = new URL("search", siteBase);
 
-  function loadSearchCore(callback) {
+  // Loads js/search-core.js once. If it cannot load (offline, blocked, or
+  // slower than 15 s) onFail runs, and the next attempt tries again.
+  function loadSearchCore(callback, onFail) {
     if (window.SiteSearch) { callback(); return; }
     var loader = document.getElementById("site-search-core-script");
     if (!loader) {
@@ -127,9 +135,49 @@ document.addEventListener("DOMContentLoaded", function () {
       loader.id = "site-search-core-script";
       loader.src = new URL("js/search-core.js?v=5", siteBase).href;
       loader.async = true;
-      loader.addEventListener("load", callback, { once: true });
       document.head.appendChild(loader);
-    } else loader.addEventListener("load", callback, { once: true });
+    }
+    var finished = false;
+    function ok() { if (finished) return; finished = true; clearTimeout(timer); callback(); }
+    function fail() {
+      if (finished) return; finished = true; clearTimeout(timer);
+      if (!window.SiteSearch && loader.parentNode) loader.parentNode.removeChild(loader);   // allow a fresh try
+      if (onFail) onFail();
+    }
+    var timer = setTimeout(fail, 15000);
+    loader.addEventListener("load", ok, { once: true });
+    loader.addEventListener("error", fail, { once: true });
+  }
+  // A search result can match text inside a closed "Abstract", "Details" or
+  // "Cite" box. Open that box (with its own button, so the button state and
+  // the one-box-at-a-time rule stay correct) so the matching text is visible.
+  function openMatchingPanel(target, query) {
+    var S = window.SiteSearch;
+    var terms = S.normalize(query).split(" ").filter(function (t) { return t.length >= 2; });
+    if (!terms.length) return;
+    function hits(node) {
+      var text = " " + S.normalize(node.textContent) + " ";
+      return terms.filter(function (t) { return text.indexOf(t) !== -1; }).length;
+    }
+    var best = null, bestHits = 0;
+    target.querySelectorAll(".pub-panel[hidden]").forEach(function (panel) {
+      var n = hits(panel);
+      if (n > bestHits) { best = panel; bestHits = n; }
+    });
+    if (!best) return;
+    var button = target.querySelector('.pub-btn[aria-controls="' + best.id + '"]');
+    if (button) button.click();
+    if (best.hidden) { best.hidden = false; if (button) button.setAttribute("aria-expanded", "true"); }
+    // inside a citation box: show the IEEE / BibTeX version that matches
+    var shown = Array.prototype.filter.call(best.querySelectorAll(".cite-text"), function (c) { return !c.hidden; });
+    if (shown.length && !shown.some(function (c) { return hits(c); })) {
+      Array.prototype.some.call(best.querySelectorAll(".cite-text[hidden]"), function (c) {
+        if (!hits(c)) return false;
+        var tab = best.querySelector('.cite-tab[data-show="' + c.id + '"]');
+        if (tab) tab.click();
+        return true;
+      });
+    }
   }
   function revealSearchTarget() {
     if (!window.location.hash) return;
@@ -145,8 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var filter = document.getElementById("topic-filter");
       if (filter && filter.value !== "all") { filter.value = "all"; filter.dispatchEvent(new Event("change", { bubbles: true })); }
       target.querySelectorAll("details").forEach(function (details) { details.open = true; });
+      openMatchingPanel(target, params.get("search") || "");
       target.classList.add("site-search-hit");
       alignToHash();
+      setTimeout(alignToHash, 120);   // once more, after an opened panel has been laid out
     });
   }
 
@@ -162,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function buildIndex() {
     if (loading) return loading;
-    loading = new Promise(function (resolve) { loadSearchCore(resolve); }).then(function () {
+    loading = new Promise(function (resolve, reject) { loadSearchCore(resolve, reject); }).then(function () {
       return Promise.all(PAGES.map(function (p) {
         var url = new URL(p[0], siteBase).href;
         return fetch(url, { credentials: "same-origin" }).then(function (r) { return r.ok ? r.text() : ""; })
@@ -175,8 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(function (lists) {
       var records = [].concat.apply([], lists);
       index = records.length ? window.SiteSearch.build(records) : null;
+      if (!index) loading = null;     // nothing could be read: try again on the next search
       return index;
-    });
+    }, function () { loading = null; return null; });   // search script failed: try again next time
     return loading;
   }
   function render() {
@@ -228,7 +279,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var list = el("ul", "ss-results");
       panel.append(bar, status, list); root.appendChild(panel); document.body.appendChild(root);
       box = { root: root, input: input, clear: clear, status: status, list: list };
-      input.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(render, 120); });
+      input.addEventListener("input", function () {
+        if (!index && !loading) buildIndex().then(render);   // retry if an earlier attempt failed
+        clearTimeout(timer); timer = setTimeout(render, 120);
+      });
       clear.addEventListener("click", function () { input.value = ""; render(); input.focus(); });
       cancel.addEventListener("click", closeSearch);
       root.addEventListener("click", function (e) { if (e.target === root) closeSearch(); });
@@ -335,107 +389,36 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 
-/* ---- 9. Faster browsing: while a visitor reads this page, quietly load
-         the other pages and their pictures in the background, so the next
-         click opens instantly. Also loads any not-yet-shown pictures on this
-         page, so nothing "pops in" while scrolling. Skipped on data-saver /
-         very slow connections. ---- */
+/* ---- 9. Faster clicks: when a visitor points at (or touches, or tabs to)
+         a link to another page of this site, the browser quietly fetches that
+         page in the background, so it opens quickly when clicked. Nothing else
+         is downloaded in advance, and pictures still load only when they are
+         about to be seen. Skipped when the visitor has data saving switched on
+         or a very slow connection. ---- */
 (function () {
   var conn = navigator.connection || {};
   if (conn.saveData || /2g/.test(conn.effectiveType || "")) return;
-
-  var PAGES = ["/", "/projects", "/publications", "/experience", "/education", "/contact"];
   var done = {};
-
-  function warmImage(src) {
-    if (!src || done[src] || /^data:/.test(src)) return;
-    done[src] = true;
-    var img = new Image();
-    img.decoding = "async";
-    img.src = src;
+  function prefetchPage(href) {
+    var url;
+    try { url = new URL(href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin) return;
+    url.hash = ""; url.search = "";
+    var key = url.pathname;
+    if (done[key] || key === location.pathname || /\.(pdf|jpe?g|png|webp|zip)$/i.test(key)) return;
+    done[key] = true;
+    var link = document.createElement("link");
+    link.rel = "prefetch"; link.as = "document"; link.href = url.href;
+    document.head.appendChild(link);
   }
-  // Which file this browser will really show: the WebP version inside a
-  // <picture> (the size that fits the screen), or the original JPG/PNG.
-  var webpOK = false;
-  (function () {
-    var t = new Image();
-    t.onload = function () { webpOK = t.width > 0; };
-    t.src = "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==";
-  })();
-  function pictureFile(im) {
-    var pic = im.parentNode;
-    var source = pic && pic.nodeName === "PICTURE" && pic.querySelector('source[type="image/webp"]');
-    if (!source || !webpOK) return im.getAttribute("src");
-    var list = source.getAttribute("srcset").split(",").map(function (c) {
-      var p = c.trim().split(/\s+/);
-      return { url: p[0], w: parseInt(p[1], 10) || 0 };
-    });
-    var need = window.innerWidth * (window.devicePixelRatio || 1);
-    for (var i = 0; i < list.length; i++) if (!list[i].w || list[i].w >= need) return list[i].url;
-    return list[list.length - 1].url;
-  }
-  // Phones on mobile data: load other pages' pictures only when the visitor
-  // points at / touches a link to that page (saves their data and keeps this
-  // page fast). On Wi-Fi / fast connections: load them all in the background.
-  var lightMode = conn.effectiveType && conn.effectiveType !== "4g" || (window.matchMedia && window.matchMedia("(max-width: 760px)").matches && conn.type === "cellular");
-  function prefetchPage(path, withPictures) {
-    var url = new URL(path, location.href).href;
-    if (url.split("#")[0] === location.href.split("#")[0]) return;
-    if (done[url] && !(withPictures && !done[url + "#pics"])) return;
-    done[url] = true;
-    var pics = withPictures || !lightMode;
-    if (pics) done[url + "#pics"] = true;
-    fetch(url, { credentials: "same-origin" }).then(function (r) { return r.ok ? r.text() : ""; })
-      .then(function (html) {
-        if (!html) return;
-        var doc = new DOMParser().parseFromString(html, "text/html");
-        doc.querySelectorAll("link[rel=stylesheet][href^='css/']").forEach(function (l) {
-          fetch(new URL(l.getAttribute("href"), url).href).catch(function () {});
-        });
-        if (!pics) return;
-        doc.querySelectorAll("img[src]").forEach(function (im) {
-          var s = pictureFile(im);
-          if (s && !/^https?:/.test(s)) warmImage(new URL(s, url).href);   // own pictures only
-        });
-      }).catch(function () {});
-  }
-  function whenIdle(fn) { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(fn); }
-
-  window.addEventListener("load", function () {
-  });
-
-  // 2. the other pages, one after another — started by the visitor's first
-  //    scroll, mouse move, touch or key press (so it never slows the first view)
-  var started = false;
-  function startPrefetch(e) {
-    // ignore the automatic "mouse move" some browsers/test tools send at page load
-    if (e && e.type === "mousemove" && !e.movementX && !e.movementY) return;
-    if (started) return; started = true;
-    // 1. finish loading this page's remaining pictures
-    document.querySelectorAll("img[loading=lazy]").forEach(function (im) { im.loading = "eager"; });
-    ["scroll", "mousemove", "touchstart", "keydown"].forEach(function (t) { window.removeEventListener(t, startPrefetch); });
-    var i = 0;
-    (function next() {
-      if (i >= PAGES.length) return;
-      prefetchPage(PAGES[i++]);
-      whenIdle(next);
-    })();
-  }
-  ["scroll", "mousemove", "touchstart", "keydown"].forEach(function (t) {
-    window.addEventListener(t, startPrefetch, { passive: true });
-  });
-
-  // 3. a page the visitor points at (or touches) is loaded straight away
-  document.addEventListener("pointerover", function (e) {
+  function fromEvent(e) {
     var a = e.target.closest && e.target.closest("a[href^='/']");
-    if (a) prefetchPage(a.getAttribute("href"), true);
-  }, { passive: true });
-  document.addEventListener("touchstart", function (e) {
-    var a = e.target.closest && e.target.closest("a[href^='/']");
-    if (a) prefetchPage(a.getAttribute("href"), true);
-  }, { passive: true });
+    if (a && !a.hasAttribute("download")) prefetchPage(a.getAttribute("href"));
+  }
+  document.addEventListener("pointerover", fromEvent, { passive: true });
+  document.addEventListener("touchstart", fromEvent, { passive: true });
+  document.addEventListener("focusin", fromEvent);
 })();
-
 
 /* ---- 10. Pictures fade in softly instead of popping in (only pictures
          that are not loaded yet; the profile photo and logos already shown
@@ -474,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!header) return;
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   header.style.transition = calm ? "none" : "transform .3s ease";
-  var lastY = window.pageYOffset, lastH = document.documentElement.scrollHeight;
+  var lastY = window.pageYOffset, lastH = -1;   // page height is read on the first scroll (not while the page is still loading)
   var down = 0, up = 0, hidden = false, ticking = false;
   function show(yes) {
     if (yes === !hidden) return;
@@ -485,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ticking = false;
     var y = Math.max(0, window.pageYOffset), h = document.documentElement.scrollHeight;
     var dy = y - lastY;
-    var resized = h !== lastH;            // a picture finished loading and moved the page
+    var resized = lastH >= 0 && h !== lastH;   // a picture finished loading and moved the page
     lastY = y; lastH = h;
     var keep = y < header.offsetHeight + 10
       || document.querySelector(".nav-links.open")
