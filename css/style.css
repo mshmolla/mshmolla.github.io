@@ -406,8 +406,12 @@ p  { margin: 0 0 1em; }
 /* "Useful Links" in the footer: page links with a small arrow, spaced like the Contact list */
 .footer-links { list-style: none; margin: 0; padding: 0; }
 .footer-links li { margin-bottom: .7em; }
-.footer-links a { display: inline-flex; align-items: center; gap: 10px; }
-.footer-links a::before { content: "\203A"; font-size: 1.35em; line-height: 1; color: rgba(255, 255, 255, .7); }
+.footer-links a { display: inline-flex; align-items: center; gap: 10px; position: relative; }
+/* the › arrow sits in its own layer so the hover underline goes under the words only */
+.footer-links a::before { content: "\203A"; font-size: 1.35em; line-height: 1; color: rgba(255, 255, 255, .7); visibility: hidden; }
+.footer-links a::after { content: "\203A"; font-size: 1.35em; line-height: 1; color: rgba(255, 255, 255, .7);
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%); text-decoration: none; }
+.footer-links a:hover::after { color: #fff; }
 .footer-links a:hover::before { color: #fff; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
 .contact-list li { display: flex; align-items: center; gap: 12px; margin-bottom: .7em; }
