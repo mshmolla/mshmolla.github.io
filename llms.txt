@@ -1,0 +1,39 @@
+# Md. Sabbir Hossain Molla
+
+> Md. Sabbir Hossain Molla is a researcher in machine and deep learning for power systems, focusing on smart grids, digital twins, and renewable energy. He holds a BSc in Electrical, Electronic and Communication Engineering (EECE) from the Military Institute of Science and Technology (MIST), Dhaka, Bangladesh, and is a Research Assistant at the Smart Grid & Sustainable Energy Transition Lab (SET Lab), Department of EECE, MIST, working on an AI-enabled digital twin of a solar PV plant (SolarDT, funded by BEPRC). He is a prospective MS/PhD applicant.
+
+This is his official academic website. Research interests: machine learning, digital twins, power systems, smart grids, renewable energy, electricity theft detection, solar PV forecasting, and power electronics.
+
+## Pages
+
+- [Home](https://mshmolla.github.io/): profile, research interests, news, featured projects, certificates
+- [Projects](https://mshmolla.github.io/projects): SolarDT digital twin project and research projects
+- [Publications](https://mshmolla.github.io/publications): papers, abstracts and citations
+- [Experience](https://mshmolla.github.io/experience): research, industry and leadership roles
+- [Education](https://mshmolla.github.io/education): academic background
+- [Contact](https://mshmolla.github.io/contact): email and contact form
+
+## Publications
+
+- [A Target-Augmented Residual BiGRU Model for Ultra-Short-Term PV Output Power Forecasting](https://mshmolla.github.io/publications#bigru-pv-forecasting): accepted at IEEE SUSTAIN 2026
+- [Regime-Aware Soft-Probabilistic GMM Integrated Ensemble Learning Framework for Solar PV Power Forecasting](https://mshmolla.github.io/publications#gmm-pv-forecasting): accepted at IEEE SUSTAIN 2026
+- [Machine Learning and Explainable AI for Robust Smart Grid Security: A New Dataset Study](https://doi.org/10.1109/QPAIN69676.2026.11545639): IEEE QPAIN 2026
+- [An Explainable Machine Learning Framework for Dysarthria Detection Using Deep Acoustic Embeddings and Prosodic Cues](https://doi.org/10.1109/QPAIN69676.2026.11546156): IEEE QPAIN 2026
+- [SecureGrid: A Robust Voting Ensemble Model for Non-Technical Loss (NTL) Detection in Smart Meter Data](https://doi.org/10.1109/COMPAS67506.2025.11381615): IEEE COMPAS 2025
+- [Generalising Violence Detection with a New Near-Real-World Violence Dataset](https://doi.org/10.1109/ICAEEE62219.2024.10561682): IEEE ICAEEE 2024
+- [Enhanced Detection of Electricity Theft in Smart Grids Using a Machine Learning Boosting Classifiers Based Voting Ensemble Model](https://doi.org/10.13140/RG.2.2.23095.89767): BSc thesis, MIST, 2024
+
+## Profiles
+
+- [ORCID](https://orcid.org/0009-0007-4586-7918)
+- [Google Scholar](https://scholar.google.com/citations?user=NNXqVVYAAAAJ&hl=en)
+- [Scopus](https://www.scopus.com/authid/detail.uri?authorId=59208452500)
+- [IEEE Xplore](https://ieeexplore.ieee.org/author/532377141325454)
+- [Web of Science](https://www.webofscience.com/wos/author/record/QWF-0712-2026)
+- [Semantic Scholar](https://www.semanticscholar.org/author/Md.-Sabbir-Hossain-Molla/2308132515)
+- [ResearchGate](https://www.researchgate.net/profile/Md-Sabbir-Hossain-Molla)
+- [LinkedIn](https://www.linkedin.com/in/mshmolla/)
+- [GitHub](https://github.com/mshmolla)
+- [ResearchID](https://researchid.co/rid113869)
+- [figshare](https://figshare.com/authors/Md_Sabbir_Hossain_Molla/24649686)
+- [Bluesky](https://bsky.app/profile/mshmolla.github.io)
