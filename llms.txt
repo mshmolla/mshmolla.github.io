@@ -1,6 +1,6 @@
 # Md. Sabbir Hossain Molla
 
-> Md. Sabbir Hossain Molla is a researcher in machine and deep learning for power systems, focusing on smart grids, digital twins, and renewable energy. He holds a BSc in Electrical, Electronic and Communication Engineering (EECE) from the Military Institute of Science and Technology (MIST), Dhaka, Bangladesh, and is a Research Assistant at the Smart Grid & Sustainable Energy Transition Lab (SET Lab), Department of EECE, MIST, working on an AI-enabled digital twin of a solar PV plant (SolarDT, funded by BEPRC). He is a prospective MS/PhD applicant.
+> Md. Sabbir Hossain Molla is a researcher in machine learning and deep learning for power systems, focusing on smart grids, digital twins, and renewable energy. He holds a BSc in Electrical, Electronic and Communication Engineering (EECE) from the Military Institute of Science and Technology (MIST), Dhaka, Bangladesh, and is a Research Assistant at the Smart Grid & Sustainable Energy Transition Lab (SET Lab), Department of EECE, MIST, working on an AI-enabled digital twin of a solar PV plant (SolarDT, funded by BEPRC). He is a prospective MS/PhD applicant.
 
 This is his official academic website. Research interests: machine learning, digital twins, power systems, smart grids, renewable energy, electricity theft detection, solar PV forecasting, and power electronics.
 
